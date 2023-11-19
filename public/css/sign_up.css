@@ -1,0 +1,218 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8FFF8;
+    overflow: hidden;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 100VH;
+}
+
+/* TEXT DESIGNS */
+    .heading-text{
+        font-size: 36px;
+        font-weight: 600;
+    }
+    .sub-heading-text{
+        font-size: 28px;
+        font-weight: 600;
+        color: #005B05;
+    }
+    .sub-text{
+        font-size: 14px;
+        color: #6D6D6D;
+        margin-top: 0;
+    }
+
+    .label-input{
+        font-weight: 600;
+        font-size: 16px;
+        color: #005B05;
+        margin-bottom: 3px;
+    }
+    .checkbox-label{
+        font-size: 14px;
+        color: black;
+    }
+/* END */
+
+/* INPUT ELEMENTS DESIGNS */
+    .form-input{
+        height: 80%;
+        border-bottom: 2px solid #005B05;
+    }
+    .input-group{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .input-text {
+        width: 100%;
+        padding-left: 10px; 
+        box-sizing: border-box;
+        height: 35px;
+    }
+    .input-text, select {
+        background: #FFF;
+        border: 1px solid #6D6D6D;
+        border-radius: 5px; 
+        outline: none;
+    }
+
+    .input-checkbox {
+        margin-top: -15px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px; 
+        padding: 10px;
+    }
+    .input-checkbox div {
+        flex: 1 0 45%;
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
+    .input-checkbox input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    .custom-file-input {
+        position: relative;
+        margin: 10px 0 40px 0;
+        width: 350px;
+        height: 35px;
+        color: #6D6D6D;
+        border-radius: 5px;
+        border: 1px solid #6D6D6D;
+        background: #FFF;
+        font-size: 14px;
+    }
+    .input-file {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .file-label {
+        height: 100%;
+        width: 100%;    
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+        cursor: pointer;
+        overflow: hidden;
+    }
+    .file-label .icon {
+        margin-right: 7px;
+    }
+/* END */
+
+/* FORM BODY & BUTTONS DESIGNS */
+    #signup-form{
+        width: 65%;
+        padding: 2rem 4rem;
+    }
+    .form-container{
+        height: 100%;
+    }
+    .button-container{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 20%; 
+    }
+    .form-button{
+        font-style: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        font-size: 17px;
+        font-weight: 600;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px solid #005B05;
+        color: #FFF;
+        background: #005B05;
+        cursor: pointer;
+    }
+/*  */
+
+
+/* LEFT SIDE STYLES */
+    .left-side{
+        background-color: #DEF6DE;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 35%;
+        padding-top: 1rem;
+    }
+    #logo{
+        margin: 10px 0 -30px 0;
+    }
+    .progress-bar{
+        margin-top: -40px;
+        list-style:none;
+        font-size:18px;
+        font-weight:600;
+        counter-reset:container 0;
+    }
+    .progress-bar li{
+        position:relative;
+        margin-top:50px;
+        counter-increment:container 1;
+        color: #6D6D6D;
+    }
+    .progress-bar li::before{
+        content:counter(container);
+        line-height:25px;
+        text-align:center;
+        position:absolute;
+        height:25px;
+        width:25px;
+        border-radius:50%;
+        left:-40px;
+        top:-5px;
+        z-index: 10;
+        background-color:#B9B9B9;
+    }
+    .progress-bar li::after{
+        content: '';
+        position: absolute;
+        height: 90px;
+        width: 3px;
+        background-color: #B9B9B9;
+        z-index: 1;
+        left: -27px;
+        top: -70px;
+    }
+    .progress-bar li.active::after{
+        background-color:#005B05;
+    }
+    .progress-bar li:first-child:after{
+        display:none;  
+    }
+    .progress-bar li.active::before{
+        color:#005B05;
+        border:1px solid #005B05;
+        background-color: #005B05;
+    }
+    .progress-bar li.active{
+        color:black;
+    }
+    .d-none{
+        display:none;   
+    }
+/* END */
+
+
+
+
