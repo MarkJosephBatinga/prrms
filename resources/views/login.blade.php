@@ -9,14 +9,20 @@
 </head>
 <body>
     <div class="container">
-        <form action="" method="" class="login-form-container">
+        <form action="{{ route('login_post') }}" method="POST" class="login-form-container">
+            @csrf
             <div class="login-box">
                 <img id="logo" src="images/logo.png" alt="Login Image">
                 <p id="heading-text">Welcome Back!</p>
                 <p id="sub-heading-text">Sign in to access your account</p>
+                @if(Session::has('error'))
+                    <div class="text-danger" role="alert">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
                 <input name="id_number" id="id_number" type="text" placeholder="ID Number" class="login-text-box"/>
                 <input name="password" id="password" type="password" placeholder="Password" class="login-text-box" />
-                <button id="signin-btn">Sign In</button>
+                <button type="submit" id="signin-btn">Sign In</button>
                 <p id="below-login-text"></a> Don't have an account yet? <a id="signup-nav" href="{{ route('register') }}">Create an account here.</a></p>
             </div>
         </form>

@@ -1,12 +1,12 @@
 <nav id="sidebar" class="d-none d-md-block">
     <div id="sidebar-header">
-        <img class="logo" src="../images/dashboard_logo.svg ">
+        <img class="logo" src="{{ asset('images/logo.png') }}">
         <h3 id="text-header" class="mt-1">PRRMS</h3>
     </div>
     <ul class="list-unstyled components">
         <li class="mb-2 mx-2">
             <a class="d-flex align-items-center p-2" href="dashboard.php">
-                <i class='bx bxs-dashboard bx-rotate-90 icon' ></i>
+                <i class='bx bx-home-alt icon' ></i>
                 <span class="text nav-text">Dashboard</span>
             </a>
         </li>
@@ -37,11 +37,11 @@
         <li class="mb-2 mx-2">
             <a class="d-flex align-items-center p-2" href="supervisor_list.php">
                 <i class='bx bx-calendar icon'></i>
-                <span class="text nav-text">Calendar</span>
+                <span class="text nav-text">Schedule</span>
             </a>
         </li>
         <li class="mx-2">
-            <a class="d-flex align-items-center p-2" href="#">
+            <a class="d-flex align-items-center p-2" href="{{ route('logout') }}">
                 <i class='bx bx-log-out icon'></i>
                 <span class="text nav-text">Logout</span>
             </a>

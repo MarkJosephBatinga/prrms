@@ -21,13 +21,12 @@ Route::get('/', function () {
 
 // Login Routes
 Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
+Route::post('/login/post', [AuthController::class, 'login_post'])->name('login_post');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
