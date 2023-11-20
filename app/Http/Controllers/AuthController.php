@@ -28,6 +28,19 @@ class AuthController extends Controller
         return back()->with('error', 'Invalid Password or Email, Please Try Again');
     }
 
+    public function register_post(Request $req) {
+        // $credentials = [
+        //     'email' => $req->id_number,
+        //     'password' => $req->password,
+        // ];
+
+        // if(Auth::attempt($credentials)) {
+        //     return redirect('/dashboard')->with('success', 'Login Successfull');
+        // }
+
+        // return back()->with('error', 'Invalid Password or Email, Please Try Again');
+    }
+
     public function logout() {
         Auth::logout();
 

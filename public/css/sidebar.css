@@ -16,10 +16,10 @@ body {
 /* SIDEBAR DESIGNS */
     #sidebar {
         border-radius: 0 10px 10px 0;
-        min-width: 250px;
-        max-width: 250px;
+        min-width: 20%;
+        max-width: 20%;
         z-index: 100;
-        height: 100vh;
+        min-height: 100vh;
         padding: 30px 14px;
         background-color: #438146;
     }
@@ -71,6 +71,7 @@ body {
         color:#005B05;
         font-weight: 600;
         font-size: 25px;
+        margin-top: 50px;
     }
     .content-sub-header{
         font-size: 18px;
@@ -81,29 +82,31 @@ body {
         color: #FFFFFF;
     }
     .card-text-heading{
+        position: absolute;
+        top: 70px;
+        left: 20px;
+        color: #FFFFFF;
+        font-weight: 600;
         font-size: 24px;
     }
-    .card-value{
+    .card-text-count{
         position: absolute;
         bottom: 0;
-        right: 0;
-        margin: 10px;
-        font-size: 50px;
+        right: 20px;
+        color: #FFFFFF;
+        font-size: 60px;
+        font-weight: 600;
+    }
+    .card-text-action{
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 24px;
+    }
+    .grade-student-name{
+        font-size: 18px;
+        font-weight: 600;
     }
 /* END */
-
-
-/* CARDS DESIGNS */
-    .card-container{
-        position: relative;
-        padding: 1rem;
-        height: 150px;
-        border-radius: 10px;
-        background: linear-gradient(48deg, #02582F 9.17%, #A4D3A4 109.43%);
-        box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.25);
-    }
-/* END */
-
 
 /* TABLE DESIGNS */
     table{
@@ -137,77 +140,213 @@ body {
         color: #FFFFFF;
         cursor: pointer;
     }
-
     table tbody a{
         text-decoration: none;
         color: #FFFFFF;
     }
-
 /* END */
 
-.content-wrapper{
-    width: 100%;
-}
-#topNav
-{
-    border: 1px solid #B9B9B9;
-    border-radius: .5em;
-    background-color: #FFFFFF;
-}
-.text{
-    color: #242333;
-}
-#card-dash{
-    border-radius: 1rem;
-    position: relative;
-}
-a{
-    color: #036868;
-}
-.card-header
-{
-    background-color: #FFFFFF !important;
-}
-[data-role="job"] {
-    overflow: hidden;
-    max-height: 18rem;
-    min-height: 18rem;
-}
-input[type='file']{
-    display: none;
-}
-#fileLabel{
-    color: #036868;
-    font-size: 14px;
-    text-decoration: underline;
-    font-weight: 500;
-}
-.custom-file
-{
-    max-width: 300px;
-}
-#notification.active{
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    display: flex;
-    max-width: 16rem;
-    min-width: 16rem;
-}
-#notification{
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    display: none;
-}
-.text-content
-{
-    font-size: 14px;
-}
-#imgProfile{
-    border: 0.2rem solid #B9B9B9 ;
-}
 
+/* CARDS DESIGNS */
+    .dashboard-cards {
+        margin-top: 30px;
+        display: flex;
+        gap: 40px; /* Adjust the value as needed for the desired gap size */
+    }
+    .card-container{
+        position: relative;
+        width: 320px;
+        padding: 1rem;
+        height: 250px;
+        border-radius: 10px;
+        background: linear-gradient(48deg, #02582F 9.17%, #A4D3A4 109.43%);
+        box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.25);
+    }
+    .card-icon{
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: #005B05;
+        font-size: 50px;
+    }
+    .action-card-container{
+        margin-top: 30px;
+        position: relative;
+        padding: 1rem;
+        height: 250px;
+        border-radius: 10px;
+        background: linear-gradient(48deg, #02582F 9.17%, #A4D3A4 109.43%);
+        box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.25);
+    }
+    .card-nav-icon{
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+        color: #FFF;
+        font-size: 30px;
+    }
+    .grade-card{
+        min-height: 300px;
+        border-radius: 20px;
+        border: 3px solid #005B05;
+        box-shadow: 4px 5px 5px 0px rgba(0, 0, 0, 0.25);
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+/* END */
+
+/* CONTENT BODY STYLES */
+    .content-wrapper{
+        width: 80%;
+        position: relative;
+    }
+    .top-nav-container{
+        background: #FFF;
+        box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding: 0 20px 0 20px;
+    }
+    .top-nav-image{
+        border-radius: 50%;
+        height: 40px;
+        width: 42px;
+        border: 1.5px solid #005B05;
+    }
+    .top-nav-name{
+        margin-left: 10px;
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+    .profile-button{
+        margin-left: 10px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .content{
+        padding: 20px;
+    }
+    .search-button-container{
+        margin: 30px 0 30px 0 ;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+    }
+    .search-container {
+        width: 200px;
+        position: relative;
+    }
+    .search-box{
+        font-size: 14px;
+        padding: 10px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        width: 200px;
+        height: 35px;
+        box-sizing: border-box;
+    }
+    .search-icon{
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        color: #555;
+    }
+    .add-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 180px;
+        height: 35px;
+        border-radius: 6px;
+        border: 1px solid #005B05;
+        background: #005B05;
+        color: #FFF;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .add-button:hover{
+        color: #FFF;
+        text-decoration: none;
+    }
+    .select-filter{
+        padding-left: 5px;
+        font-size: 14px;
+        width: 180px;
+        height: 35px;
+    }
+  
+    .back-button{
+        font-size: 14px;
+        text-decoration: none;
+    }
+    .back-button:hover{
+        text-decoration: none;
+    }
+
+
+
+
+    .text{
+        color: #242333;
+    }
+    #card-dash{
+        border-radius: 1rem;
+        position: relative;
+    }
+    a{
+        color: #036868;
+    }
+    .card-header
+    {
+        background-color: #FFFFFF !important;
+    }
+    [data-role="job"] {
+        overflow: hidden;
+        max-height: 18rem;
+        min-height: 18rem;
+    }
+    input[type='file']{
+        display: none;
+    }
+    #fileLabel{
+        color: #036868;
+        font-size: 14px;
+        text-decoration: underline;
+        font-weight: 500;
+    }
+    .custom-file
+    {
+        max-width: 300px;
+    }
+    #notification.active{
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        display: flex;
+        max-width: 16rem;
+        min-width: 16rem;
+    }
+    #notification{
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        display: none;
+    }
+    .text-content
+    {
+        font-size: 14px;
+    }
+    #imgProfile{
+        border: 0.2rem solid #B9B9B9 ;
+    }
+/* END */
 
 @media (max-width: 768px) {
     
@@ -216,12 +355,10 @@ input[type='file']{
         height: 100vh;
         position: absolute;
     }
-
     .text-content
     {
         font-size: 12px;
     }
-
     #top-name
     {
         display: none;
