@@ -24,6 +24,8 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login/post', [AuthController::class, 'login_post'])->name('login_post');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register/post', [AuthController::class, 'register_post'])->name('register_post');
+Route::get('/register/get_course/{id}', [AuthController::class, 'get_courses'])->name('get_courses');
+Route::get('/credentials/{student_id}/{password}', [AuthController::class, 'show_credentials'])->name('show_credentials');
 
 
 Route::middleware(['auth'])->group(function () {

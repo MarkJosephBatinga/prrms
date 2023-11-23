@@ -21,7 +21,7 @@
             </ul>
             <p id="below-login-text"></a> Already have an account? <a id="signin-nav" href="{{route('login')}}">Sign in to your account.</a></p>
         </div>
-        <form action="{{ route('register_post') }}" method="POST" id="signup-form">
+        <form action="{{ route('register_post') }}" method="POST" id="signup-form" enctype="multipart/form-data">
             @csrf
             <div id="student-type" class="form-container">
                 <div class="form-input">
@@ -75,8 +75,12 @@
                     <div class="input-group">
                         <label class="label-input">Program</label>
                         <select name="program" id="program" class="input-text program_offer">
-                            <option value="Program 1">Program 1</option>
-                            <option value="Program 2">Program 2</option>
+                            <option value="">Select</option>
+                            @if(isset($programs) && $programs != null)
+                                @foreach($programs as $program)
+                                <option value="{{$program->id}}">{{$program->program_name}}</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                     <div class="input-group">
@@ -84,23 +88,7 @@
                         <p class="sub-text">To be enrolled only by those who have completed the academic requirements</p>
                     </div>
                     <div class="input-checkbox">
-                        <div class="input-checkbox">
-                            <div>
-                                <input type="checkbox" id="course_one" name="courses" value="course_one"/>
-                                <label class="checkbox-label">Course 1</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="course_two" name="courses" value="course_two"/>
-                                <label class="checkbox-label">Course 2</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="course_three" name="courses" value="course_three"/>
-                                <label class="checkbox-label">Course 3</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="course_four" name="courses" value="course_four"/>
-                                <label class="checkbox-label">Course 4</label>
-                            </div>
+                        <div class="input-checkbox" id="populate_checkbox">
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Course;
+use App\Models\Program;
+use App\Models\Student;
+use App\Models\StudentCourse;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -12,7 +20,8 @@ class AuthController extends Controller
     }
 
     public function register() {
-        return view('register');
+        $data['programs'] = Program::all();
+        return view('register', $data);
     }
 
     public function login_post(Request $req) {
@@ -29,21 +38,105 @@ class AuthController extends Controller
     }
 
     public function register_post(Request $req) {
-        // $credentials = [
-        //     'email' => $req->id_number,
-        //     'password' => $req->password,
-        // ];
+        $filePath = $this->saveFileRecord($req->file('file_record'));
 
-        // if(Auth::attempt($credentials)) {
-        //     return redirect('/dashboard')->with('success', 'Login Successfull');
-        // }
+        $student = Student::create([
+            'student_type' => $req->input('student_type'),
+            'student_status' => $req->input('student_status'),
+            'name' => $req->input('name'),
+            'nationality' => $req->input('nationality'),
+            'address' => $req->input('address'),
+            'mobile_number' => $req->input('mobile_number'),
+            'program' => $req->input('program'),
+            'file_record' => $filePath,
+            'payment_mode' => $req->input('payment_mode'),
+        ]);
 
-        // return back()->with('error', 'Invalid Password or Email, Please Try Again');
+        $studentId = $student->id;
+        $courses = $req->input('courses');
+
+        $this->saveStudentCourses($studentId, $courses);
+
+        $data['student_id'] = $this->generateStudentId();
+        $data['password'] = $this->generateRandomPassword();
+
+        User::create([
+            'name' => $req->input('name'),
+            'user_type' => 'student',
+            'email' => $data['student_id'],
+            'student_id' => $studentId,
+            'password' => Hash::make($data['password']),
+        ]);
+
+        return redirect()->route('show_credentials', [
+            'student_id' => $data['student_id'],
+            'password' => $data['password'],
+        ]);
+    }
+
+    public function show_credentials($student_id, $password) {
+        return view('authenticate', compact('student_id', 'password'));
     }
 
     public function logout() {
         Auth::logout();
 
         return redirect()->route('login');
+    }
+
+    public function get_courses($program_id) {
+        $courses = Course::where('program_id', $program_id)->get();
+
+        return response()->json($courses);
+    }
+
+    private function generateStudentId() {
+        $currentYear = Carbon::now()->format('Y');
+        $lastStudent = User::whereYear('created_at', '=', Carbon::now()->year)->orderByDesc('id')->first();
+
+        if ($lastStudent) {
+            $lastId = (int)explode('-', $lastStudent->email)[1];
+            $newId = str_pad($lastId + 1, 3, '0', STR_PAD_LEFT);
+        } else {
+            $newId = '001';
+        }
+
+        return $currentYear . '-' . $newId;
+    }
+
+    private function generateRandomPassword() {
+        $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $specialCharacters = '!@#$%^&*()_-+=<>?';
+
+        $password = '';
+
+        $password .= $letters[rand(0, strlen($letters) - 1)];
+        $password .= $specialCharacters[rand(0, strlen($specialCharacters) - 1)];
+        $password .= str_pad(mt_rand(1, 99999999), 6, '0', STR_PAD_LEFT);
+
+        // Shuffle the password to randomize the positions of the letter and special character
+        $passwordArray = str_split($password);
+        shuffle($passwordArray);
+        $password = implode('', $passwordArray);
+
+        return $password;
+    }
+
+
+    private function saveFileRecord($file) {
+        return Storage::putFile('file_records', $file);
+    }
+
+    private function saveStudentCourses($studentId, $courseIds) {
+        foreach ($courseIds as $courseId) {
+            $course = Course::find($courseId);
+
+            if ($course) {
+                StudentCourse::create([
+                    'student_id' => $studentId,
+                    'course_id' => $courseId,
+                ]);
+            }
+        }
     }
 }

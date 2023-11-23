@@ -52,7 +52,7 @@ function checkAllValuesFilled(fields) {
 }
 
 function checkCourses() {
-    var checkboxes = $('input[name="courses"]');
+    var checkboxes = $('input[name="courses[]"]');
     return checkboxes.filter(':checked').length >= 2;
 }
 
@@ -115,3 +115,34 @@ function fileChange(){
         $('.file-label').text(fileName);
     });
 }
+
+$(document).ready(function () {
+    // On change of the program select
+    $('#program').change(function () {
+        // Get the selected program ID
+        var programId = $(this).val();
+
+        // Make an Ajax request to get courses based on the program ID
+        $.ajax({
+            url: '/register/get_course/' + programId,
+            method: 'GET',
+            success: function (data) {
+                // Clear existing checkboxes
+                $('#populate_checkbox').empty();
+
+                // Populate checkboxes based on the fetched courses
+                data.forEach(function (course) {
+                    var new_checkbox = '<div>';
+                    new_checkbox += '<input type="checkbox" id="course_' + course.id + '" name="courses[]" value="' + course.id + '"/>';
+                    new_checkbox += '<label class="checkbox-label">' + course.descriptive_title + '</label>';
+                    new_checkbox += '</div>';
+
+                    $('#populate_checkbox').append(new_checkbox);
+                });
+            },
+            error: function (error) {
+                console.log('Error fetching courses:', error);
+            }
+        });
+    });
+});

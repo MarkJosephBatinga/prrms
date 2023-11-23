@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script type="text/javascript" src="{{ asset('css/admin.css') }}"> </script>
 
