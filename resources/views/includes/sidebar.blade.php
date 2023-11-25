@@ -17,7 +17,7 @@
             </a>
         </li>
         <li class="mb-2 mx-2">
-            <a class="d-flex align-items-center p-2" href="supervisor_list.php">
+            <a class="d-flex align-items-center p-2" href="{{route('grades')}}">
                 <i class='bx bx-star icon'></i>
                 <span class="text nav-text">Grades</span>
             </a>

@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\RegistrarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Programs
     Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+
+     // Registrar
+     Route::get('/grades', [RegistrarController::class, 'grades_index'])->name('grades');
 });
