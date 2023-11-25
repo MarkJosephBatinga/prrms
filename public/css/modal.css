@@ -1,0 +1,108 @@
+
+/* COMMON STYLES */
+    .modal-container{
+        position: absolute;
+        left: 60%;
+        transform: translateX(-50%);
+    }
+    .modal-container .modal-content{
+        position: relative;
+        margin-top: 50px;
+        width: 500px;
+        min-height: 300px;
+        border-radius: 30px;
+    }
+    .modal-container .modal-content p{
+        font-size: 28px;
+        font-weight: 600;
+        color: #005B05;
+    }
+/* END */
+
+
+/* PRE REGISTRATION */
+    .modal-container .modal-header{
+        border: none;
+        display: flex;
+        justify-content: end;
+    }
+    .modal-header i{
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .modal-container .eval-modal-body{
+        padding: 0 3rem 3rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .modal-container .modal-content textarea{
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1.5px solid #000;
+        width: 100%;
+        min-height: 150px;
+    }
+    .eval-modal-body .button-container{
+        margin-top: 40px;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .eval-modal-body .button-container button{
+        width: 110px;
+        font-weight: 500;
+        border: none;
+        border-radius: 8px;
+        padding: 5px ;
+        color: #FFF;
+    }
+    .eval-modal-body .button-container #reject-btn{
+        background: #D61422;
+    }
+    .eval-modal-body .button-container #revision-btn{
+        background:#0B4870;
+    }
+    .eval-modal-body .button-container #approve-btn{
+        background: #005B05;
+    }
+/* END */
+
+
+/* PROGRAM */
+    .modal-container .prog-modal-body{
+        padding: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .prog-modal-body .courses-checkbox{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+    .prog-modal-body .button-container{
+        gap: 30px;
+        margin-top: 40px;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .prog-modal-body .button-container button , .prog-modal-body .button-container i{
+        width: 200px;
+    }
+    .prog-modal-body .button-container .cancel-btn{
+        color: #FFF;
+        background:#0B4870;
+    }
+    .prog-modal-body .button-container .add-btn{
+        color: #FFF;
+        background: #005B05;
+        width: 200px;
+    }
+/* END */

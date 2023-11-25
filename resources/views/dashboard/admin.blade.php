@@ -1,26 +1,39 @@
 @extends('includes.app')
 
 @section('body')
-<div class="content px-3">
+<div class="content">
     <!-- Content Header -->
     <div class="content-header">
         <h3 class="content-header mt-2">Dashboard</h3>
-        <h4 class="content-sub-header">Welcome Back, Admin!</h4>
     </div>
+
+    <h4 class="content-sub-header">Welcome Back, Admin!</h4>
     <!-- Dashboard Cards -->
-    <div class="row mt-4">
-        <div class="card-container col-6 col-md-6 col-lg-3 mb-3 mx-3">
-            <a href="coordinator_list.php"> <h4 class="card-text-heading">Pre-registered Students</h4> </a>
-            <h4 class="card-value">20</h4>
+    <div class="dashboard-cards">
+        <div class="card-container">
+            <i class='bx bx-file card-icon'></i>
+            <p class="card-text-heading">Pre-registered Students</p>
+            <p class="card-text-count">23</p>
+            <a href=""><i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i></a>
         </div>
-        <div class="card-container col-6 col-md-6 col-lg-3 mb-3 mx-3">
-            <a href="coordinator_list.php"> <h4 class="card-text-heading">Programs</h4> </a>
-            <h4 class="card-value">20</h4>
+
+        <div class="card-container">
+            <i class='bx bx-folder-open card-icon'></i>
+            <p class="card-text-heading">Programs</p>
+            <p class="card-text-count">10</p>
+            <a href=""><i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i></a>
         </div>
-        <div class="card-container col-6 col-md-6 col-lg-3 mb-3 mx-3">
-            <a href="coordinator_list.php"> <h4 class="card-text-heading">Users</h4> </a>
-            <h4 class="card-value position-absolute bottom-0 right-0 mb-3 mr-3">20</h4>
+
+        <div class="card-container">
+            <i class='bx bxs-user-account card-icon'></i>
+            <p class="card-text-heading">Users</p>
+            <p class="card-text-count">13</p>
+            <a href=""><i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i></a>
         </div>
     </div>
+    <div class="action-card-container">
+        <p class="card-text-action">Action Needed</p>
+    </div>
+
 </div>
 @endsection

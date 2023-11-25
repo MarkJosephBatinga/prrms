@@ -1,0 +1,136 @@
+/* Dashboard Cards */
+    .dashboard-cards{
+        margin-top: 30px;
+        display: flex;
+        gap: 40px;
+    }
+    .dashboard-cards .card-container{
+        position: relative;
+        width: 320px;
+        padding: 1rem;
+        height: 250px;
+        border-radius: 10px;
+        background: linear-gradient(48deg, #005B05 9.17%, #A4D3A4 109.43%);
+        box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.25);
+    }
+    .dashboard-cards .card-icon{
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        color: #005B05;
+        font-size: 50px;
+    }
+    .dashboard-cards .card-nav-icon{
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+        color: #FFF;
+        font-size: 30px;
+    }
+    .dashboard-cards .card-container h4{
+        color: #FFFFFF;
+    }
+    .dashboard-cards .card-text-heading{
+        position: absolute;
+        top: 70px;
+        left: 20px;
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 24px;
+    }
+    .dashboard-cards .card-text-count{
+        position: absolute;
+        bottom: 0;
+        right: 20px;
+        color: #FFFFFF;
+        font-size: 60px;
+        font-weight: 600;
+    }
+
+    .action-card-container{
+        margin-top: 30px;
+        position: relative;
+        padding: 1rem;
+        height: 250px;
+        border-radius: 10px;
+        background: linear-gradient(48deg, #005B05 9.17%, #A4D3A4 109.43%);
+        box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.25);
+    }
+    .action-card-container .card-text-action{
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 24px;
+    }
+/* END */
+
+
+/* Grade Card */
+    .grade-card{
+        min-height: 300px;
+        border-radius: 20px;
+        border: 3px solid #005B05;
+        box-shadow: 4px 5px 5px 0px rgba(0, 0, 0, 0.25);
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+    .grade-student-name{
+        font-size: 18px;
+        font-weight: 600;
+    }
+/* END */
+
+
+/* Small Card (Program & Course) */
+    .small-cards{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px
+    }
+    .small-cards .card-container{
+        flex: 0 0 calc(33.33% - 20px);
+        padding: 1rem 0 1rem 1rem;
+        position: relative;
+        border-radius: 15px;
+        background: linear-gradient(90deg, #005B05 0%, #87D08B 100%);
+        box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        width: 280px;
+        min-height: 140px;
+    }
+    .small-cards .card-text{
+        color: #FFF;
+        height: 100%;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .small-cards .card-text a{
+        color: #FFF;
+        text-decoration: none;
+    }
+    .small-cards .card-text .small-text{
+        font-size: 12px;
+        margin: 0;
+    }
+    .small-cards .card-text .large-text{
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+    .small-cards .program-image{
+        border-radius: 15px;
+        width: 20%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .small-cards .course-image{
+        border-radius: 15px;
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+/* END */

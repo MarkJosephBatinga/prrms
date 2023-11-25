@@ -15,6 +15,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    <script type="text/javascript" src="{{ asset('css/admin.css') }}"> </script>
+    <link rel='stylesheet' href="{{ asset('css/main_format.css') }}">
+    <link rel='stylesheet' href="{{ asset('/css/card_containers.css') }}">
 
 </head>

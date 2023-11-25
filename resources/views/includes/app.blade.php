@@ -6,7 +6,11 @@
     </head>
     <body>
         <div class="wrapper">
-            @include('includes.sidebar')
+            @if(Auth::user()->user_type === 'admin')
+                @include('includes.sidebar')
+            @else
+                @include('includes.stud_sidebar')
+            @endif
             <div class="content-wrapper px-2">
                 @include('includes.navbar')
                 @yield('body')
