@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    public function index() {
+        $data['courses'] = Course::all();
+
+        return view('courses.index', $data);
+    }
+
     public function get_course() {
         return view('login');
     }

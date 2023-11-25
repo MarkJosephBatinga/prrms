@@ -29,7 +29,7 @@
             </a>
         </li>
         <li class="mb-2 mx-2">
-            <a class="d-flex align-items-center p-2" href="supervisor_list.php">
+            <a class="d-flex align-items-center p-2" href="{{route('courses')}}">
                 <i class='bx bx-list-ul icon'></i>
                 <span class="text nav-text">Subjects</span>
             </a>
