@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\ProgramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Records
     Route::get('/records', [RecordController::class, 'index'])->name('records');
+
+    // Records
+    Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
 });
