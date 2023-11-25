@@ -11,7 +11,7 @@
             </a>
         </li>
         <li class="mb-2 mx-2">
-            <a class="d-flex align-items-center p-2" href="record_list.php">
+            <a class="d-flex align-items-center p-2" href="{{route('records')}}">
                 <i class='bx bx-file icon'></i>
                 <span class="text nav-text">Records</span>
             </a>
