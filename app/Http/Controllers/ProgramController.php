@@ -11,4 +11,9 @@ class ProgramController extends Controller
 
         return view('programs.index', $data);
     }
+
+
+    public function add_program() {
+        return view('programs.add_program');
+    }
 }

@@ -12,7 +12,7 @@
                 <input type="text" class="search-box" placeholder="Search">
                 <i class='bx bx-search-alt search-icon'></i>
             </div>
-            <a class="add-button" href="add_program.php">Add Program</a>
+            <a class="add-button" href="{{ route('add_program') }}">Add Program</a>
         </div>
         <!-- Small Cards -->
         <div class="small-cards">
@@ -29,8 +29,6 @@
                     </div>
                 @endforeach
             @endif
-
-
         </div>
     </div>
 @endsection

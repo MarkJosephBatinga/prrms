@@ -15,6 +15,7 @@
                 @include('includes.navbar')
                 @yield('body')
             </div>
+            @stack('add_content')
         </div>
         {{-- @include('includes.js-assets') --}}
         @stack('js_scripts')

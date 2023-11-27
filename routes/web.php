@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Programs
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
+    Route::get('/programs/add', [ProgramController::class, 'add_program'])->name('add_program');
 
     // Programs
     Route::get('/courses', [CourseController::class, 'index'])->name('courses');
