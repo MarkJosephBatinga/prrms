@@ -11,4 +11,8 @@ class RecordController extends Controller
 
         return view('records.index', $data);
     }
+
+    public function pre_register() {
+        return view('records.preregister');
+    }
 }
