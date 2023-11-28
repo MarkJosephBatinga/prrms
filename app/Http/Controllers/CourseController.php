@@ -13,6 +13,10 @@ class CourseController extends Controller
         return view('courses.index', $data);
     }
 
+    public function add_course() {
+        return view('courses.add_course');
+    }
+
     public function get_course() {
         return view('login');
     }

@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Programs
     Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+    Route::get('/courses/add', [CourseController::class, 'add_course'])->name('add_course');
 
      // Registrar
      Route::get('/grades', [RegistrarController::class, 'grades_index'])->name('grades');
