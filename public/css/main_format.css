@@ -329,6 +329,14 @@ body {
 
 
     /* Add Program Courses */
+    .form-top-container .courses-header p{
+        font-size: 18px;
+        font-weight: 600;
+        display: inline-block;
+    }
+    .courses-header .course-type{
+        color: #005B05;
+    }
     .form-top-container .modal-button-container{
         width: 60%;
     }
@@ -448,3 +456,17 @@ body {
     }
 
 /* END */
+
+
+
+/* ADD PROGRAM */
+.program-courses-container {
+    padding: 0 40px 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.checkbox-group {
+    flex: 0 0 calc(33.33% - 10px);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

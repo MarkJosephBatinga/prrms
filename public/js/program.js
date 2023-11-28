@@ -1,6 +1,14 @@
 // FORM Navigate Buttons
 infoNextButton= $('#prog-info-next');
-coursesBackButton= $('#prog-courses-back');
+coreCoursesBack= $('#core-courses-back');
+coreCoursesNext= $('#core-courses-next');
+majorCoursesBack= $('#major-courses-back');
+majorCoursesNext= $('#major-courses-next');
+electiveCoursesBack= $('#elective-courses-back');
+electiveCoursesNext= $('#elective-courses-next');
+institutionalCoursesBack= $('#institutional-courses-back');
+institutionalCoursesNext= $('#institutional-courses-next');
+otherCoursesBack= $('#other-courses-back');
 
 infoHeader = $('#prog-info-header');
 coursesHeader = $('#prog-courses-header');
@@ -9,7 +17,11 @@ allHeaders = $('.tab-headers').find('i');
 
 // FORM Containers
 informationForm = $('#prog-info-form');
-coursesForm = $('#prog-courses-form');
+coreCoursesForm = $('#core-courses-form');
+majorCoursesForm = $('#major-courses-form');
+electiveCoursesForm = $('#elective-courses-form');
+institutionalCoursesForm = $('#institutional-courses-form');
+otherCoursesForm = $('#other-courses-form');
 
 informationDetails = $('#prog-info-details');
 coursesDetails = $('#prog-courses-details');
@@ -19,13 +31,16 @@ allDetails = $('.details-body').find('.info');
 // FORM Tab Status
 allTabs = $('.tab-status-container').find('.tab-status');
 informationTab = $('#prog-info-tab');
-coursesTab = $('#prog-courses-tab');
+coreCoursesTab = $('#core-courses-tab');
+majorCoursesTab = $('#major-courses-tab');
+electiveCoursesTab = $('#elective-courses-tab');
+institutionalCoursesTab = $('#institutional-courses-tab');
+otherCoursesTab = $('#other-courses-tab');
 
 
 $(document).ready(function() {
     navigateAddForms()
     navigateViewForms()
-    displayModal()
     clearForm()
 });
 
@@ -45,36 +60,74 @@ function backTabStatus(previousTab, activeTab){
 }
 function navigateAddForms(){
     infoNextButton.click(function() {
-        displayAddForm(informationForm, coursesForm);
-        nextTabStatus(informationTab, coursesTab)
+        displayAddForm(informationForm, coreCoursesForm);
+        nextTabStatus(informationTab, coreCoursesTab)
     });
 
-    coursesBackButton.click(function() {
-        displayAddForm(coursesForm, informationForm);
-        backTabStatus(coursesTab, informationTab)
+    coreCoursesNext.click(function() {
+        displayAddForm(coreCoursesForm, majorCoursesForm);
+        nextTabStatus(coreCoursesTab, majorCoursesTab)
     });
+
+    coreCoursesBack.click(function() {
+        displayAddForm(coreCoursesForm, informationForm);
+        backTabStatus(coreCoursesTab, informationTab)
+    });
+
+    majorCoursesNext.click(function() {
+        displayAddForm(majorCoursesForm, electiveCoursesForm);
+        nextTabStatus(majorCoursesTab, electiveCoursesTab)
+    });
+
+    majorCoursesBack.click(function() {
+        displayAddForm(majorCoursesForm, coreCoursesForm);
+        backTabStatus(majorCoursesTab, coreCoursesTab)
+    });
+
+    electiveCoursesNext.click(function() {
+        displayAddForm(electiveCoursesForm, institutionalCoursesForm);
+        nextTabStatus(electiveCoursesTab, institutionalCoursesTab)
+    });
+
+    electiveCoursesBack.click(function() {
+        displayAddForm(electiveCoursesForm, majorCoursesForm);
+        backTabStatus(electiveCoursesTab, majorCoursesTab)
+    });
+
+    institutionalCoursesNext.click(function() {
+        displayAddForm(institutionalCoursesForm, otherCoursesForm);
+        nextTabStatus(institutionalCoursesTab, otherCoursesTab)
+    });
+
+    institutionalCoursesBack.click(function() {
+        displayAddForm(institutionalCoursesForm, electiveCoursesForm);
+        backTabStatus(institutionalCoursesTab, electiveCoursesTab)
+    });
+
+    otherCoursesBack.click(function() {
+        displayAddForm(otherCoursesForm, institutionalCoursesForm);
+        backTabStatus(otherCoursesTab, institutionalCoursesTab)
+    });
+
 }
 function clearForm(){
     $('#prog-info-clear').click(function() {
         informationForm.find('input').val('');
     });
-}
-function displayModal(){
-    $('#core-course-btn').click(function() {
-        $('#core-courses-modal').removeClass('d-none') 
-        $('.content-wrapper').addClass('blur')
+    $('#core-courses-clear').click(function() {
+        coreCoursesForm.find(':checkbox').prop('checked', false);
     });
-    $('#major-course-btn').click(function() {
-        $('#major-courses-modal').removeClass('d-none') 
-        $('.content-wrapper').addClass('blur')
+    $('#major-courses-clear').click(function() {
+        majorCoursesForm.find(':checkbox').prop('checked', false);
     });
-    $('#elective-course-btn').click(function() {
-        $('#elective-courses-modal').removeClass('d-none') 
-        $('.content-wrapper').addClass('blur')
+    $('#elective-courses-clear').click(function() {
+        electiveCoursesForm.find(':checkbox').prop('checked', false);
     });
-    $('.cancel-btn').click(function() {
-        $('.modal-container').addClass('d-none')
-        $('.content-wrapper').removeClass('blur')
+    $('#institutional-courses-clear').click(function() {
+        institutionalCoursesForm.find(':checkbox').prop('checked', false);
+    });
+    $('#other-courses-clear').click(function() {
+        otherCoursesForm.find(':checkbox').prop('checked', false);
     });
 }
 

@@ -12,11 +12,15 @@
             <h3 class="content-header mt-2">Add Program</h3>
             <div class="tab-status-container">
                 <div id="prog-info-tab" class="tab-status"></div>
-                <div id="prog-courses-tab" class="tab-status next"></div>
+                <div id="core-courses-tab" class="tab-status next"></div>
+                <div id="major-courses-tab" class="tab-status next"></div>
+                <div id="elective-courses-tab" class="tab-status next"></div>
+                <div id="institutional-courses-tab" class="tab-status next"></div>
+                <div id="other-courses-tab" class="tab-status next"></div>
             </div>
         </div>
         <!-- Add Program Form -->
-        <div class="sub-page-content">
+        <form class="sub-page-content">
             <div id="prog-info-form">
                 <div class="form-top-container">
                     <p class="form-header">Program Information</p>
@@ -50,43 +54,172 @@
                     </div>
                 </div>
             </div>
-            <div id="prog-courses-form" class="d-none">
+            <div id="core-courses-form" class="d-none">
                 <div class="form-top-container">
-                    <p class="form-header">Program Courses</p>
-                    <div class="modal-button-container">
-                        <div class="input-group">
-                            <label class="label-input">Core Courses</label>
-                            <i id="core-course-btn" class="program-input">Add Core Courses</i>
-                        </div>
-                        <div class="input-group">
-                            <label class="label-input">Major Courses</label>
-                            <i id="major-course-btn" class="program-input">Add Major Courses</i>
-                        </div>
-                        <div class="input-group">
-                            <label class="label-input">Elective Courses</label>
-                            <i id="elective-course-btn" class="program-input">Add Elective Courses</i>
-                        </div>
-                        <div class="input-group">
-                            <label class="label-input">Institutional Requirement for Graduation</label>
-                            <i id="requirement-btn" class="program-input">Add Institutional Requirement</i>
-                        </div>
-                        <div class="input-group">
-                            <label class="label-input">Other Requirements</label>
-                            <select class="program-input">
-                                <option>Dissertion / Thesis Writing</option>
-                            </select>
-                        </div>
+                    <div class="courses-header">
+                        <p>Program Courses</p>
+                        <p class="course-type">(Core Courses)</p>
+                    </div>
+                </div>
+                <div class="program-courses-container">
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Core Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Core Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Core Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Core Course</label>
                     </div>
                 </div>
                 <div class="form-bottom-container">
-                    <i></i>
+                    <i id="core-courses-clear" class="clear-button">Clear</i>
                     <div class="button-container">
-                        <i class="back-button" id="prog-courses-back">Back</i>
+                        <i class="back-button" id="core-courses-back">Back</i>
+                        <i class="continue-button ml-3" id="core-courses-next">Continue</i>
+                    </div>
+                </div>
+            </div>
+            <div id="major-courses-form" class="d-none">
+                <div class="form-top-container">
+                <div class="courses-header">
+                        <p>Program Courses</p>
+                        <p class="course-type">(Major Courses)</p>
+                    </div>
+                </div>
+                <div class="program-courses-container">
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Major Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Major Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Major Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Major Course</label>
+                    </div>
+                </div>
+                <div class="form-bottom-container">
+                    <i id="major-courses-clear" class="clear-button">Clear</i>
+                    <div class="button-container">
+                        <i class="back-button" id="major-courses-back">Back</i>
+                        <i class="continue-button ml-3" id="major-courses-next">Continue</i>
+                    </div>
+                </div>
+            </div>
+            <div id="elective-courses-form" class="d-none">
+                <div class="form-top-container">
+                    <div class="courses-header">
+                        <p>Program Courses</p>
+                        <p class="course-type">(Elective Courses)</p>
+                    </div>
+                </div>
+                <div class="program-courses-container">
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Elective Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Elective Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Elective Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Elective Course</label>
+                    </div>
+                </div>
+                <div class="form-bottom-container">
+                    <i id="elective-courses-clear" class="clear-button">Clear</i>
+                    <div class="button-container">
+                        <i class="back-button" id="elective-courses-back">Back</i>
+                        <i class="continue-button ml-3" id="elective-courses-next">Continue</i>
+                    </div>
+                </div>
+            </div>
+            <div id="institutional-courses-form" class="d-none">
+                <div class="form-top-container">
+                    <div class="courses-header">
+                        <p>Program Courses</p>
+                        <p class="course-type">(Institutional Requirement for Graduation)</p>
+                    </div>
+                </div>
+                <div class="program-courses-container">
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Institutional Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Institutional Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Institutional Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Institutional Course</label>
+                    </div>
+                </div>
+                <div class="form-bottom-container">
+                    <i id="institutional-courses-clear" class="clear-button">Clear</i>
+                    <div class="button-container">
+                        <i class="back-button" id="institutional-courses-back">Back</i>
+                        <i class="continue-button ml-3" id="institutional-courses-next">Continue</i>
+                    </div>
+                </div>
+            </div>
+            <div id="other-courses-form" class="d-none">
+                <div class="form-top-container">
+                    <div class="courses-header">
+                        <p>Program Courses</p>
+                        <p class="course-type">(Other Requirements)</p>
+                    </div>
+                </div>
+                <div class="program-courses-container">
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Other Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Other Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Other Course</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" />
+                        <label class="checkbox-label" >Other Course</label>
+                    </div>
+                </div>
+                <div class="form-bottom-container">
+                    <i id="other-courses-clear" class="clear-button">Clear</i>
+                    <div class="button-container">
+                        <i class="back-button" id="other-courses-back">Back</i>
                         <button class="continue-button ml-3">Submit</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 @endsection
 
