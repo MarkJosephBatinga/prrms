@@ -20,7 +20,7 @@
             @foreach($courses as $course)
                 <div class="card-container">
                     <div class="card-text">
-                        <a href="view_course.php">
+                        <a href="{{route('view_course', $course->id)}}">
                             <p class="small-text">{{$course->course_code}}</p>
                             <p class="large-text">{{$course->descriptive_title}}</p>
                             <p class="small-text">Units: {{$course->units}}</p>

@@ -20,4 +20,8 @@ class CourseController extends Controller
     public function get_course() {
         return view('login');
     }
+
+    public function view($id) {
+        return view('courses.details');
+    }
 }

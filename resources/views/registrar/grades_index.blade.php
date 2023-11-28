@@ -30,7 +30,7 @@
                         <td>Foreign</td>
                         <td>MDA-PA</td>
                         <td>
-                            <a href="view_grade.php"><i class='bx bx-low-vision action-icons mr-2'></i></a>
+                            <a href="{{route('view_grades', 1)}}"><i class='bx bx-low-vision action-icons mr-2'></i></a>
                         </td>
                     </tr>
 
@@ -40,7 +40,7 @@
                         <td>Foreign</td>
                         <td>MDA-PA</td>
                         <td>
-                            <a href="view_grade.php"><i class='bx bx-low-vision action-icons mr-2'></i></a>
+                            <a href="{{route('view_grades', 2)}}"><i class='bx bx-low-vision action-icons mr-2'></i></a>
                         </td>
                     </tr>
 
@@ -50,7 +50,7 @@
                         <td>Foreign</td>
                         <td>MDA-PA</td>
                         <td>
-                            <a href="view_grade.php"><i class='bx bx-low-vision action-icons mr-2'></i></a>
+                            <a href="{{route('view_grades', 3)}}"><i class='bx bx-low-vision action-icons mr-2'></i></a>
                         </td>
                     </tr>
                 </tbody>
