@@ -31,15 +31,10 @@
         <li class="mb-2 mx-2">
             <a class="d-flex align-items-center p-2" href="{{route('courses')}}">
                 <i class='bx bx-list-ul icon'></i>
-                <span class="text nav-text">Subjects</span>
+                <span class="text nav-text">Courses</span>
             </a>
         </li>
-        <li class="mb-2 mx-2">
-            <a class="d-flex align-items-center p-2" href="supervisor_list.php">
-                <i class='bx bx-calendar icon'></i>
-                <span class="text nav-text">Schedule</span>
-            </a>
-        </li>
+
         <li class="mx-2">
             <a class="d-flex align-items-center p-2" href="{{ route('logout') }}">
                 <i class='bx bx-log-out icon'></i>
