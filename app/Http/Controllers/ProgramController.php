@@ -16,4 +16,8 @@ class ProgramController extends Controller
     public function add_program() {
         return view('programs.add_program');
     }
+
+    public function view($id) {
+        return view('programs.details');
+    }
 }

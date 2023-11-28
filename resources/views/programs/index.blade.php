@@ -20,7 +20,7 @@
                 @foreach($programs as $program)
                     <div class="card-container">
                         <div class="card-text">
-                            <a href="view_program.php">
+                            <a href="{{route('view_program', $program->id)}}">
                                 <p class="small-text">Effective since {{$program->effective_school_year}}</p>
                                 <p class="large-text">{{$program->program_name}}</p>
                             </a>
