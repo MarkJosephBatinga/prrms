@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     // Records
     Route::get('/records', [RecordController::class, 'index'])->name('records');
     Route::get('/records/pre_register', [RecordController::class, 'pre_register'])->name('pre_register');
+    Route::get('/records/view/{id}', [RecordController::class, 'view'])->name('view_record');
 
     // Programs
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');

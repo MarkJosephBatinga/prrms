@@ -35,7 +35,7 @@
                             <td>{{$student->nationality}}</td>
                             <td>{{$student->program_info->program_name}}</td>
                             <td>
-                                <a href="view_record.php"> <i class='bx bx-low-vision action-icons mr-2'></i> </a>
+                                <a href="{{route('view_record', $student->id)}}"> <i class='bx bx-low-vision action-icons mr-2'></i> </a>
                                 <a href="edit_record.php"> <i class='bx bx-pencil action-icons mr-2'></i> </a>
                                 <i class='bx bx-trash action-icons'></i>
                             </td>

@@ -5,7 +5,7 @@
     </div>
     <ul class="list-unstyled components">
         <li class="mb-2 mx-2">
-            <a class="d-flex align-items-center p-2" href="dashboard.php">
+            <a class="d-flex align-items-center p-2" href="{{route('dashboard')}}">
                 <i class='bx bx-home-alt icon' ></i>
                 <span class="text nav-text">Dashboard</span>
             </a>
