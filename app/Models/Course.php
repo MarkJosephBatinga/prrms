@@ -17,7 +17,6 @@ class Course extends Model
         'course_code',
         'descriptive_title',
         'units',
-        'program_id'
     ];
 
     public function program()

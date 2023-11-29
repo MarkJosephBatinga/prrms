@@ -42,8 +42,13 @@ function backTabStatus(previousTab, activeTab){
 }
 function navigateAddForms(){
     infoNextButton.click(function() {
-        displayAddForm(informationForm, scheduleForm);
-        nextTabStatus(informationTab, scheduleTab)
+        if (isCourseInfoValid()) {
+            displayAddForm(informationForm, scheduleForm);
+            nextTabStatus(informationTab, scheduleTab);
+        } else {
+            alert('All Course Information is required, please try again.');
+        }
+
     });
 
     scheduleBackButton.click(function() {
@@ -60,6 +65,18 @@ function clearForm(){
     });
 }
 
+function isCourseInfoValid() {
+    var isValid = true;
+
+    $('.course_info').each(function() {
+        if (!$(this).val()) {
+            isValid = false;
+            return false;
+        }
+    });
+
+    return isValid;
+}
 
 // View Program
 function displayViewForm(hideForm, showForm){

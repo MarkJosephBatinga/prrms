@@ -47,10 +47,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/programs/add', [ProgramController::class, 'add_program'])->name('add_program');
     Route::get('/programs/view/{id}', [ProgramController::class, 'view'])->name('view_program');
 
-    // Programs
+
+    // Courses
     Route::get('/courses', [CourseController::class, 'index'])->name('courses');
     Route::get('/courses/add', [CourseController::class, 'add_course'])->name('add_course');
     Route::get('/courses/view/{id}', [CourseController::class, 'view'])->name('view_course');
+    Route::post('/courses/create', [CourseController::class, 'create_course'])->name('create_course');
 
      // Registrar
      Route::get('/grades', [RegistrarController::class, 'grades_index'])->name('grades');
