@@ -38,11 +38,9 @@ class CourseController extends Controller
         return redirect()->route('courses');
     }
 
-    public function get_course() {
-        return view('login');
-    }
-
     public function view($id) {
-        return view('courses.details');
+        $data['course'] = Course::with('schedules')->find($id);
+
+        return view('courses.details', $data);
     }
 }

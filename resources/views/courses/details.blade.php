@@ -6,10 +6,10 @@
 
 @section('body')
     <div class="content">
-        <a href="course_list.php" class="back-button"> < Back </a>
+        <a href="{{route('courses')}}" class="back-button"> < Back </a>
         <!-- Content Header -->
         <div class="content-header mt-4 mb-n4">
-            <h3 class="content-header mt-2">Molecular Biology and Biotechnology</h3>
+            <h3 class="content-header mt-2">{{$course->descriptive_title}}</h3>
             <div class="action-container">
                 <a href="edit_course.php"><i class='bx bx-pencil action-icons'></i></a>
                 <a href=""><i class='bx bx-trash action-icons'></i></a>
@@ -25,38 +25,34 @@
                 <div id="course-info-details" class="info">
                     <div class="detail-group">
                         <p class="detail-label">Course Category</p>
-                        <p class="details-value">Major Course</p>
+                        <p class="details-value">{{$course->course_category}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Course Code</p>
-                        <p class="details-value">SEd 31</p>
+                        <p class="details-value">{{$course->course_code}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Descriptive Title</p>
-                        <p class="details-value">Molecular Biology and Biotechnology</p>
+                        <p class="details-value">{{$course->descriptive_title}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Units</p>
-                        <p class="details-value">3</p>
+                        <p class="details-value">{{$course->units}}</p>
                     </div>
                 </div>
                 <div id="course-schedule-details" class="info d-none">
-                    <div class="detail-group">
-                        <p class="detail-label">First Class of the Week</p>
-                        <p class="details-value">Monday</p>
-                    </div>
-                    <div class="detail-group">
-                        <p class="detail-label">Time</p>
-                        <p class="details-value">5:00 - 8:00 PM</p>
-                    </div>
-                    <div class="detail-group">
-                        <p class="detail-label">Second Class of the Week</p>
-                        <p class="details-value">Saturday</p>
-                    </div>
-                    <div class="detail-group">
-                        <p class="detail-label">Time</p>
-                        <p class="details-value">8:00 - 11:00 AM</p>
-                    </div>
+                    @if($course->schedules !== null)
+                        @foreach ($course->schedules as $schedule)
+                            <div class="detail-group">
+                                <p class="detail-label">Day of the Week</p>
+                                <p class="details-value">{{$schedule->day}}</p>
+                            </div>
+                            <div class="detail-group">
+                                <p class="detail-label">Time</p>
+                                <p class="details-value">{{$schedule->time}}</p>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

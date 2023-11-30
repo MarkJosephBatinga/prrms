@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Program;
+use App\Models\Schedule;
 
 class Course extends Model
 {
@@ -22,5 +23,10 @@ class Course extends Model
     public function program()
     {
         return $this->belongsTo(Program::class);
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
     }
 }
