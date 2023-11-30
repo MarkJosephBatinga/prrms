@@ -78,7 +78,7 @@
 
                             <div class="input-group">
                                 <label class="label-input">Time</label>
-                                <input type="time" class="input-text" name="time[]" required/>
+                                <input type="text" class="input-text" name="time[]" required/>
                             </div>
                         </div>
                     </div>
