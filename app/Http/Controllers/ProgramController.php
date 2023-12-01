@@ -18,6 +18,8 @@ class ProgramController extends Controller
     }
 
     public function view($id) {
-        return view('programs.details');
+        $data['program'] = Program::with('program_courses')->find($id);
+
+        return view('programs.details', $data);
     }
 }

@@ -9,7 +9,7 @@
         <a href="{{route('programs')}}" class="back-button"> < Back </a>
         <!-- Content Header -->
         <div class="content-header mt-4 mb-n4">
-            <h3 class="content-header mt-2">Master of Arts in Science Education</h3>
+            <h3 class="content-header mt-2">{{$program->program_name}}</h3>
             <div class="action-container">
                 <a href=""><i class='bx bx-pencil action-icons'></i></a>
                 <a href=""><i class='bx bx-trash action-icons'></i></a>
@@ -26,15 +26,15 @@
                 <div id="prog-info-details" class="info">
                     <div class="detail-group">
                         <p class="detail-label">Effective School Year</p>
-                        <p class="details-value">2014 - 2015</p>
+                        <p class="details-value">{{$program->effective_school_year}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Dean</p>
-                        <p class="details-value">John Doe</p>
+                        <p class="details-value">{{$program->dean}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Program Chair</p>
-                        <p class="details-value">Jimmy Neutron</p>
+                        <p class="details-value">{{$program->program_chair}}</p>
                     </div>
                 </div>
                 <div id="prog-courses-details" class="info d-none">

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Course;
+use App\Models\ProgramCourse;
 
 class Program extends Model
 {
@@ -20,9 +20,8 @@ class Program extends Model
     ];
 
 
-    public function all_courses()
+    public function program_courses()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(ProgramCourse::class);
     }
-
 }
