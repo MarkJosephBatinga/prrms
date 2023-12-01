@@ -62,22 +62,12 @@
                     </div>
                 </div>
                 <div class="program-courses-container">
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Core Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Core Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Core Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Core Course</label>
-                    </div>
+                    @foreach ($core_courses as $c_course)
+                        <div class="checkbox-group">
+                            <input type="checkbox" name='core_courses[]' value="{{$c_course->id}}"/>
+                            <label class="checkbox-label">{{$c_course->descriptive_title}}({{$c_course->course_code}})</label>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="form-bottom-container">
                     <i id="core-courses-clear" class="clear-button">Clear</i>
@@ -95,22 +85,12 @@
                     </div>
                 </div>
                 <div class="program-courses-container">
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Major Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Major Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Major Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Major Course</label>
-                    </div>
+                    @foreach ($major_courses as $m_course)
+                        <div class="checkbox-group">
+                            <input type="checkbox" name='major_courses[]' value="{{$m_course->id}}"/>
+                            <label class="checkbox-label">{{$m_course->descriptive_title}}({{$m_course->course_code}})</label>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="form-bottom-container">
                     <i id="major-courses-clear" class="clear-button">Clear</i>
@@ -128,22 +108,12 @@
                     </div>
                 </div>
                 <div class="program-courses-container">
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Elective Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Elective Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Elective Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Elective Course</label>
-                    </div>
+                    @foreach ($elective_courses as $e_course)
+                        <div class="checkbox-group">
+                            <input type="checkbox" name='elective_courses[]' value="{{$e_course->id}}"/>
+                            <label class="checkbox-label">{{$e_course->descriptive_title}}({{$e_course->course_code}})</label>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="form-bottom-container">
                     <i id="elective-courses-clear" class="clear-button">Clear</i>
@@ -161,22 +131,12 @@
                     </div>
                 </div>
                 <div class="program-courses-container">
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Institutional Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Institutional Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Institutional Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Institutional Course</label>
-                    </div>
+                    @foreach ($institutional_reqs as $i_req)
+                        <div class="checkbox-group">
+                            <input type="checkbox" name='institutional_reqs[]' value="{{$i_req->id}}"/>
+                            <label class="checkbox-label">{{$i_req->descriptive_title}}({{$i_req->course_code}})</label>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="form-bottom-container">
                     <i id="institutional-courses-clear" class="clear-button">Clear</i>
