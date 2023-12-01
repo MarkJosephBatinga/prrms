@@ -16,7 +16,6 @@
                 <div id="major-courses-tab" class="tab-status next"></div>
                 <div id="elective-courses-tab" class="tab-status next"></div>
                 <div id="institutional-courses-tab" class="tab-status next"></div>
-                <div id="other-courses-tab" class="tab-status next"></div>
             </div>
         </div>
         <!-- Add Program Form -->
@@ -141,41 +140,10 @@
                 <div class="form-bottom-container">
                     <i id="institutional-courses-clear" class="clear-button">Clear</i>
                     <div class="button-container">
-                        <i class="back-button" id="institutional-courses-back">Back</i>
-                        <i class="continue-button ml-3" id="institutional-courses-next">Continue</i>
-                    </div>
-                </div>
-            </div>
-            <div id="other-courses-form" class="d-none">
-                <div class="form-top-container">
-                    <div class="courses-header">
-                        <p>Program Courses</p>
-                        <p class="course-type">(Other Requirements)</p>
-                    </div>
-                </div>
-                <div class="program-courses-container">
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Other Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Other Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Other Course</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" />
-                        <label class="checkbox-label" >Other Course</label>
-                    </div>
-                </div>
-                <div class="form-bottom-container">
-                    <i id="other-courses-clear" class="clear-button">Clear</i>
-                    <div class="button-container">
-                        <i class="back-button" id="other-courses-back">Back</i>
-                        <button class="continue-button ml-3">Submit</button>
+                        <div class="button-container">
+                            <i class="back-button" id="institutional-courses-back">Back</i>
+                            <button class="continue-button ml-3">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
