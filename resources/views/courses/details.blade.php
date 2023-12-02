@@ -2,6 +2,7 @@
 
 @push('css_scripts')
     <link rel='stylesheet' href="{{ asset('css/pre-register.css') }}">
+    <link rel='stylesheet' href="{{ asset('css/modal.css') }}">
 @endpush
 
 @section('body')
@@ -12,7 +13,7 @@
             <h3 class="content-header mt-2">{{$course->descriptive_title}}</h3>
             <div class="action-container">
                 <a href="{{route('edit_course', $course->id)}}"><i class='bx bx-pencil action-icons'></i></a>
-                <a href=""><i class='bx bx-trash action-icons'></i></a>
+                <a href="#" id="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
             </div>
         </div>
         <!-- Program Details -->
@@ -59,6 +60,24 @@
     </div>
 @endsection
 
+@push('add_content')
+    <!-- Delete Modal -->
+    <div class="modal-container delete-modal d-none">
+        <div class="modal-content">
+            <div class="body">
+                <img src="{{ asset('/images/warning-logo.svg') }}" />
+                <p class="heading-text">Are you sure you want to delete this item?</p>
+                <p class="info-text">Deleting this item will remove it permanently. Do you wish to proceed and delete?</p>
+                <div class="button-container">
+                    <button class="cancel">Cancel</button>
+                    <a  type="button" href="{{route('delete_course', $course->id)}}" class="delete">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+@endpush
+
 @push('js_scripts')
     <script src="{{ asset('js/course.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
 @endpush

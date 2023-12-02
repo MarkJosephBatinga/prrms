@@ -67,6 +67,12 @@ class CourseController extends Controller
         return redirect()->route('courses')->with('success', 'Course updated successfully');;
     }
 
+    public function delete_course($id) {
+        Course::where('id', $id)->delete();
+
+        return redirect()->route('courses')->with('success', 'Course deleted successfully');;
+    }
+
     public function view($id) {
         $data['course'] = Course::with('schedules')->find($id);
 
