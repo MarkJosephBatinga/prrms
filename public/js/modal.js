@@ -10,3 +10,11 @@ $(document).ready(function () {
         $('.delete-modal').addClass('d-none');
     });
 });
+
+$(document).ready(function () {
+    // Click event for the Continue button
+    $('#continueButton').on('click', function () {
+        // Hide the modal
+        $('.modal-container').addClass('d-none');
+    });
+});

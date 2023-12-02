@@ -62,7 +62,7 @@ class ProgramController extends Controller
             ]);
         }
 
-        return redirect()->route('programs');
+        return redirect()->route('programs')->with('success', 'Program addded successfully');;
     }
 
     public function update_program(Request $req) {
@@ -78,13 +78,13 @@ class ProgramController extends Controller
             ]);
         }
 
-        return redirect()->route('programs');
+        return redirect()->route('programs')->with('success', 'Program updated successfully');;
     }
 
     public function delete_program($id) {
         Program::where('id', $id)->delete();
 
-        return redirect()->route('programs');
+        return redirect()->route('programs')->with('success', 'Program deleted successfully');;
     }
 
     public function view($id) {

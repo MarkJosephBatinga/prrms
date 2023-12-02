@@ -1,5 +1,10 @@
 @extends('includes.app')
 
+@push('css_scripts')
+    <link rel='stylesheet' href="{{ asset('css/modal.css') }}">
+@endpush
+
+
 @section('body')
     <div class="content">
         <!-- Content Header -->
@@ -32,3 +37,24 @@
         </div>
     </div>
 @endsection
+
+@push('add_content')
+    @if(session('success'))
+        <div class="modal-container">
+            <div class="modal-content">
+                <div class="body">
+                    <img src="../images/success-logo.svg" />
+                    <p class="heading-text">Success!</p>
+                    <p class="info-text">{{ session('success') }}</p>
+                    <div class="button-container">
+                        <button id="continueButton" class="continue-button">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+@endpush
+
+@push('js_scripts')
+    <script src="{{ asset('js/modal.js') }}"></script>
+@endpush
