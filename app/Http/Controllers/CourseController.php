@@ -41,7 +41,7 @@ class CourseController extends Controller
                 'time' => $time,
             ]);
         }
-        return redirect()->route('courses');
+        return redirect()->route('courses')->with('success', 'Course added successfully');
     }
 
     public function update_course(Request $req) {
@@ -70,7 +70,7 @@ class CourseController extends Controller
     public function delete_course($id) {
         Course::where('id', $id)->delete();
 
-        return redirect()->route('courses')->with('success', 'Course deleted successfully');;
+        return redirect()->route('courses')->with('success', 'Course deleted successfully');
     }
 
     public function view($id) {
