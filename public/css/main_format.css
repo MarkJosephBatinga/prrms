@@ -470,3 +470,25 @@ body {
     margin-right: 10px;
     margin-bottom: 10px;
 }
+
+/* ADD COURSE */
+#schedule-input{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+}
+
+.schedule-actions{
+    text-align: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+.schedule-actions .add-row{
+    font-weight: 600;
+    color: #005B05;
+}
+.schedule-actions .delete-row{
+    font-weight: 600;
+    color: #D61422;
+}

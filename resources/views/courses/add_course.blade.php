@@ -61,27 +61,24 @@
                 <div id="course-schedule-form" class="d-none">
                     <div class="form-top-container">
                         <p class="form-header">Schedule</p>
-                        <div class="form-input">
-                            <div class="input-group">
-                                <label class="label-input">Day</label>
-                                <select class="input-text" name="day[]">
-                                    <option selected disabled>Select Day</option>
-                                    <option value="Monday">Monday</option>
-                                    <option  value="Tuesday">Tuesday</option>
-                                    <option value="Wednesday">Wednesday</option>
-                                    <option value="Thursday">Thursday</option>
-                                    <option value="Friday">Friday</option>
-                                    <option value="Saturday">Saturday</option>
-                                    <option value="Sunday">Sunday</option>
-                                </select>
-                            </div>
-
-                            <div class="input-group">
-                                <label class="label-input">Time</label>
-                                <input type="text" class="input-text" name="time[]" required/>
-                            </div>
+                    </div>
+                    <div id="schedule-input">
+                        <div class="input-group">
+                            <label class="label-input">Day</label>
+                            <input type="date" name="schedule_day[]" class="input-text" required />
+                        </div>
+                        <div class="input-group">
+                            <label class="label-input">Time</label>
+                            <input type="time" class="input-text" name="schedule_time[]" required/>
                         </div>
                     </div>
+                    <div id="schedule-container"></div>
+
+                    <div class="schedule-actions">
+                        <i class='bx bx-x delete-row'></i>
+                        <i class='bx bx-plus add-row'></i>
+                    </div>
+
                     <div class="form-bottom-container">
                         <i id="course-schedule-clear" class="clear-button">Clear</i>
                         <div class="button-container">
@@ -97,4 +94,37 @@
 
 @push('js_scripts')
     <script src="{{ asset('js/course.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            var rowCounter = 0;
+
+            function cloneExamRow() {
+                rowCounter++;
+
+                var newRow = $('#schedule-input').clone();
+                newRow.find("input[name='schedule_day[]']").attr('name', 'schedule_day[' + rowCounter + ']').prop('required', true);
+                newRow.find("input[name='schedule_time[]']").attr('name', 'schedule_time[' + rowCounter + ']').prop('required', true);
+
+                newRow.find("input[type='date']").val('');
+                newRow.find("input[type='time']").val('');
+
+                $('#schedule-container').append(newRow);
+                console.log('New clone name:', newRow.find("input[name='schedule_day[" + rowCounter + "]']").prop('name'));
+            }
+
+            $('.add-row').click(function() {
+                cloneExamRow();
+            });
+
+            $('.delete-row').click(function() {
+                if (rowCounter > 0) {
+                    $('#schedule-container').children().last().remove();
+                    rowCounter--;
+                }
+            });
+
+        });
+    </script>
 @endpush
