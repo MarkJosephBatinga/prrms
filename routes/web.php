@@ -45,8 +45,10 @@ Route::middleware(['auth'])->group(function () {
     // Programs
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
     Route::get('/programs/add', [ProgramController::class, 'add_program'])->name('add_program');
+    Route::get('/programs/edit/{id}', [ProgramController::class, 'edit_program'])->name('edit_program');
     Route::get('/programs/view/{id}', [ProgramController::class, 'view'])->name('view_program');
     Route::post('/programs/create', [ProgramController::class, 'create_program'])->name('create_program');
+    Route::post('/programs/update', [ProgramController::class, 'update_program'])->name('update_program');
 
 
     // Courses

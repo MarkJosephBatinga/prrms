@@ -11,7 +11,7 @@
         <div class="content-header mt-4 mb-n4">
             <h3 class="content-header mt-2">{{$program->program_name}}</h3>
             <div class="action-container">
-                <a href=""><i class='bx bx-pencil action-icons'></i></a>
+                <a href="{{route('edit_program', $program->id)}}"><i class='bx bx-pencil action-icons'></i></a>
                 <a href=""><i class='bx bx-trash action-icons'></i></a>
             </div>
         </div>
