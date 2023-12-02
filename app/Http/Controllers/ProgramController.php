@@ -48,7 +48,21 @@ class ProgramController extends Controller
     }
 
     public function view($id) {
-        $data['program'] = Program::with('program_courses')->find($id);
+        $data['program'] = Program::with('program_courses.course')->find($id);
+
+        // Organize courses by category
+        $data['coreCourses'] = $data['program']->program_courses->where('course.course_category', 'Core Subjects');
+        $data['majorCourses'] = $data['program']->program_courses->where('course.course_category', 'Major Subjects');
+        $data['electiveCourses'] = $data['program']->program_courses->where('course.course_category', 'Elective Subjects');
+        $data['institutionalCourses'] = $data['program']->program_courses->where('course.course_category', 'Institutional Requirement');
+
+        // Calculate total units for each category
+        $data['totalCoreUnits'] = $data['coreCourses']->sum('course.units');
+        $data['totalMajorUnits'] = $data['majorCourses']->sum('course.units');
+        $data['totalElectiveUnits'] = $data['electiveCourses']->sum('course.units');
+        $data['totalInstitutionalUnits'] = $data['institutionalCourses']->sum('course.units');
+
+        $data['oveallUnits'] = $data['program']->program_courses->sum('course.units');
 
         return view('programs.details', $data);
     }

@@ -49,20 +49,17 @@
                                 <tr>
                                     <th>Core Courses</th>
                                     <th></th>
-                                    <th>6 Units</th>
+                                    <th>{{$totalCoreUnits}}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Philo 301</td>
-                                    <td>Philosophies & Foundational Perspective in Education</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>Philo 301</td>
-                                    <td>Philosophies & Foundational Perspective in Education</td>
-                                    <td>3</td>
-                                </tr>
+                                @foreach ($coreCourses as $course)
+                                    <tr>
+                                        <td>{{$course->course->course_code}}</td>
+                                        <td>{{$course->course->descriptive_title}}</td>
+                                        <td>{{$course->course->units}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -77,15 +74,17 @@
                                 <tr>
                                     <th>Major Courses</th>
                                     <th></th>
-                                    <th>3 Units</th>
+                                    <th>{{$totalMajorUnits}}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Philo 301</td>
-                                    <td>Philosophies & Foundational Perspective in Education</td>
-                                    <td>3</td>
-                                </tr>
+                                @foreach ($majorCourses as $course)
+                                    <tr>
+                                        <td>{{$course->course->course_code}}</td>
+                                        <td>{{$course->course->descriptive_title}}</td>
+                                        <td>{{$course->course->units}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -100,15 +99,17 @@
                                 <tr>
                                     <th>Elective Courses</th>
                                     <th></th>
-                                    <th>3 Units</th>
+                                    <th>{{$totalElectiveUnits}}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>SEd 327</td>
-                                    <td>Research in Developmental Biology (Pre co-requisites: SEd 312)</td>
-                                    <td>3</td>
-                                </tr>
+                                @foreach ($electiveCourses as $course)
+                                    <tr>
+                                        <td>{{$course->course->course_code}}</td>
+                                        <td>{{$course->course->descriptive_title}}</td>
+                                        <td>{{$course->course->units}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -123,38 +124,17 @@
                                 <tr>
                                     <th>Institutional Requirement for Graduation</th>
                                     <th></th>
-                                    <th>1 Units</th>
+                                    <th>{{$totalInstitutionalUnits}}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Philo 301</td>
-                                    <td>Philosophies & Foundational Perspective in Education</td>
-                                    <td>3</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="other-requirement">
-                        <table class="course-table">
-                            <colgroup>
-                                <col style="width: 30%;">
-                                <col style="width: 60%;">
-                                <col style="width: 10%;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>Other Requirement</th>
-                                    <th></th>
-                                    <th>1 Units</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Philo 301</td>
-                                    <td>Philosophies & Foundational Perspective in Education</td>
-                                    <td>3</td>
-                                </tr>
+                                @foreach ($institutionalCourses as $course)
+                                    <tr>
+                                        <td>{{$course->course->course_code}}</td>
+                                        <td>{{$course->course->descriptive_title}}</td>
+                                        <td>{{$course->course->units}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -171,27 +151,23 @@
                             <tbody>
                                 <tr>
                                     <td>Core Courses</td>
-                                    <td>3</td>
+                                    <td>{{$totalCoreUnits}}</td>
                                 </tr>
                                 <tr>
                                     <td>Major Courses</td>
-                                    <td>3</td>
+                                    <td>{{$totalMajorUnits}}</td>
                                 </tr>
                                 <tr>
                                     <td>Elective Courses</td>
-                                    <td>3</td>
+                                    <td>{{$totalElectiveUnits}}</td>
                                 </tr>
                                 <tr>
                                     <td>Institutional Requirement for Graduation</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>Dissertation Writing</td>
-                                    <td>1</td>
+                                    <td>{{$totalInstitutionalUnits}}</td>
                                 </tr>
                                 <tr>
                                     <td>TOTAL</td>
-                                    <td>12</td>
+                                    <td>{{$oveallUnits}}</td>
                                 </tr>
                             </tbody>
                         </table>
