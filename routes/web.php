@@ -55,8 +55,10 @@ Route::middleware(['auth'])->group(function () {
     // Courses
     Route::get('/courses', [CourseController::class, 'index'])->name('courses');
     Route::get('/courses/add', [CourseController::class, 'add_course'])->name('add_course');
+    Route::get('/courses/edit/{id}', [CourseController::class, 'edit_course'])->name('edit_course');
     Route::get('/courses/view/{id}', [CourseController::class, 'view'])->name('view_course');
     Route::post('/courses/create', [CourseController::class, 'create_course'])->name('create_course');
+    Route::post('/courses/update', [CourseController::class, 'update_course'])->name('update_course');
 
      // Registrar
      Route::get('/grades', [RegistrarController::class, 'grades_index'])->name('grades');

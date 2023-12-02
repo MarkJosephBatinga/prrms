@@ -11,7 +11,7 @@
         <div class="content-header mt-4 mb-n4">
             <h3 class="content-header mt-2">{{$course->descriptive_title}}</h3>
             <div class="action-container">
-                <a href="edit_course.php"><i class='bx bx-pencil action-icons'></i></a>
+                <a href="{{route('edit_course', $course->id)}}"><i class='bx bx-pencil action-icons'></i></a>
                 <a href=""><i class='bx bx-trash action-icons'></i></a>
             </div>
         </div>
