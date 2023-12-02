@@ -65,11 +65,20 @@
                     <div id="schedule-input">
                         <div class="input-group">
                             <label class="label-input">Day</label>
-                            <input type="date" name="schedule_day[]" class="input-text" required />
+                            <select class="input-text" name="day[]">
+                                <option selected disabled>Select Day</option>
+                                <option value="Monday">Monday</option>
+                                <option  value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                            </select>
                         </div>
                         <div class="input-group">
                             <label class="label-input">Time</label>
-                            <input type="time" class="input-text" name="schedule_time[]" required/>
+                            <input type="text" class="input-text" name="time[]" required/>
                         </div>
                     </div>
                     <div id="schedule-container"></div>
