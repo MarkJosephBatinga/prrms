@@ -68,7 +68,7 @@ class ProgramController extends Controller
     public function update_program(Request $req) {
         $program = Program::find($req->id);
         $program->update($req->except(['program_courses']));
-        ProgramCourse::where('program_id', )->delete();
+        ProgramCourse::where('program_id', $program->id)->delete();
         $courses = $req->program_courses;
 
         foreach($courses as $course) {
@@ -77,6 +77,12 @@ class ProgramController extends Controller
                 'course_id' => $course,
             ]);
         }
+
+        return redirect()->route('programs');
+    }
+
+    public function delete_program($id) {
+        Program::where('id', $id)->delete();
 
         return redirect()->route('programs');
     }

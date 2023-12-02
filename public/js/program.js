@@ -142,7 +142,6 @@ function clearForm(){
         otherCoursesForm.find(':checkbox').prop('checked', false);
     });
 }
-
 function isProgramInfoValid() {
     var isValid = true;
 
