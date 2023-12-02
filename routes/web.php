@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
     Route::get('/programs/add', [ProgramController::class, 'add_program'])->name('add_program');
     Route::get('/programs/view/{id}', [ProgramController::class, 'view'])->name('view_program');
+    Route::post('/programs/create', [ProgramController::class, 'create_program'])->name('create_program');
 
 
     // Courses

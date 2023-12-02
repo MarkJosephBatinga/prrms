@@ -12,7 +12,7 @@ class ProgramCourse extends Model
     protected $table = 'program_courses';
 
     protected $fillable = [
-        'program_courses',
+        'program_id',
         'course_id',
     ];
 }

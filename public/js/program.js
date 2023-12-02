@@ -60,13 +60,21 @@ function backTabStatus(previousTab, activeTab){
 }
 function navigateAddForms(){
     infoNextButton.click(function() {
-        displayAddForm(informationForm, coreCoursesForm);
-        nextTabStatus(informationTab, coreCoursesTab)
+        if(isProgramInfoValid()) {
+            displayAddForm(informationForm, coreCoursesForm);
+            nextTabStatus(informationTab, coreCoursesTab)
+        } else {
+            alert('All Program Information is required, please try again.');
+        }
     });
 
     coreCoursesNext.click(function() {
-        displayAddForm(coreCoursesForm, majorCoursesForm);
-        nextTabStatus(coreCoursesTab, majorCoursesTab)
+        if(checkCourses('core_course')) {
+            displayAddForm(coreCoursesForm, majorCoursesForm);
+            nextTabStatus(coreCoursesTab, majorCoursesTab);
+        } else {
+            alert('At least 2 core courses are required to continue');
+        }
     });
 
     coreCoursesBack.click(function() {
@@ -75,8 +83,12 @@ function navigateAddForms(){
     });
 
     majorCoursesNext.click(function() {
-        displayAddForm(majorCoursesForm, electiveCoursesForm);
-        nextTabStatus(majorCoursesTab, electiveCoursesTab)
+        if(checkCourses('major_course')) {
+            displayAddForm(majorCoursesForm, electiveCoursesForm);
+            nextTabStatus(majorCoursesTab, electiveCoursesTab)
+        } else {
+            alert('At least 2 major courses are required to continue');
+        }
     });
 
     majorCoursesBack.click(function() {
@@ -85,8 +97,12 @@ function navigateAddForms(){
     });
 
     electiveCoursesNext.click(function() {
-        displayAddForm(electiveCoursesForm, institutionalCoursesForm);
-        nextTabStatus(electiveCoursesTab, institutionalCoursesTab)
+        if(checkCourses('elective_course')) {
+            displayAddForm(electiveCoursesForm, institutionalCoursesForm);
+            nextTabStatus(electiveCoursesTab, institutionalCoursesTab)
+        } else {
+            alert('At least 2 elective courses are required to continue');
+        }
     });
 
     electiveCoursesBack.click(function() {
@@ -94,21 +110,17 @@ function navigateAddForms(){
         backTabStatus(electiveCoursesTab, majorCoursesTab)
     });
 
-    institutionalCoursesNext.click(function() {
-        displayAddForm(institutionalCoursesForm, otherCoursesForm);
-        nextTabStatus(institutionalCoursesTab, otherCoursesTab)
+    $('#prog_form').submit(function(event) {
+        if (!checkCourses('ins_course')) {
+            alert('Please select at least 2 institutional requirements before submitting.');
+            event.preventDefault();
+        }
     });
 
     institutionalCoursesBack.click(function() {
         displayAddForm(institutionalCoursesForm, electiveCoursesForm);
         backTabStatus(institutionalCoursesTab, electiveCoursesTab)
     });
-
-    otherCoursesBack.click(function() {
-        displayAddForm(otherCoursesForm, institutionalCoursesForm);
-        backTabStatus(otherCoursesTab, institutionalCoursesTab)
-    });
-
 }
 function clearForm(){
     $('#prog-info-clear').click(function() {
@@ -129,6 +141,24 @@ function clearForm(){
     $('#other-courses-clear').click(function() {
         otherCoursesForm.find(':checkbox').prop('checked', false);
     });
+}
+
+function isProgramInfoValid() {
+    var isValid = true;
+
+    $('.prog_info').each(function() {
+        if (!$(this).val()) {
+            isValid = false;
+            return false;
+        }
+    });
+
+    return isValid;
+}
+
+function checkCourses(course_type) {
+    var checkboxes = $('.'+course_type+'');
+    return checkboxes.filter(':checked').length >= 2;
 }
 
 

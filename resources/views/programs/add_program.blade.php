@@ -19,29 +19,30 @@
             </div>
         </div>
         <!-- Add Program Form -->
-        <form class="sub-page-content">
+        <form id="prog_form" class="sub-page-content" action="{{route('create_program')}}" method="POST">
+            @csrf
             <div id="prog-info-form">
                 <div class="form-top-container">
                     <p class="form-header">Program Information</p>
                     <div class="form-input">
                         <div class="input-group">
                             <label class="label-input">Program Name</label>
-                            <input class="input-text" />
+                            <input class="input-text prog_info" name="program_name" id="program_name"/>
                         </div>
 
                         <div class="input-group">
                             <label class="label-input">Effective School Year</label>
-                            <input class="input-text" />
+                            <input class="input-text prog_info" name="effective_school_year" id="effective_school_year"/>
                         </div>
 
                         <div class="input-group">
                             <label class="label-input">Dean</label>
-                            <input class="input-text" />
+                            <input class="input-text prog_info" name="dean" id="dean"/>
                         </div>
 
                         <div class="input-group">
                             <label class="label-input">Program Chair</label>
-                            <input class="input-text" />
+                            <input class="input-text prog_info" name="program_chair" id="program_chair"/>
                         </div>
                     </div>
                 </div>
@@ -63,7 +64,7 @@
                 <div class="program-courses-container">
                     @foreach ($core_courses as $c_course)
                         <div class="checkbox-group">
-                            <input type="checkbox" name='core_courses[]' value="{{$c_course->id}}"/>
+                            <input type="checkbox" class="core_course" name='program_courses[]' value="{{$c_course->id}}"/>
                             <label class="checkbox-label">{{$c_course->descriptive_title}}({{$c_course->course_code}})</label>
                         </div>
                     @endforeach
@@ -86,7 +87,7 @@
                 <div class="program-courses-container">
                     @foreach ($major_courses as $m_course)
                         <div class="checkbox-group">
-                            <input type="checkbox" name='major_courses[]' value="{{$m_course->id}}"/>
+                            <input type="checkbox" class="major_course" name='program_courses[]' value="{{$m_course->id}}"/>
                             <label class="checkbox-label">{{$m_course->descriptive_title}}({{$m_course->course_code}})</label>
                         </div>
                     @endforeach
@@ -109,7 +110,7 @@
                 <div class="program-courses-container">
                     @foreach ($elective_courses as $e_course)
                         <div class="checkbox-group">
-                            <input type="checkbox" name='elective_courses[]' value="{{$e_course->id}}"/>
+                            <input type="checkbox" class="elective_course" name='program_courses[]' value="{{$e_course->id}}"/>
                             <label class="checkbox-label">{{$e_course->descriptive_title}}({{$e_course->course_code}})</label>
                         </div>
                     @endforeach
@@ -132,7 +133,7 @@
                 <div class="program-courses-container">
                     @foreach ($institutional_reqs as $i_req)
                         <div class="checkbox-group">
-                            <input type="checkbox" name='institutional_reqs[]' value="{{$i_req->id}}"/>
+                            <input type="checkbox" class="ins_course" name='program_courses[]' value="{{$i_req->id}}"/>
                             <label class="checkbox-label">{{$i_req->descriptive_title}}({{$i_req->course_code}})</label>
                         </div>
                     @endforeach
@@ -142,7 +143,7 @@
                     <div class="button-container">
                         <div class="button-container">
                             <i class="back-button" id="institutional-courses-back">Back</i>
-                            <button class="continue-button ml-3">Submit</button>
+                            <button id="prog_submit" type="submit" class="continue-button ml-3">Submit</button>
                         </div>
                     </div>
                 </div>

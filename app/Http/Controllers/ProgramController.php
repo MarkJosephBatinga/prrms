@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Program;
 use App\Models\Course;
+use App\Models\ProgramCourse;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -30,6 +31,20 @@ class ProgramController extends Controller
         }
 
         return view('programs.add_program', $data);
+    }
+
+    public function create_program(Request $req) {
+        $program = Program::create($req->except(['program_courses']));
+        $courses = $req->program_courses;
+
+        foreach($courses as $course) {
+            ProgramCourse::create([
+                'program_id' => $program->id,
+                'course_id' => $course,
+            ]);
+        }
+
+        return redirect()->route('programs');
     }
 
     public function view($id) {
