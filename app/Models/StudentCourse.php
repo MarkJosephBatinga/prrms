@@ -15,4 +15,9 @@ class StudentCourse extends Model
         'student_id',
         'course_id',
     ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }

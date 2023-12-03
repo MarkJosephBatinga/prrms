@@ -17,6 +17,8 @@ class RecordController extends Controller
     }
 
     public function view($id) {
-        return view('records.details');
+        $data['student'] = Student::with('program_info', 'course.course')->find($id);
+
+        return view('records.details', $data);
     }
 }

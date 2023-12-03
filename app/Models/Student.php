@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Program;
+use App\Models\StudentCourse;
 
 class Student extends Model
 {
@@ -33,6 +34,11 @@ class Student extends Model
     public function program_info()
     {
         return $this->belongsTo(Program::class, 'program');
+    }
+
+    public function course()
+    {
+        return $this->hasMany(StudentCourse::class);
     }
 
 }

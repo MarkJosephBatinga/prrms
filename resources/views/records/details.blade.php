@@ -51,29 +51,29 @@
             <div id="type-details" class="info">
                 <div class="detail-group">
                     <p class="detail-label">Full Name</p>
-                    <p class="details-value">Jomar P. Pumares</p>
+                    <p class="details-value">{{$student->name}}</p>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Nationality</p>
-                    <p class="details-value">Filipino</p>
+                    <p class="details-value">{{$student->nationality}}</p>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Student Type</p>
-                    <p class="details-value">Old Student</p>
+                    <p class="details-value">{{$student->student_type}}</p>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Student Status</p>
-                    <p class="details-value">Regular Student</p>
+                    <p class="details-value">{{$student->student_status}}</p>
                 </div>
             </div>
             <div id="info-details" class="info d-none">
                 <div class="detail-group">
                     <p class="detail-label">Full Name</p>
-                    <p class="details-value">Jomar P. Pumares</p>
+                    <p class="details-value">{{$student->name}}</p>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Complete Address</p>
-                    <p class="details-value">Naguilian, La Union</p>
+                    <p class="details-value">{{$student->address}}</p>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Facebook Messenger ID</p>
@@ -81,23 +81,25 @@
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Mobile Number</p>
-                    <p class="details-value">09865315475</p>
+                    <p class="details-value">{{$student->mobile_number}}</p>
                 </div>
             </div>
             <div id="program-details" class="info d-none">
                 <div class="detail-group">
                     <p class="detail-label">Program</p>
-                    <p class="details-value">Program 1</p>
+                    <p class="details-value">{{$student->program_info->program_name}}</p>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Course to Enroll</p>
-                    <p class="details-value">Course 1</p>
+                    @foreach ($student->course as $c)
+                        <p class="details-value">{{$c->course->descriptive_title}} ({{$c->course->course_code}})</p>
+                    @endforeach
                 </div>
             </div>
             <div id="payment-details" class="info d-none">
                 <div class="detail-group">
                     <p class="detail-label">Payment Mode</p>
-                    <p class="details-value">Bank</p>
+                    <p class="details-value">{{$student->payment_mode}}</p>
                 </div>
             </div>
         </div>
