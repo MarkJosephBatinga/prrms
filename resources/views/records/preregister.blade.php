@@ -13,15 +13,15 @@
         <div class="content-header">
             <h3 class="content-header mt-2">Student Pre-Registration</h3>
             <div class="tab-status-container">
-                <div id="student-tab" class="tab-status"></div>
-                <div id="info-tab" class="tab-status next"></div>
-                <div id="program-tab" class="tab-status next"></div>
-                <div id="payment-tab" class="tab-status next"></div>
+                <div id="student-tab" class="tab-one tab-status"></div>
+                <div id="info-tab" class="tab-two tab-status next"></div>
+                <div id="program-tab" class="tab-three tab-status next"></div>
+                <div id="payment-tab" class="tab-four tab-status next"></div>
             </div>
         </div>
         <!-- Pre Registration Form -->
         <div class="sub-page-content">
-            <div id="type-form" >
+            <div id="type-form" class="form-one" >
                 <div class="form-top-container">
                     <p class="form-header">Student Type</p>
                     <div class="form-input">
@@ -40,14 +40,14 @@
                     </div>
                 </div>
                 <div class="form-bottom-container">
-                    <i id="type-clear" class="clear-button">Clear</i>
+                    <i class="clear-button clear-one">Clear</i>
                     <div class="button-container">
                         <a href="{{ route('records') }}"><i class="back-button">Back</i></a>
-                        <i class="continue-button ml-3" id="type-next">Continue</i>
+                        <i class="continue-button continue-one ml-3">Continue</i>
                     </div>
                 </div>
             </div>
-            <div id="info-form" class="d-none">
+            <div id="info-form" class="form-two d-none">
                 <div class="form-top-container">
                     <p class="form-header">Personal Information</p>
                     <div class="form-input">
@@ -70,14 +70,14 @@
                     </div>
                 </div>
                 <div class="form-bottom-container">
-                    <i id="info-clear" class="clear-button">Clear</i>
+                    <i class="clear-button clear-two">Clear</i>
                     <div class="button-container">
-                        <i class="back-button" id="info-back">Back</i>
-                        <i class="continue-button ml-3" id="info-next">Continue</i>
+                        <i class="back-button back-two">Back</i>
+                        <i class="continue-button continue-two ml-3">Continue</i>
                     </div>
                 </div>
             </div>
-            <div id="program-form" class="d-none">
+            <div id="program-form" class="form-three d-none">
                 <div class="form-top-container">
                     <p class="form-header">Program Offerings</p>
                     <div class="form-input">
@@ -102,14 +102,14 @@
                     </div>
                 </div>
                 <div class="form-bottom-container">
-                    <div></div>
+                    <i class="clear-button clear-three">Clear</i>
                     <div class="button-container">
-                        <i class="back-button" id="program-back">Back</i>
-                        <i class="continue-button ml-3" id="program-next">Continue</i>
+                        <i class="back-button back-three">Back</i>
+                        <i class="continue-button continue-preregister ml-3">Continue</i>
                     </div>
                 </div>
             </div>
-            <div id="payment-form" class="d-none">
+            <div id="payment-form" class="form-four d-none">
                 <div class="form-top-container">
                     <p class="form-header">OTR and Payment Mode</p>
                     <div class="form-input">
@@ -126,18 +126,17 @@
                         <div class="input-group">
                             <label class="label-input">Payment Mode</label>
                             <p class="sub-text">After pre-registration, the enrollment fee will be sent to you remotely after assessment. Choose which mode would you like to send the payment.</p>
-                            <select class="input-text" id="payment_mode" name="payment_mode" required>
-                                <option value="MLUC Cashier">MLUC Cashier (open from Monday-Friday, 8:00am to 5:00pm)</option>
-                                <option value="Billed to CHED">Billed to CHED (CHED Scholars)</option>
-                                <option value="Billed to Sending Institution">Billed to Sending Institution</option>
+                            <select class="input-text">
+                                <option>Bank</option>
+                                <option>G-Cash</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-bottom-container">
-                    <div></div>
+                    <i class="clear-button clear-four">Clear</i>
                     <div class="button-container">
-                        <i class="back-button" id="payment-back">Back</i>
+                        <i class="back-button back-four">Back</i>
                         <button class="continue-button ml-3">Submit</button>
                     </div>
                 </div>
@@ -149,5 +148,5 @@
 
 @push('js_scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="{{ asset('js/pre-register.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 @endpush

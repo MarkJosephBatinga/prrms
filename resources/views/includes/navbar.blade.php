@@ -1,5 +1,4 @@
 <div class="top-nav-container">
-    <img src="{{ asset('images/no-image.jpg') }}" class="top-nav-image" />
-    <p class="top-nav-name">{{Auth::user()->name}}</p>
-    <i class='bx bx-chevron-down profile-button'></i>
+    <img src="{{ asset('images/default-image.svg') }}" class="top-nav-image" />
+    <a class="top-nav-name" href="{{route('dashboard')}}">{{Auth::user()->name}}</a>
 </div>

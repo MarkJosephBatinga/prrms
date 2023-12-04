@@ -20,10 +20,10 @@
         <div class="sub-page-content">
             <div class="details-body">
                 <div class="tab-headers">
-                    <i id="course-info-header" class="active">Course Information</i>
-                    <i id="course-schedule-header">Schedule</i>
+                    <i id="course-info-header" class="header-one active">Course Information</i>
+                    <i id="course-schedule-header" class="header-two">Schedule</i>
                 </div>
-                <div id="course-info-details" class="info">
+                <div id="course-info-details" class="detail-one info">
                     <div class="detail-group">
                         <p class="detail-label">Course Category</p>
                         <p class="details-value">{{$course->course_category}}</p>
@@ -41,7 +41,7 @@
                         <p class="details-value">{{$course->units}}</p>
                     </div>
                 </div>
-                <div id="course-schedule-details" class="info d-none">
+                <div id="course-schedule-details" class="detail-two info d-none">
                     @if($course->schedules !== null)
                         @foreach ($course->schedules as $schedule)
                             <div class="detail-group">
@@ -78,6 +78,6 @@
 @endpush
 
 @push('js_scripts')
-    <script src="{{ asset('js/course.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
 @endpush

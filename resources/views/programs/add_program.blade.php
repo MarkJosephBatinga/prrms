@@ -11,17 +11,17 @@
         <div class="content-header">
             <h3 class="content-header mt-2">Add Program</h3>
             <div class="tab-status-container">
-                <div id="prog-info-tab" class="tab-status"></div>
-                <div id="core-courses-tab" class="tab-status next"></div>
-                <div id="major-courses-tab" class="tab-status next"></div>
-                <div id="elective-courses-tab" class="tab-status next"></div>
-                <div id="institutional-courses-tab" class="tab-status next"></div>
+                <div id="prog-info-tab" class="tab-one tab-status"></div>
+                <div id="core-courses-tab" class="tab-two tab-status next"></div>
+                <div id="major-courses-tab" class="tab-three tab-status next"></div>
+                <div id="elective-courses-tab" class="tab-four tab-status next"></div>
+                <div id="institutional-courses-tab" class="tab-five tab-status next"></div>
             </div>
         </div>
         <!-- Add Program Form -->
-        <form id="prog_form" class="sub-page-content" action="{{route('create_program')}}" method="POST">
+        <form id="prog_form" class="sub-page-content multi-form" action="{{route('create_program')}}" method="POST">
             @csrf
-            <div id="prog-info-form">
+            <div id="prog-info-form" class="form-one">
                 <div class="form-top-container">
                     <p class="form-header">Program Information</p>
                     <div class="form-input">
@@ -47,14 +47,14 @@
                     </div>
                 </div>
                 <div class="form-bottom-container">
-                    <i id="prog-info-clear" class="clear-button">Clear</i>
+                    <i class="clear-button clear-one">Clear</i>
                     <div class="button-container">
                         <a href="{{ route('programs') }}"><i class="back-button">Back</i></a>
-                        <i class="continue-button ml-3" id="prog-info-next">Continue</i>
+                        <i class="continue-button continue-one ml-3" id="prog-info-next">Continue</i>
                     </div>
                 </div>
             </div>
-            <div id="core-courses-form" class="d-none">
+            <div id="core-courses-form" class="form-two d-none">
                 <div class="form-top-container">
                     <div class="courses-header">
                         <p>Program Courses</p>
@@ -70,16 +70,16 @@
                     @endforeach
                 </div>
                 <div class="form-bottom-container">
-                    <i id="core-courses-clear" class="clear-button">Clear</i>
+                    <i class="clear-button clear-two">Clear</i>
                     <div class="button-container">
-                        <i class="back-button" id="core-courses-back">Back</i>
-                        <i class="continue-button ml-3" id="core-courses-next">Continue</i>
+                        <i class="back-button back-two">Back</i>
+                        <i class="continue-button ml-3 continue-two">Continue</i>
                     </div>
                 </div>
             </div>
-            <div id="major-courses-form" class="d-none">
+            <div id="major-courses-form" class="form-three d-none">
                 <div class="form-top-container">
-                <div class="courses-header">
+                    <div class="courses-header">
                         <p>Program Courses</p>
                         <p class="course-type">(Major Courses)</p>
                     </div>
@@ -93,14 +93,14 @@
                     @endforeach
                 </div>
                 <div class="form-bottom-container">
-                    <i id="major-courses-clear" class="clear-button">Clear</i>
+                    <i class="clear-button clear-three">Clear</i>
                     <div class="button-container">
-                        <i class="back-button" id="major-courses-back">Back</i>
-                        <i class="continue-button ml-3" id="major-courses-next">Continue</i>
+                        <i class="back-button back-three">Back</i>
+                        <i class="continue-button continue-three ml-3">Continue</i>
                     </div>
                 </div>
             </div>
-            <div id="elective-courses-form" class="d-none">
+            <div id="elective-courses-form" class="form-four d-none">
                 <div class="form-top-container">
                     <div class="courses-header">
                         <p>Program Courses</p>
@@ -116,14 +116,14 @@
                     @endforeach
                 </div>
                 <div class="form-bottom-container">
-                    <i id="elective-courses-clear" class="clear-button">Clear</i>
+                    <i class="clear-button clear-four">Clear</i>
                     <div class="button-container">
-                        <i class="back-button" id="elective-courses-back">Back</i>
-                        <i class="continue-button ml-3" id="elective-courses-next">Continue</i>
+                        <i class="back-button back-four">Back</i>
+                        <i class="continue-button continue-four ml-3">Continue</i>
                     </div>
                 </div>
             </div>
-            <div id="institutional-courses-form" class="d-none">
+            <div id="institutional-courses-form" class="form-five d-none">
                 <div class="form-top-container">
                     <div class="courses-header">
                         <p>Program Courses</p>
@@ -139,19 +139,20 @@
                     @endforeach
                 </div>
                 <div class="form-bottom-container">
-                    <i id="institutional-courses-clear" class="clear-button">Clear</i>
+                    <i class="clear-button clear-five">Clear</i>
                     <div class="button-container">
                         <div class="button-container">
-                            <i class="back-button" id="institutional-courses-back">Back</i>
-                            <button id="prog_submit" type="submit" class="continue-button ml-3">Submit</button>
+                            <i class="back-button back-five">Back</i>
+                            <button type="submit" class="continue-button ml-3">Submit</button>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </form>
     </div>
 @endsection
 
 @push('js_scripts')
-    <script src="{{ asset('js/program.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 @endpush
