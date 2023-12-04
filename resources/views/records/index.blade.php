@@ -12,7 +12,7 @@
             <input type="text" class="search-box" placeholder="Search">
             <i class='bx bx-search-alt search-icon'></i>
         </div>
-        <a class="add-button" href="{{ route('pre_register') }}">Pre - Register</a>
+        {{-- <a class="add-button" href="{{ route('pre_register') }}">Pre - Register</a> --}}
     </div>
     <!-- Records Table -->
     <div class="table-container">

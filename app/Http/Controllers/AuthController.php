@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
+use App\Models\ProgramCourse;
 use App\Models\Program;
 use App\Models\Student;
 use App\Models\StudentCourse;
@@ -85,7 +86,7 @@ class AuthController extends Controller
     }
 
     public function get_courses($program_id) {
-        $courses = Course::where('program_id', $program_id)->get();
+        $courses = ProgramCourse::with(['course'])->where('program_id', $program_id)->get();
 
         return response()->json($courses);
     }

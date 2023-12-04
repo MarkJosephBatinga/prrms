@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Student;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class RecordController extends Controller
@@ -13,7 +14,9 @@ class RecordController extends Controller
     }
 
     public function pre_register() {
-        return view('records.preregister');
+        $data['programs'] = Program::all();
+
+        return view('records.preregister', $data);
     }
 
     public function view($id) {

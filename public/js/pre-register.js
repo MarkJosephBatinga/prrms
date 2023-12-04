@@ -88,7 +88,7 @@ function clearForm(){
     $('#type-clear').click(function() {
         typeForm.find('input').val('');
     });
-    
+
     $('#info-clear').click(function() {
         informationForm.find('input').val('');
     });
@@ -124,7 +124,7 @@ function navigateViewForms(){
 }
 function displayModal(){
     $('.show-modal').click(function() {
-        $('#evaluate-modal').removeClass('d-none') 
+        $('#evaluate-modal').removeClass('d-none')
         $('.content-wrapper').addClass('blur')
     });
     $('.close-btn').click(function() {
@@ -133,3 +133,33 @@ function displayModal(){
     });
 }
 
+$(document).ready(function () {
+    // On change of the program select
+    $('#program').change(function () {
+        // Get the selected program ID
+        var programId = $(this).val();
+
+        // Make an Ajax request to get courses based on the program ID
+        $.ajax({
+            url: '/register/get_course/' + programId,
+            method: 'GET',
+            success: function (data) {
+                // Clear existing checkboxes
+                $('#populate_checkbox').empty();
+
+                // Populate checkboxes based on the fetched courses
+                data.forEach(function (course) {
+                    var new_checkbox = '<div>';
+                    new_checkbox += '<input type="checkbox" id="course_' + course.course.id + '" name="courses[]" value="' + course.course.id + '"/>';
+                    new_checkbox += '<label class="checkbox-label">' + course.course.descriptive_title + '</label>';
+                    new_checkbox += '</div>';
+
+                    $('#populate_checkbox').append(new_checkbox);
+                });
+            },
+            error: function (error) {
+                console.log('Error fetching courses:', error);
+            }
+        });
+    });
+});
