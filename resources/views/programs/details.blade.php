@@ -20,11 +20,11 @@
         <div class="sub-page-content">
             <div class="details-body">
                 <div class="tab-headers">
-                    <i id="prog-info-header" class="active">Program Information</i>
-                    <i id="prog-courses-header">Program Courses</i>
-                    <i id="prog-summary-header">Summary</i>
+                    <i id="prog-info-header" class="header-one active">Program Information</i>
+                    <i id="prog-courses-header" class="header-two">Program Courses</i>
+                    <i id="prog-summary-header" class="header-three">Summary</i>
                 </div>
-                <div id="prog-info-details" class="info">
+                <div id="prog-info-details" class="detail-one info">
                     <div class="detail-group">
                         <p class="detail-label">Effective School Year</p>
                         <p class="details-value">{{$program->effective_school_year}}</p>
@@ -38,7 +38,7 @@
                         <p class="details-value">{{$program->program_chair}}</p>
                     </div>
                 </div>
-                <div id="prog-courses-details" class="info d-none">
+                <div id="prog-courses-details" class="detail-two info d-none">
                     <div class="core-courses">
                         <table class="course-table">
                             <colgroup>
@@ -140,7 +140,7 @@
                         </table>
                     </div>
                 </div>
-                <div id="prog-summary-details" class="info d-none">
+                <div id="prog-summary-details" class="detail-three info d-none">
                     <div class="summary-details">
                         <table class="summary-table">
                             <thead>
@@ -197,6 +197,6 @@
 @endpush
 
 @push('js_scripts')
-    <script src="{{ asset('js/program.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
 @endpush

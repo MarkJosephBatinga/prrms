@@ -23,12 +23,15 @@ body {
 
 /* Sidebar Menu */
     #sidebar {
-        min-width: 20%;
-        max-width: 20%;
-        z-index: 100;
-        min-height: 100vh;
+        min-width: 18%;
+        max-width: 18%;
+        height: 100vh;
         padding: 30px 14px;
         background-color: #438146;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
     }
     #sidebar li a{
         text-decoration: none;
@@ -75,40 +78,40 @@ body {
 
 /* Content Body */
     .content-wrapper{
-        width: 80%;
-        position: relative;
+        margin-left: 18%;
+        width: 100%;
     }
 
     .top-nav-container{
+        overflow: hidden;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        width: 82%;
         background: #FFF;
         box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
         height: 70px;
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: right;
         padding: 0 20px 0 20px;
     }
     .top-nav-image{
         border-radius: 50%;
         height: 40px;
         width: 42px;
-        /* border: 1.5px solid #005B05; */
     }
     .top-nav-name{
         margin-left: 10px;
-        /* margin-top: 15px; */
         font-size: 18px;
         font-weight: 400;
-    }
-    .profile-button{
-        margin-left: 10px;
-        font-size: 30px;
-        cursor: pointer;
     }
     
 
     .content{
         padding: 20px;
+        margin-top: 80px;
     }
     .content-header{
         color:#005B05;
@@ -376,7 +379,7 @@ body {
     .button-container a{
         text-decoration: none;
     }
-    .button-container i{
+    .button-container i, .button-container a{
         height: 40px;
         width: 150px;
         font-style: normal;
@@ -448,7 +451,27 @@ body {
 
 /* END */
 
-
+/* ADD COURSE */
+    #schedule-input{
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        align-items: center;
+    }
+    .schedule-actions{
+        text-align: right;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .schedule-actions .add-row{
+        font-weight: 600;
+        color: #005B05;
+    }
+    .schedule-actions .delete-row{
+        font-weight: 600;
+        color: #D61422;
+    }
+/* END */
 
 /* STUDENT STYLES START HERE */
 
@@ -650,5 +673,20 @@ body {
     .body .button-container .delete{
         color: #FFF;
         background : #D61422;
+    }
+/* END */
+
+/* ADD PROGRAM */
+    .form-top-container .courses-header p{
+        font-size: 18px;
+        font-weight: 600;
+        display: inline-block;
+    }
+    .courses-header .course-type{
+        color: #005B05;
+    }
+    .program-courses-container {
+        padding: 0 40px 0 40px;
+        display: block;
     }
 /* END */

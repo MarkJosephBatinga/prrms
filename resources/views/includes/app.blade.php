@@ -11,7 +11,7 @@
             @else
                 @include('includes.stud_sidebar')
             @endif
-            <div class="content-wrapper px-2">
+            <div class="content-wrapper">
                 @include('includes.navbar')
                 @yield('body')
             </div>

@@ -2,11 +2,11 @@
     .dashboard-cards{
         margin-top: 30px;
         display: flex;
-        gap: 40px;
+        justify-content: space-between;
     }
     .dashboard-cards .card-container{
         position: relative;
-        width: 320px;
+        width: 340px;
         padding: 1rem;
         height: 250px;
         border-radius: 10px;
@@ -84,7 +84,7 @@
     .small-cards{
         display: flex;
         flex-wrap: wrap;
-        gap: 20px
+        gap: 30px
     }
     .small-cards .card-container{
         flex: 0 0 calc(33.33% - 20px);
@@ -94,7 +94,7 @@
         background: linear-gradient(90deg, #005B05 0%, #87D08B 100%);
         box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
         width: 280px;
-        min-height: 140px;
+        min-height: 160px;
     }
     .small-cards .card-text{
         color: #FFF;

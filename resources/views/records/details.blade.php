@@ -43,12 +43,12 @@
         <!-- Students Details -->
         <div class="details-body">
             <div class="tab-headers">
-                <i id="type-header" class="active">Student Type</i>
-                <i id="info-header">Personal Information</i>
-                <i id="program-header">Program Offerings</i>
-                <i id="payment-header">Payment Mode</i>
+                <i id="type-header" class="active header-one">Student Type</i>
+                <i id="info-header" class="header-two">Personal Information</i>
+                <i id="program-header" class="header-three">Program Offerings</i>
+                <i id="payment-header" class="header-four">Payment Mode</i>
             </div>
-            <div id="type-details" class="info">
+            <div id="type-details" class="detail-one info">
                 <div class="detail-group">
                     <p class="detail-label">Full Name</p>
                     <p class="details-value">{{$student->name}}</p>
@@ -66,7 +66,7 @@
                     <p class="details-value">{{$student->student_status}}</p>
                 </div>
             </div>
-            <div id="info-details" class="info d-none">
+            <div id="info-details" class="detail-two info d-none">
                 <div class="detail-group">
                     <p class="detail-label">Full Name</p>
                     <p class="details-value">{{$student->name}}</p>
@@ -84,7 +84,7 @@
                     <p class="details-value">{{$student->mobile_number}}</p>
                 </div>
             </div>
-            <div id="program-details" class="info d-none">
+            <div id="program-details" class="detail-three info d-none">
                 <div class="detail-group">
                     <p class="detail-label">Program</p>
                     <p class="details-value">{{$student->program_info->program_name}}</p>
@@ -96,7 +96,7 @@
                     @endforeach
                 </div>
             </div>
-            <div id="payment-details" class="info d-none">
+            <div id="payment-details" class="detail-four info d-none">
                 <div class="detail-group">
                     <p class="detail-label">Payment Mode</p>
                     <p class="details-value">{{$student->payment_mode}}</p>
@@ -128,5 +128,5 @@
 
 @push('js_scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="{{ asset('js/pre-register.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 @endpush
