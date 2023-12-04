@@ -146,7 +146,7 @@ var mainJs = {
                         self.displayForm(self.elements.form2, self.elements.form3)
                         self.updateTabStatus(self.elements.tab2, self.elements.tab3, 'next')
                     } else {
-                        alert('Please select atleast two checbox.');
+                        alert('Please select atleast two course.');
                     }
                 } else{
                     alert('All Field is required, please try again.');
@@ -161,7 +161,7 @@ var mainJs = {
                         self.displayForm(self.elements.form3, self.elements.form4)
                         self.updateTabStatus(self.elements.tab3, self.elements.tab4, 'next')
                     } else {
-                        alert('Please select atleast two checbox.');
+                        alert('Please select atleast two course.');
                     }
                 } else{
                     alert('All Field is required, please try again.');
@@ -177,7 +177,7 @@ var mainJs = {
                         self.displayForm(self.elements.form4, self.elements.form5)
                         self.updateTabStatus(self.elements.tab4, self.elements.tab5, 'next')
                     } else {
-                        alert('Please select atleast two checbox.');
+                        alert('Please select atleast two course.');
                     }
                 } else{
                     alert('All Field is required, please try again.');
@@ -192,7 +192,7 @@ var mainJs = {
                         self.displayForm(self.elements.form3, self.elements.form4)
                         self.updateTabStatus(self.elements.tab3, self.elements.tab4, 'next')
                     } else {
-                        alert('Please select atleast four checbox.');
+                        alert('Please select atleast four course.');
                     }
                 } else{
                     alert('All Field is required, please try again.');
@@ -206,7 +206,7 @@ var mainJs = {
                 if(isValidForm){
                     if(!hasCheckbox){
                         e.preventDefault();
-                        alert('Please select atleast two checbox.');
+                        alert('Please select atleast two course.');
                     }
                 } else{
                     e.preventDefault();
