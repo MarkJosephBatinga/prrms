@@ -149,4 +149,5 @@
 @push('js_scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/pre-register.js') }}"></script>
 @endpush

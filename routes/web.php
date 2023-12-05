@@ -41,6 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/records', [RecordController::class, 'index'])->name('records');
     Route::get('/records/pre_register', [RecordController::class, 'pre_register'])->name('pre_register');
     Route::get('/records/view/{id}', [RecordController::class, 'view'])->name('view_record');
+    Route::get('/records/edit/{id}', [RecordController::class, 'edit_record'])->name('edit_record');
+    Route::get('/records/get_student_course/{programId}/{studentId}', [RecordController::class, 'get_courses'])->name('get_student_courses');
+    Route::post('/records/update', [RecordController::class, 'update_record'])->name('update_record');
 
     // Programs
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');

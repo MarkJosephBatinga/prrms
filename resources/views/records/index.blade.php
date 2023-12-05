@@ -1,5 +1,9 @@
 @extends('includes.app')
 
+@push('css_scripts')
+    <link rel='stylesheet' href="{{ asset('css/modal.css') }}">
+@endpush
+
 @section('body')
 <div class="content">
     <!-- Content Header -->
@@ -36,7 +40,7 @@
                             <td>{{$student->program_info->program_name}}</td>
                             <td>
                                 <a href="{{route('view_record', $student->id)}}"> <i class='bx bx-low-vision action-icons mr-2'></i> </a>
-                                <a href="edit_record.php"> <i class='bx bx-pencil action-icons mr-2'></i> </a>
+                                <a href="{{route('edit_record', $student->id)}}"> <i class='bx bx-pencil action-icons mr-2'></i> </a>
                                 <i class='bx bx-trash action-icons'></i>
                             </td>
                         </tr>
@@ -47,3 +51,24 @@
     </div>
 </div>
 @endsection
+
+@push('add_content')
+    @if(session('success'))
+        <div class="modal-container">
+            <div class="modal-content">
+                <div class="body">
+                    <img src="../images/success-logo.svg" />
+                    <p class="heading-text">Success!</p>
+                    <p class="info-text">{{ session('success') }}</p>
+                    <div class="button-container">
+                        <button id="continueButton" class="continue-button">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+@endpush
+
+@push('js_scripts')
+    <script src="{{ asset('js/modal.js') }}"></script>
+@endpush
