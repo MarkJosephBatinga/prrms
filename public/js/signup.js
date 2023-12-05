@@ -133,8 +133,8 @@ $(document).ready(function () {
                 // Populate checkboxes based on the fetched courses
                 data.forEach(function (course) {
                     var new_checkbox = '<div>';
-                    new_checkbox += '<input type="checkbox" id="course_' + course.id + '" name="courses[]" value="' + course.id + '"/>';
-                    new_checkbox += '<label class="checkbox-label">' + course.descriptive_title + '</label>';
+                    new_checkbox += '<input type="checkbox" id="course_' + course.course.id + '" name="courses[]" value="' + course.course.id + '"/>';
+                    new_checkbox += '<label class="checkbox-label">' + course.course.descriptive_title + '</label>';
                     new_checkbox += '</div>';
 
                     $('#populate_checkbox').append(new_checkbox);

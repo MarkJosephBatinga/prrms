@@ -72,6 +72,13 @@ class RecordController extends Controller
         return redirect()->route('records')->with('success', 'Student Information updated successfully');
     }
 
+    public function delete_record($id) {
+        Student::where('id', $id)->delete();
+        User::where('student_id', $id)->delete();
+
+        return redirect()->route('records')->with('success', 'Program deleted successfully');;
+    }
+
     private function saveFileRecord($file) {
         return Storage::putFile('file_records', $file);
     }

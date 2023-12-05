@@ -41,7 +41,7 @@
                             <td>
                                 <a href="{{route('view_record', $student->id)}}"> <i class='bx bx-low-vision action-icons mr-2'></i> </a>
                                 <a href="{{route('edit_record', $student->id)}}"> <i class='bx bx-pencil action-icons mr-2'></i> </a>
-                                <i class='bx bx-trash action-icons'></i>
+                                <i class='bx bx-trash action-icons' id="openStudentDelete" data-modal="{{ $student->id }}"></i>
                             </td>
                         </tr>
                     @endforeach
@@ -67,6 +67,19 @@
             </div>
         </div>
     @endif
+    <div class="modal-container delete-modal d-none">
+        <div class="modal-content">
+            <div class="body">
+                <img src="{{ asset('/images/warning-logo.svg') }}" />
+                <p class="heading-text">Are you sure you want to delete this item?</p>
+                <p class="info-text">Deleting this item will remove it permanently. Do you wish to proceed and delete?</p>
+                <div class="button-container">
+                    <button class="cancel">Cancel</button>
+                    <a href="#" class="delete" id="confirmDelete">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 @endpush
 
 @push('js_scripts')

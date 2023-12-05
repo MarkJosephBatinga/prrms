@@ -4,6 +4,22 @@ $(document).ready(function () {
         $('.delete-modal').removeClass('d-none');
     });
 
+    $('#openStudentDelete').on('click', function () {
+        var modalData = $(this).data('modal');
+
+        $('.delete-modal').data('modalData', modalData);
+        $('.delete-modal').removeClass('d-none');
+    });
+
+    $('#confirmDelete').on('click', function () {
+        var modalData = $('.delete-modal').data('modalData');
+
+        var baseUrl = window.location.origin;
+        var url = baseUrl + "/records/delete/" + modalData;
+
+        window.location.href = url;
+    });
+
     // Click event for the cancel button in the modal
     $('.delete-modal .cancel').on('click', function () {
         // Hide the modal
