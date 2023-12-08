@@ -68,4 +68,13 @@ Route::middleware(['auth'])->group(function () {
      // Registrar
      Route::get('/grades', [RegistrarController::class, 'grades_index'])->name('grades');
      Route::get('/grades/view/{id}', [RegistrarController::class, 'view_grades'])->name('view_grades');
+
+
+
+    //  Students
+    Route::get('/student/pre-register', [RecordController::class, 'student_record'])->name('student_record');
+
+    Route::get('/student/courses', [CourseController::class, 'student_course'])->name('student_course');
+
+    Route::get('/student/grades', [RegistrarController::class, 'student_grades'])->name('student_grades');
 });

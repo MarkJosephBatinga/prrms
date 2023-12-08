@@ -13,4 +13,8 @@ class RegistrarController extends Controller
     public function view_grades($id) {
         return view('registrar.view_grades');
     }
+
+    public function student_grades() {
+        return view('registrar.student_grade');
+    }
 }

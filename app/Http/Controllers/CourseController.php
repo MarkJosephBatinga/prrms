@@ -78,4 +78,8 @@ class CourseController extends Controller
 
         return view('courses.details', $data);
     }
+
+    public function student_course() {
+        return view('courses.stud_course');
+    }
 }

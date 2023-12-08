@@ -97,4 +97,8 @@ class RecordController extends Controller
             }
         }
     }
+
+    public function student_record() {
+        return view('records.stud_records');
+    }
 }
