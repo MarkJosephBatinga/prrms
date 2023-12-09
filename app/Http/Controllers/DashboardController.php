@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -13,7 +14,11 @@ class DashboardController extends Controller
         if ($userType === 'admin') {
             return view('dashboard.admin');
         } else {
-            return view('dashboard.student');
+            $student_id = Auth::user()->student_id;
+            $data['student'] = Student::with('program_info', 'course.course', 'approval_log')->find($student_id);
+
+
+            return view('dashboard.student', $data);
         }
     }
 }
