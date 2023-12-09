@@ -4,6 +4,16 @@ $(document).ready(function () {
         $('.delete-modal').removeClass('d-none');
     });
 
+    $('#show-evaluate').on('click', function () {
+        // Hide the modal
+        $('#evaluate-modal').removeClass('d-none');
+    });
+
+    $('#show-endorse').on('click', function () {
+        // Hide the modal
+        $('#endorse-modal').removeClass('d-none');
+    });
+
     $('#openStudentDelete').on('click', function () {
         var modalData = $(this).data('modal');
 
@@ -33,4 +43,10 @@ $(document).ready(function () {
         // Hide the modal
         $('.modal-container').addClass('d-none');
     });
+
+    $('.hide-modal').on('click', function () {
+        // Hide the modal
+        $('.modal-container').addClass('d-none');
+    });
+
 });

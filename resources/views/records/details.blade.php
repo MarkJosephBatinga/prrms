@@ -27,13 +27,16 @@
                         <tr>
                             <td>Recommending Approval</td>
                             <td>Admin</td>
-                            <td>Endorsed</td>
+                            <td>
+                                <button id="show-endorse">Endorse</button>
+                            </td>
+                            {{-- <td>Endorsed</td> --}}
                         </tr>
                         <tr>
                             <td>Approved By</td>
                             <td>CGS Chairman</td>
                             <td>
-                                <button class="show-modal">Evaluate</button>
+                                <button id="show-evaluate">Evaluate</button>
                             </td>
                         </tr>
                     </tbody>
@@ -111,10 +114,27 @@
     <form class="modal-container d-none" id="evaluate-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <i class='bx bx-x close-btn'></i>
+                <i class='bx bx-x close-btn hide-modal'></i>
             </div>
             <div class="eval-modal-body">
                 <p>Evaluate Applicant</p>
+                <textarea></textarea>
+                <div class="button-container">
+                    <button id="reject-btn">Reject</button>
+                    <button id="revision-btn">Revision</button>
+                    <button id="approve-btn">Approve</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="modal-container d-none" id="endorse-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class='bx bx-x close-btn hide-modal'></i>
+            </div>
+            <div class="eval-modal-body">
+                <p>Endorse Applicant</p>
                 <textarea></textarea>
                 <div class="button-container">
                     <button id="reject-btn">Reject</button>
@@ -129,4 +149,5 @@
 @push('js_scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}"></script>
 @endpush
