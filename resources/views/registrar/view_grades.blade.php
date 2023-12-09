@@ -9,7 +9,7 @@
         </div>
         <!-- Search  -->
         <div class="search-button-container">
-            <p class="grade-student-name ml-4 mt-3">John Doe</p>
+            <p class="grade-student-name ml-4 mt-3">{{$student->name}}</p>
             <div class="select-filter-container">
                 <select class="select-filter">
                     <option>School Year</option>
@@ -36,35 +36,17 @@
                         <th>Remarks</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>CIT046C-20211</td>
-                            <td>GECC 108a</td>
-                            <td>Understanding the Self</td>
-                            <td>3</td>
-                            <td>95</td>
-                            <td></td>
-                            <td>PASSED</td>
-                        </tr>
-
-                        <tr>
-                            <td>CIT046C-20211</td>
-                            <td>GECC 108a</td>
-                            <td>Understanding the Self</td>
-                            <td>3</td>
-                            <td>95</td>
-                            <td></td>
-                            <td>PASSED</td>
-                        </tr>
-
-                        <tr>
-                            <td>CIT046C-20211</td>
-                            <td>GECC 108a</td>
-                            <td>Understanding the Self</td>
-                            <td>3</td>
-                            <td>95</td>
-                            <td></td>
-                            <td>PASSED</td>
-                        </tr>
+                        @foreach ($grades as $grade)
+                            <tr>
+                                <td>{{$grade->code_no}}</td>
+                                <td>G{{$grade->course_no}}</td>
+                                <td>{{$grade->descriptive_title}}</td>
+                                <td>{{$grade->units}}</td>
+                                <td>{{$grade->final_grades}}</td>
+                                <td>{{$grade->removal_rating}}</td>
+                                <td>{{$grade->remarks}}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
