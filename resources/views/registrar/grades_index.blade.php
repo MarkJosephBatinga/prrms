@@ -24,35 +24,17 @@
                     <th>Action</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>001-021</td>
-                        <td>Mohammad Jones</td>
-                        <td>Foreign</td>
-                        <td>MDA-PA</td>
-                        <td>
-                            <a href="{{route('view_grades', 1)}}"><i class='bx bx-low-vision action-icons mr-2'></i></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>001-022</td>
-                        <td>John Doe</td>
-                        <td>Foreign</td>
-                        <td>MDA-PA</td>
-                        <td>
-                            <a href="{{route('view_grades', 2)}}"><i class='bx bx-low-vision action-icons mr-2'></i></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>001-023</td>
-                        <td>Travis Reyes</td>
-                        <td>Foreign</td>
-                        <td>MDA-PA</td>
-                        <td>
-                            <a href="{{route('view_grades', 3)}}"><i class='bx bx-low-vision action-icons mr-2'></i></a>
-                        </td>
-                    </tr>
+                    @foreach ($students as $student)
+                        <tr>
+                            <td>{{$student->student_id}}</td>
+                            <td>{{$student->name}}</td>
+                            <td>{{$student->nationality}}</td>
+                            <td>{{$student->program}}</td>
+                            <td>
+                                <a href="{{route('view_grades', $student->id)}}"><i class='bx bx-low-vision action-icons mr-2'></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
