@@ -6,6 +6,7 @@ use App\Models\StudentCourse;
 use App\Models\ProgramCourse;
 use App\Models\Program;
 use App\Models\Course;
+use App\Models\ApprovalLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class RecordController extends Controller
     }
 
     public function view($id) {
-        $data['student'] = Student::with('program_info', 'course.course')->find($id);
+        $data['student'] = Student::with('program_info', 'course.course', 'approval_log')->find($id);
 
         return view('records.details', $data);
     }
@@ -100,5 +101,12 @@ class RecordController extends Controller
 
     public function student_record() {
         return view('records.stud_records');
+    }
+
+    public function edit_approval(Request $req) {
+        $approval_log = ApprovalLog::where('student_id', $req->id)->first();;
+        $approval_log->update(['notes' => $req->input('notes'), 'status' => $req->input('status')]);
+
+        return redirect()->route('view_record', $req->id)->with('success', 'Student Apprval Log Updated Successfully');
     }
 }

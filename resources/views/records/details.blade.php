@@ -22,22 +22,38 @@
                         <th>Sequence</th>
                         <th>Name</th>
                         <th>Status</th>
+                        <th>Notes</th>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Recommending Approval</td>
                             <td>Admin</td>
-                            <td>
-                                <button id="show-endorse">Endorse</button>
-                            </td>
-                            {{-- <td>Endorsed</td> --}}
+                            @if ($student->approval_log->status === 1)
+                                <td>
+                                    <button id="show-endorse">Endorse</button>
+                                </td>
+                            @elseif($student->approval_log->status === 0)
+                                <td>Rejected</td>
+                            @else
+                                <td>Endorsed</td>
+                            @endif
+                            <td>{{($student->approval_log->status === 2) ? $student->approval_log->notes : ''}}</td>
                         </tr>
                         <tr>
                             <td>Approved By</td>
                             <td>CGS Chairman</td>
-                            <td>
-                                <button id="show-evaluate">Evaluate</button>
-                            </td>
+                            @if ($student->approval_log->status === 2)
+                                <td>
+                                    <button id="show-evaluate">Evaluate</button>
+                                </td>
+                            @elseif($student->approval_log->status === 1)
+                                <td>Not yet endorsed</td>
+                            @elseif($student->approval_log->status === 0)
+                                <td>Rejected</td>
+                            @else
+                                <td>Evaluated</td>
+                            @endif
+                            <td>{{($student->approval_log->status === 3) ? $student->approval_log->notes : ''}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -111,39 +127,56 @@
 
 @push('add_content')
    <!-- Evaluate Modal -->
-    <form class="modal-container d-none" id="evaluate-modal">
+    <form action="{{route('edit_approval')}}" method="POST" class="modal-container d-none" id="evaluate-modal">
+        @csrf
         <div class="modal-content">
             <div class="modal-header">
                 <i class='bx bx-x close-btn hide-modal'></i>
             </div>
             <div class="eval-modal-body">
                 <p>Evaluate Applicant</p>
-                <textarea></textarea>
+                <input type="hidden" name="id" value="{{$student->id}}">
+                <textarea name="notes"></textarea>
                 <div class="button-container">
-                    <button id="reject-btn">Reject</button>
-                    <button id="revision-btn">Revision</button>
-                    <button id="approve-btn">Approve</button>
+                    <button type="submit" name="status" id="reject-btn" value="0">Reject</button>
+                    <button type="submit" name="status" id="approve-btn" value="3">Approve</button>
                 </div>
             </div>
         </div>
     </form>
 
-    <form class="modal-container d-none" id="endorse-modal">
+    <form action="{{route('edit_approval')}}" method="POST" class="modal-container d-none" id="endorse-modal">
+        @csrf
         <div class="modal-content">
             <div class="modal-header">
                 <i class='bx bx-x close-btn hide-modal'></i>
             </div>
             <div class="eval-modal-body">
                 <p>Endorse Applicant</p>
-                <textarea></textarea>
+                <input type="hidden" name="id" value="{{$student->id}}">
+                <textarea name="notes"></textarea>
                 <div class="button-container">
-                    <button id="reject-btn">Reject</button>
-                    <button id="revision-btn">Revision</button>
-                    <button id="approve-btn">Approve</button>
+                    <button type="submit" name="status" id="reject-btn" value="0">Reject</button>
+                    <button type="submit" name="status" id="approve-btn" value="2">Approve</button>
                 </div>
             </div>
         </div>
     </form>
+
+    @if(session('success'))
+    <div class="modal-container">
+        <div class="modal-content">
+            <div class="body">
+                <img src="{{asset('images/success-logo.svg')}}" />
+                <p class="heading-text">Success!</p>
+                <p class="info-text">{{ session('success') }}</p>
+                <div class="button-container">
+                    <button id="continueButton" class="continue-button">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
 @endpush
 
 @push('js_scripts')

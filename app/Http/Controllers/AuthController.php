@@ -10,6 +10,7 @@ use App\Models\Program;
 use App\Models\Student;
 use App\Models\StudentCourse;
 use App\Models\User;
+use App\Models\ApprovalLog;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -67,6 +68,11 @@ class AuthController extends Controller
             'email' => $data['student_id'],
             'student_id' => $studentId,
             'password' => Hash::make($data['password']),
+        ]);
+
+        ApprovalLog::create([
+            'student_id' => $studentId,
+            'status' => 1,
         ]);
 
         return redirect()->route('show_credentials', [

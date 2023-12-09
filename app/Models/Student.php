@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Program;
+use App\Models\ApprovalLog;
 use App\Models\StudentCourse;
 
 class Student extends Model
@@ -40,5 +41,11 @@ class Student extends Model
     {
         return $this->hasMany(StudentCourse::class);
     }
+
+    public function approval_log()
+    {
+        return $this->hasOne(ApprovalLog::class, 'student_id');
+    }
+
 
 }

@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/records/get_student_course/{programId}/{studentId}', [RecordController::class, 'get_courses'])->name('get_student_courses');
     Route::post('/records/update', [RecordController::class, 'update_record'])->name('update_record');
     Route::get('/records/delete/{id}', [RecordController::class, 'delete_record'])->name('delete_record');
+    Route::post('/records/update/approval', [RecordController::class, 'edit_approval'])->name('edit_approval');
 
     // Programs
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
