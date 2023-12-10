@@ -69,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
      // Registrar
      Route::get('/grades', [RegistrarController::class, 'grades_index'])->name('grades');
      Route::get('/grades/view/{id}', [RegistrarController::class, 'view_grades'])->name('view_grades');
-
+     Route::get('/grades/filter_term/{term}/{id}', [RegistrarController::class, 'get_filtered_grades'])->name('get_filtered_grades');
 
 
     //  Students

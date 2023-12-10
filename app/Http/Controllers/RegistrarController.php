@@ -15,12 +15,18 @@ class RegistrarController extends Controller
 
     public function view_grades($id) {
         $data['grades'] = StudentsGrade::where('term', 'First Semester')->where('student_id', $id)->get();
-        $data['student'] = EnStudent::find($id);;
+        $data['student'] = EnStudent::find($id);
 
         return view('registrar.view_grades', $data);
     }
 
     public function student_grades() {
         return view('registrar.student_grade');
+    }
+
+    public function get_filtered_grades($term, $id) {
+        $grades = StudentsGrade::where('term', $term)->where('student_id', $id)->get();
+
+        return $grades;
     }
 }

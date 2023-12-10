@@ -12,17 +12,18 @@
             <p class="grade-student-name ml-4 mt-3">{{$student->name}}</p>
             <div class="select-filter-container">
                 <select class="select-filter">
-                    <option>School Year</option>
+                    <option>2021-2022</option>
                 </select>
-
-                <select class="select-filter ml-3">
-                    <option>Term</option>
+                <input type="hidden" name="student_id" value="{{$student->id}}">
+                <select id="term_filter" class="select-filter ml-3">
+                    <option value="First Semester">First Semester</option>
+                    <option value="Second Semester">Second Semester</option>
                 </select>
             </div>
         </div>
         <!-- Grade Card -->
         <div class="grade-card">
-            <p class="grade-card-heading">2020-2021 &emsp; &emsp; First Semester</p>
+            <p class="grade-card-heading">2021-2022 &emsp; &emsp; <span id="term_text">First Semester</span></p>
             <!-- List of Student Grades -->
             <div class="table-container">
                 <table>
@@ -35,11 +36,11 @@
                         <th>Removal Rating</th>
                         <th>Remarks</th>
                     </thead>
-                    <tbody>
+                    <tbody id="gradeTableBody">
                         @foreach ($grades as $grade)
                             <tr>
                                 <td>{{$grade->code_no}}</td>
-                                <td>G{{$grade->course_no}}</td>
+                                <td>{{$grade->course_no}}</td>
                                 <td>{{$grade->descriptive_title}}</td>
                                 <td>{{$grade->units}}</td>
                                 <td>{{$grade->final_grades}}</td>
@@ -53,3 +54,7 @@
         </div>
     </div>
 @endsection
+
+@push('js_scripts')
+    <script src="{{ asset('js/grades.js') }}"></script>
+@endpush
