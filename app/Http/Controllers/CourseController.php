@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Program;
 use App\Models\Schedule;
+use App\Models\StudentCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -80,6 +82,17 @@ class CourseController extends Controller
     }
 
     public function student_course() {
-        return view('courses.stud_course');
+        $student_id = Auth::user()->student_id;
+
+        $data['courses'] = StudentCourse::with(['course'])->where('student_id', $student_id)->get();
+
+        return view('courses.stud_course', $data);
     }
+
+    public function student_view($id) {
+        $data['course'] = Course::with('schedules')->find($id);
+
+        return view('courses.s_course_details', $data);
+    }
+
 }

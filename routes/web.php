@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/student/pre-register', [RecordController::class, 'student_record'])->name('student_record');
 
     Route::get('/student/courses', [CourseController::class, 'student_course'])->name('student_course');
+    Route::get('/student/course/view/{id}', [CourseController::class, 'student_view'])->name('student_course_view');
 
     Route::get('/student/grades', [RegistrarController::class, 'student_grades'])->name('student_grades');
 });

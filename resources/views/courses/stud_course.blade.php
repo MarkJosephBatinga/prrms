@@ -13,46 +13,18 @@
 
         <!-- Small Cards -->
         <div class="small-cards mt-5">
-            <div class="card-container">
-                <div class="card-text">
-                    <a href="view_course.php">
-                        <p class="small-text">SEd 311</p>
-                        <p class="large-text">Molecular Biology and Biotechnology</p>
-                        <p class="small-text">Prof Name</p>
-                    </a>
+            @foreach ($courses as $course)
+                <div class="card-container">
+                    <div class="card-text">
+                        <a href="{{route('student_course_view', $course->course_id)}}">
+                            <p class="small-text">{{$course->course->course_code}}</p>
+                            <p class="large-text">{{$course->course->descriptive_title}}</p>
+                            <p class="small-text">{{$course->course->course_category}}</p>
+                        </a>
+                    </div>
+                    <img class="course-image" src="{{asset('images/course-card.svg')}}" />
                 </div>
-                <img class="course-image" src="../images/course-card.svg" />
-            </div>
-            <div class="card-container">
-                <div class="card-text">
-                    <a href="view_course.php">
-                        <p class="small-text">SEd 311</p>
-                        <p class="large-text">Molecular Biology and Biotechnology</p>
-                        <p class="small-text">Prof Name</p>
-                    </a>
-                </div>
-                <img class="course-image" src="../images/course-card.svg" />
-            </div>
-            <div class="card-container">
-                <div class="card-text">
-                    <a href="view_course.php">
-                        <p class="small-text">SEd 311</p>
-                        <p class="large-text">Molecular Biology and Biotechnology</p>
-                        <p class="small-text">Prof Name</p>
-                    </a>
-                </div>
-                <img class="course-image" src="../images/course-card.svg" />
-            </div>
-            <div class="card-container">
-                <div class="card-text">
-                    <a href="view_course.php">
-                        <p class="small-text">SEd 311</p>
-                        <p class="large-text">Molecular Biology and Biotechnology</p>
-                        <p class="small-text">Prof Name</p>
-                    </a>
-                </div>
-                <img class="course-image" src="../images/course-card.svg" />
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection
