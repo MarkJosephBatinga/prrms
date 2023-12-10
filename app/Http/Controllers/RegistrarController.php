@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\EnStudent;
 use App\Models\StudentsGrade;
+use App\Models\StudentCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrarController extends Controller
 {
@@ -21,7 +23,12 @@ class RegistrarController extends Controller
     }
 
     public function student_grades() {
-        return view('registrar.student_grade');
+        $student_id = Auth::user()->student_id;
+
+        $data['grades'] = StudentCourse::with(['course'])->where('student_id', $student_id)->get();
+
+        // echo json_encode($data['course']);
+        return view('registrar.student_grade', $data);
     }
 
     public function get_filtered_grades($term, $id) {

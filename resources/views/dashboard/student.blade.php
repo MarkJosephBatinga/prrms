@@ -42,8 +42,8 @@
 
     <div class="progress-status-card">
         <div class="text-header">
-            <p>PhD TEM Schedule</p>
-            <p>CGS2 101</p>
+            <p>{{$student->program_info->program_name}}</p>
+            <p>School Year: {{ date('Y') . '-' . date('Y', strtotime('+1 year')) }}</p>
         </div>
         <div class="table-container non-centered">
             <table>
@@ -52,21 +52,13 @@
                     <th colspan=2 >Day and Time</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Quantitative Methods</td>
-                        <td>Tuesday</td>
-                        <td>5:00-8:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>TEM 307 - Project Planning & Institutional Development</td>
-                        <td>Wednesday</td>
-                        <td>5:00-8:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Seminar Dissertation Writing</td>
-                        <td>Thursday</td>
-                        <td>5:00-8:00 PM</td>
-                    </tr>
+                    @foreach ($student->course as $course)
+                        <tr>
+                            <td>{{$course->course->descriptive_title}}</td>
+                            <td>{{ optional($course->course->schedules)->day ?? 'No schedule' }}</td>
+                            <td>{{ optional($course->course->schedules)->time ?? '' }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

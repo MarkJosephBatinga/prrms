@@ -26,8 +26,7 @@ class DashboardController extends Controller
             return view('dashboard.admin', $data);
         } else {
             $student_id = Auth::user()->student_id;
-            $data['student'] = Student::with('program_info', 'course.course', 'approval_log')->find($student_id);
-
+            $data['student'] = Student::with('program_info', 'course.course.schedules', 'approval_log')->find($student_id);
 
             return view('dashboard.student', $data);
         }

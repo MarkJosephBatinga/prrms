@@ -12,22 +12,22 @@
             <div></div>
             <div class="select-filter-container">
                 <select class="select-filter">
-                    <option>School Year</option>
+                    <option>{{ date('Y') . '-' . date('Y', strtotime('+1 year')) }}</option>
                 </select>
 
                 <select class="select-filter ml-3">
-                    <option>Term</option>
+                    <option>First Semester</option>
                 </select>
             </div>
         </div>
         <!-- Grade Card -->
         <div class="grade-card">
-            <p class="grade-card-heading">2020-2021 &emsp; &emsp; First Semester</p>
+            <p class="grade-card-heading">{{ date('Y') . '-' . date('Y', strtotime('+1 year')) }} &emsp; &emsp; First Semester</p>
             <!-- List of Student Grades -->
             <div class="table-container">
                 <table>
                     <thead>
-                        <th>Code No.</th>
+                        <th>Code Category</th>
                         <th>Course Code</th>
                         <th>Descriptive Title</th>
                         <th>Units</th>
@@ -36,35 +36,17 @@
                         <th>Remarks</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>CIT046C-20211</td>
-                            <td>GECC 108a</td>
-                            <td>Understanding the Self</td>
-                            <td>3</td>
-                            <td>95</td>
-                            <td></td>
-                            <td>PASSED</td>
-                        </tr>
-
-                        <tr>
-                            <td>CIT046C-20211</td>
-                            <td>GECC 108a</td>
-                            <td>Understanding the Self</td>
-                            <td>3</td>
-                            <td>95</td>
-                            <td></td>
-                            <td>PASSED</td>
-                        </tr>
-
-                        <tr>
-                            <td>CIT046C-20211</td>
-                            <td>GECC 108a</td>
-                            <td>Understanding the Self</td>
-                            <td>3</td>
-                            <td>95</td>
-                            <td></td>
-                            <td>PASSED</td>
-                        </tr>
+                        @foreach ($grades as $grade)
+                            <tr>
+                                <td>{{$grade->course->course_category}}</td>
+                                <td>{{$grade->course->course_code}}</td>
+                                <td>{{$grade->course->descriptive_title}}</td>
+                                <td>{{$grade->course->units}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
