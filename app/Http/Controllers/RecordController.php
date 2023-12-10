@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\ApprovalLog;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecordController extends Controller
 {
@@ -100,7 +101,10 @@ class RecordController extends Controller
     }
 
     public function student_record() {
-        return view('records.stud_records');
+        $student_id = Auth::user()->student_id;
+        $data['student'] = Student::with('program_info', 'course.course.schedules', 'approval_log')->find($student_id);
+
+        return view('records.stud_view_preregister', $data);
     }
 
     public function edit_approval(Request $req) {

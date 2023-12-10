@@ -9,28 +9,32 @@
     <div class="content">
         <!-- Content Header -->
         <div class="content-header mt-4 mb-n4">
-            <h3 class="content-header mt-2">Student Pre-Registration</h3>    
+            <h3 class="content-header mt-2">Student Pre-Registration</h3>
         </div>
         <!-- Registration Status -->
         <div class="pre-registration-status">
             <p>Status</p>
             <section class="step-wizard">
                 <ul class="step-wizard-list">
-                    <li class="step-wizard-item done-item">
+                    <li class="step-wizard-item">
                         <span class="progress-count">1</span>
-                        <span class="progress-label">Progress</span>
+                        <span class="progress-label">Pre-Registered</span>
                     </li>
-                    <li class="step-wizard-item current-item">
+                    <li class="step-wizard-item {{($student->approval_log->status == 1) ? 'current-item' : ''}}">
                         <span class="progress-count">2</span>
-                        <span class="progress-label">Progress</span>
+                        <span class="progress-label">Endorsed</span>
                     </li>
-                    <li class="step-wizard-item">
+                    <li class="step-wizard-item {{($student->approval_log->status == 2) ? 'current-item' : ''}}">
                         <span class="progress-count">3</span>
-                        <span class="progress-label">Progress</span>
+                        <span class="progress-label">Approved</span>
                     </li>
-                    <li class="step-wizard-item">
+                    <li class="step-wizard-item {{($student->approval_log->status == 3) ? 'current-item' : ''}}">
                         <span class="progress-count">4</span>
-                        <span class="progress-label">Progress</span>
+                        <span class="progress-label">Registered</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->status == 4) ? 'current-item' : ''}}">
+                        <span class="progress-count">5</span>
+                        <span class="progress-label">Enrolled</span>
                     </li>
                 </ul>
             </section>
@@ -47,57 +51,53 @@
                 <div class="detail-one info">
                     <div class="detail-group">
                         <p class="detail-label">Full Name</p>
-                        <p class="details-value">Jomar P. Pumares</p>
+                        <p class="details-value">{{$student->name}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Nationality</p>
-                        <p class="details-value">Filipino</p>
+                        <p class="details-value">{{$student->nationality}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Student Type</p>
-                        <p class="details-value">Old Student</p>
+                        <p class="details-value">{{$student->student_type}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Student Status</p>
-                        <p class="details-value">Regular Student</p>
+                        <p class="details-value">{{$student->student_status}}</p>
                     </div>
                 </div>
                 <div class="detail-two info d-none">
                     <div class="detail-group">
                         <p class="detail-label">Full Name</p>
-                        <p class="details-value">Monday</p>
+                        <p class="details-value">{{$student->name}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Complete Address</p>
-                        <p class="details-value">Naguilian, La Union</p>
-                    </div>
-                    <div class="detail-group">
-                        <p class="detail-label">Facebook Messenger ID</p>
-                        <p class="details-value">Sample</p>
+                        <p class="details-value">{{$student->address}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Mobile Number</p>
-                        <p class="details-value">123535</p>
+                        <p class="details-value">{{$student->mobile_number}}</p>
                     </div>
                 </div>
                 <div class="detail-three info d-none">
                     <div class="detail-group">
                         <p class="detail-label">Program</p>
-                        <p class="details-value">Master in Information Technology</p>
+                        <p class="details-value">{{$student->program_info->program_name}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Courses</p>
                         <ul class="mt-1 ml-n3">
-                            <li>Course</li>
-                            <li>Course</li>
-                            <li>Course</li>
+                            @foreach ($student->course as $c)
+                                <li>{{$c->course->descriptive_title}} ({{$c->course->course_code}})</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
                 <div class="detail-four info d-none">
                     <div class="detail-group">
                         <p class="detail-label">Payment</p>
-                        <p class="details-value">MLUC Cashier (open from Monday - Friday, 8:00am to 5:00pm)</p>
+                        <p class="details-value">{{$student->payment_mode}}</p>
                     </div>
                 </div>
             </div>
