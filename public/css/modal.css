@@ -15,7 +15,7 @@
     .modal-container .modal-content p{
         font-size: 28px;
         font-weight: 600;
-        color: #005B05;
+        color: #104F88;
     }
 /* END */
 
@@ -66,7 +66,7 @@
         background:#0B4870;
     }
     .eval-modal-body .button-container #approve-btn{
-        background: #005B05;
+        background: #104F88;
     }
 /* END */
 
@@ -102,7 +102,7 @@
     }
     .prog-modal-body .button-container .add-btn{
         color: #FFF;
-        background: #005B05;
+        background: #104F88;
         width: 200px;
     }
 /* END */

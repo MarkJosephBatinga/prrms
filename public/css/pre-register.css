@@ -1,8 +1,8 @@
 /* View Pre Registration */
     .pre-registration-details{
         padding: 30px 0 30px 0;
-        border-top: 2px solid #005B05;
-        border-bottom: 2px solid #005B05;
+        border-top: 2px solid #104F88;
+        border-bottom: 2px solid #104F88;
         margin-top: 55px;
     }
     .pre-registration-details .table-label{
@@ -18,7 +18,7 @@
         border-radius: 10px;
         font-size: 14px;
         font-weight: 700;
-        color: #005B05;
+        color: #104F88;
     }
     .approval-logs table thead th{
         padding: .5rem 1rem;
@@ -38,7 +38,7 @@
     }
     .approval-logs button{
         border: none;
-        background: #005B05;
+        background: #104F88;
         color: white;
         font-weight: 600;
         width: 120px;
@@ -62,7 +62,7 @@
     }
     .tab-headers .active{
         color: #000;
-        border-bottom: 3px solid #005B05 ;
+        border-bottom: 3px solid #104F88 ;
         margin-bottom: 10px;
     }
 
@@ -73,7 +73,7 @@
     }
     .detail-group .detail-label{
         font-weight: 500;
-        color: #005B05;
+        color: #104F88;
         margin: 0;
     }
     

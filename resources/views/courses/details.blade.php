@@ -1,7 +1,6 @@
 @extends('includes.app')
 
 @push('css_scripts')
-    <link rel='stylesheet' href="{{ asset('css/pre-register.css') }}">
     <link rel='stylesheet' href="{{ asset('css/modal.css') }}">
 @endpush
 

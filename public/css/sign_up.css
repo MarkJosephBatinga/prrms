@@ -22,7 +22,7 @@ body {
     .sub-heading-text{
         font-size: 28px;
         font-weight: 600;
-        color: #005B05;
+        color: #104F88;
     }
     .sub-text{
         font-size: 14px;
@@ -32,7 +32,7 @@ body {
     .label-input{
         font-weight: 600;
         font-size: 16px;
-        color: #005B05;
+        color: #104F88;
         margin-bottom: 3px;
     }
     .checkbox-label{
@@ -45,7 +45,7 @@ body {
     }
     #signin-nav{
         font-style: none;
-        color: #005B05;
+        color: #104F88;
         font-weight: 600;
         text-decoration: none;
     }
@@ -141,7 +141,7 @@ body {
     }
     .button-container{
         width: 100%;
-        border-top: 2px solid #005B05;
+        border-top: 2px solid #104F88;
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -157,9 +157,9 @@ body {
         font-weight: 600;
         height: 40px;
         border-radius: 10px;
-        border: 1px solid #005B05;
+        border: 1px solid #104F88;
         color: #FFF;
-        background: #005B05;
+        background: #104F88;
         cursor: pointer;
     }
 /*  */
@@ -167,7 +167,7 @@ body {
 
 /* LEFT SIDE STYLES */
     .left-side{
-        background-color: #DEF6DE;
+        background-color: #D7EAFA;
         border-radius: 0 20px 20px 0;
         display: flex;
         flex-direction: column;
@@ -216,15 +216,15 @@ body {
         top: -70px;
     }
     .progress-bar li.active::after{
-        background-color:#005B05;
+        background-color:#104F88;
     }
     .progress-bar li:first-child:after{
         display:none;  
     }
     .progress-bar li.active::before{
-        color: #005B05;
-        border:1px solid #005B05;
-        background-color: #005B05;
+        color: #104F88;
+        border:1px solid #104F88;
+        background-color: #104F88;
     }
 
     .progress-bar li.done::before{
