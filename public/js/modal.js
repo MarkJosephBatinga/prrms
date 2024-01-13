@@ -14,7 +14,8 @@ $(document).ready(function () {
         $('#endorse-modal').removeClass('d-none');
     });
 
-    $('#openStudentDelete').on('click', function () {
+    $('.openStudentDelete').on('click', function () {
+        console.log('Hello');
         var modalData = $(this).data('modal');
 
         $('.delete-modal').data('modalData', modalData);

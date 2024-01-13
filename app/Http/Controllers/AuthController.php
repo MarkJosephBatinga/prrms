@@ -60,7 +60,7 @@ class AuthController extends Controller
         $this->saveStudentCourses($studentId, $courses);
 
         $data['student_id'] = $this->generateStudentId();
-        $data['password'] = $this->generateRandomPassword();
+        $data['password'] = 'pass';
 
         User::create([
             'name' => $req->input('name'),

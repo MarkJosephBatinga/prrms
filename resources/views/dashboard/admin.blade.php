@@ -14,7 +14,7 @@
             <i class='bx bx-file card-icon'></i>
             <p class="card-text-heading">Users</p>
             <p class="card-text-count">{{$user_count}}</p>
-            <a href="{{route('dashboard')}}"><i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i></a>
+            <a href="{{route('records')}}"><i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i></a>
         </div>
 
         <div class="card-container">
