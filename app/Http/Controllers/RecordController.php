@@ -19,6 +19,15 @@ class RecordController extends Controller
         return view('records.index', $data);
     }
 
+    public function filter_student($status) {
+        $student_ids = ApprovalLog::where('status', $status)->pluck('student_id');
+
+        $data['students'] = Student::whereIn('id', $student_ids)
+            ->with(['user_info', 'program_info'])->get();
+
+        return view('records.index', $data);
+    }
+
     public function pre_register() {
         $data['programs'] = Program::all();
 

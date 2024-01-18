@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Records
     Route::get('/records', [RecordController::class, 'index'])->name('records');
+    Route::get('/records/student_status/{status}', [RecordController::class, 'filter_student'])->name('filter_student');
     Route::get('/records/pre_register', [RecordController::class, 'pre_register'])->name('pre_register');
     Route::get('/records/view/{id}', [RecordController::class, 'view'])->name('view_record');
     Route::get('/records/edit/{id}', [RecordController::class, 'edit_record'])->name('edit_record');
