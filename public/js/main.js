@@ -374,14 +374,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initially hide the years stop input
     yearsStopInput.style.display = 'none';
 
-    // Add change event listener to the Student Type dropdown
     studentTypeSelect.addEventListener('change', function () {
-        // Check if the selected value is "Returning Student"
         if (studentTypeSelect.value === 'Returning Student') {
-            // If returning student is selected, show the years stop input
             yearsStopInput.style.display = 'block';
-        } else {
-            // If any other option is selected, hide the years stop input
+        } else if (studentTypeSelect.value === 'New Student') {
+            yearsStopInput.style.display = 'block';
+        } else  {
             yearsStopInput.style.display = 'none';
         }
     });

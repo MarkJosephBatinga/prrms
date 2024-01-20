@@ -22,7 +22,7 @@
                     <span>2</span>
                     <p>Personal Information</p>
                 </li>
-                <li class="tab-three tab-status step">
+                <li class="tab-three tab-status step" id="tab_three">
                     <span>3</span>
                     <p>Program Offerings</p>
                 </li>
