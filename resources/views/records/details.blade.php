@@ -66,6 +66,7 @@
                 <i id="info-header" class="header-two">Personal Information</i>
                 <i id="program-header" class="header-three">Program Offerings</i>
                 <i id="payment-header" class="header-four">Payment Mode</i>
+                <i id="file-header" class="header-five">Student Files</i>
             </div>
             <div id="type-details" class="detail-one info">
                 <div class="detail-group">
@@ -119,6 +120,24 @@
                 <div class="detail-group">
                     <p class="detail-label">Payment Mode</p>
                     <p class="details-value">{{$student->payment_mode}}</p>
+                </div>
+            </div>
+            <div id="file-details" class="detail-five info d-none">
+                <div class="detail-group">
+                    <p class="detail-label">OTR</p>
+                    <button class="download-button">Download</button>
+                </div>
+                <div class="detail-group">
+                    <p class="detail-label">Birth Certificate</p>
+                    <button class="download-button">Download</button>
+                </div>
+                <div class="detail-group">
+                    <p class="detail-label">Letter of Intent</p>
+                    <button class="download-button">Download</button>
+                </div>
+                <div class="detail-group">
+                    <p class="detail-label">Recommendation Letter</p>
+                    <button class="download-button">Download</button>
                 </div>
             </div>
         </div>

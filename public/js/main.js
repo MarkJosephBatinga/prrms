@@ -43,12 +43,14 @@ var mainJs = {
         detailContainer2: '.detail-two',
         detailContainer3: '.detail-three',
         detailContainer4: '.detail-four',
+        detailContainer5: '.detail-five',
 
         allHeaders: '.tab-headers i',
         headerButton1: '.header-one',
         headerButton2: '.header-two',
         headerButton3: '.header-three',
         headerButton4: '.header-four',
+        headerButton5: '.header-five',
 
         contentWrapper: '.content-wrapper',
         deleteModal: '.delete-modal',
@@ -299,6 +301,10 @@ var mainJs = {
             $(self.elements.headerButton4).click(function(){
                 self.displayView(self.elements.detailContainers, self.elements.detailContainer4)
                 self.updateHeaderStatus(self.elements.allHeaders, self.elements.headerButton4)
+            })
+            $(self.elements.headerButton5).click(function(){
+                self.displayView(self.elements.detailContainers, self.elements.detailContainer5)
+                self.updateHeaderStatus(self.elements.allHeaders, self.elements.headerButton5)
             })
         },
 

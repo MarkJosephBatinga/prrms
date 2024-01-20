@@ -448,6 +448,16 @@ body {
         color: #104F88;
         margin: 0;
     }
+    .detail-group .download-button{
+        font-weight: 600;
+        border: none;
+        background-color: #104F88;
+        color: #FFF;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        width: 150px;
+        height: 30px;
+    }
 
 /* END */
 

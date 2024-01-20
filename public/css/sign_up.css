@@ -81,13 +81,11 @@ body {
     }
 
     .input-checkbox {
-        margin-top: -15px;
         display: flex;
         flex-wrap: wrap;
         gap: 15px; 
-        padding: 10px;
     }
-    .input-checkbox div {
+    .input-checkbox div{
         flex: 1 0 45%;
         display: flex;
         align-items: center;
