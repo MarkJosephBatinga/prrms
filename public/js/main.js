@@ -13,6 +13,7 @@ var mainJs = {
         form3: '.form-three',
         form4: '.form-four',
         form5: '.form-five',
+        nonReq: '.non_req',
 
         allTabs: '.tab-status-container .tab-status',
         tab1: '.tab-one',
@@ -90,7 +91,7 @@ var mainJs = {
             checkboxElement.prop('checked', false);
         }
     },
-    
+
 
     displayView : function (hideView, showView){
         $(hideView).addClass('d-none');
@@ -105,13 +106,13 @@ var mainJs = {
 
         var formInput = true;
 
-        $(form).find('input, select').each(function () {
+        $(form).find('input:not(.non_req), select:not(.non_req)').each(function () {
             if (!$(this).val()) {
                 formInput = false;
                 return false;
             }
         });
-    
+
         return formInput;
     },
     isCheckboxValid : function(form){
@@ -140,7 +141,7 @@ var mainJs = {
                     url: '/register/get_course/' + programId,
                     method: 'GET',
                     success: function (data) {
-                      
+
                         $(self.elements.courseCheckbox).empty();
 
                         data.forEach(function (course) {
@@ -148,7 +149,7 @@ var mainJs = {
                             new_checkbox += '<input type="checkbox" id="course_' + course.course.id + '" name="courses[]" value="' + course.course.id + '"/>';
                             new_checkbox += '<label class="checkbox-label">' + course.course.descriptive_title + '</label>';
                             new_checkbox += '</div>';
-        
+
                             $(self.elements.courseCheckbox).append(new_checkbox);
                         });
                     },
@@ -182,7 +183,7 @@ var mainJs = {
                     self.updateTabStatus(self.elements.tab1, self.elements.tab2, 'next')
                 } else{
                     alert('All Field is required, please try again.');
-                } 
+                }
             })
             $(self.elements.continue2).click(function(){
 
@@ -198,7 +199,7 @@ var mainJs = {
                     }
                 } else{
                     alert('All Field is required, please try again.');
-                } 
+                }
             })
             $(self.elements.continue3).click(function(){
                 var isValidForm = self.isFormInputValid(self.elements.form3);
@@ -213,10 +214,10 @@ var mainJs = {
                     }
                 } else{
                     alert('All Field is required, please try again.');
-                } 
+                }
             })
             $(self.elements.continue4).click(function(){
-                
+
                 var isValidForm = self.isFormInputValid(self.elements.form4);
                 var hasCheckbox = self.isCheckboxValid(self.elements.form4)
 
@@ -229,7 +230,7 @@ var mainJs = {
                     }
                 } else{
                     alert('All Field is required, please try again.');
-                } 
+                }
             })
             $(self.elements.continuePreregister).click(function(){
 
@@ -244,10 +245,10 @@ var mainJs = {
                     }
                 } else{
                     alert('All Field is required, please try again.');
-                } 
+                }
             })
             $(self.elements.formClass).submit(function(e){
-                    
+
                 var isValidForm = self.isFormInputValid(self.elements.form5);
                 var hasCheckbox = self.isCheckboxValid(self.elements.form5)
 
@@ -259,7 +260,7 @@ var mainJs = {
                 } else{
                     e.preventDefault();
                     alert('All Field is required, please try again.');
-                } 
+                }
             })
 
 
@@ -330,7 +331,7 @@ var mainJs = {
         },
 
         onDeleteModal : function (){
-            
+
             var self = mainJs;
 
             $(self.elements.deleteButton).click(function(){
@@ -362,4 +363,26 @@ var mainJs = {
 
 $(document).ready(function () {
     mainJs.init();
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the elements
+    var studentTypeSelect = document.getElementById('student_type');
+    var yearsStopInput = document.getElementById('years_stop_grp');
+
+    // Initially hide the years stop input
+    yearsStopInput.style.display = 'none';
+
+    // Add change event listener to the Student Type dropdown
+    studentTypeSelect.addEventListener('change', function () {
+        // Check if the selected value is "Returning Student"
+        if (studentTypeSelect.value === 'Returning Student') {
+            // If returning student is selected, show the years stop input
+            yearsStopInput.style.display = 'block';
+        } else {
+            // If any other option is selected, hide the years stop input
+            yearsStopInput.style.display = 'none';
+        }
+    });
 });

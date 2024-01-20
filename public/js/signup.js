@@ -114,6 +114,18 @@ function fileChange(){
         const fileName = $(this).val().split('\\').pop();
         $('.file-label').text(fileName);
     });
+    $('#birth_cert').on('change', function() {
+        const fileName = $(this).val().split('\\').pop();
+        $('.birth_cert-label').text(fileName);
+    });
+    $('#letter_intent').on('change', function() {
+        const fileName = $(this).val().split('\\').pop();
+        $('.letter_intent-label').text(fileName);
+    });
+    $('#rec_letter').on('change', function() {
+        const fileName = $(this).val().split('\\').pop();
+        $('.rec_letter-label').text(fileName);
+    });
 }
 
 $(document).ready(function () {
@@ -146,3 +158,6 @@ $(document).ready(function () {
         });
     });
 });
+
+
+

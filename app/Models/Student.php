@@ -25,6 +25,10 @@ class Student extends Model
         'program',
         'file_record',
         'payment_mode',
+        'birth_cert',
+        'letter_intent',
+        'rec_letter',
+        'years_stop',
     ];
 
     public function user_info()

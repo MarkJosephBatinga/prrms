@@ -50,6 +50,10 @@
                         <label class="label-input">Student Status:</label>
                         <input type="text" class="input-text student_type" id="student_status" name="student_status"/>
                     </div>
+                    <div class="input-group" id="years_stop_grp">
+                        <label class="label-input">Number of Years Stop:</label>
+                        <input type="number" class="input-text non_req" id="years_stop" name="years_stop"/>
+                    </div>
                 </div>
                 <div class="button-container">
                     <i class="continue-button continue-one">Continue</i>
@@ -113,14 +117,41 @@
 
             <div class="form-container form-four d-none">
                 <div class="form-input">
-                    <h3 class="sub-heading-text">Official Transcript of Records and Payment Mode</h3>
+                    <h3 class="sub-heading-text">File Records and Payment</h3>
                     <div class="input-group">
-                        <label class="label-input">Upload here the scanned copy of your Official Transcript of Records</label>
+                        <label class="label-input">Upload here the scanned copy of your Official Transcript of Records (PDF Only)</label>
                         <div class="custom-file-input">
                             <label class="file-label">
                                 <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
                             </label>
                             <input type="file" name="file_record" id="file_record" class="input-file" required/>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-input">Upload here the scanned copy of your Birth Certificate (PDF Only)</label>
+                        <div class="custom-file-input">
+                            <label class="birth_cert-label">
+                                <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
+                            </label>
+                            <input type="file" name="birth_cert" id="birth_cert" class="input-file" required/>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-input">Upload here the scanned copy of your Letter of Intent (PDF Only)</label>
+                        <div class="custom-file-input">
+                            <label class="letter_intent-label">
+                                <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
+                            </label>
+                            <input type="file" name="letter_intent" id="letter_intent" class="input-file" required/>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-input">Upload here the scanned copy of your Recommendation Letter (PDF Only)</label>
+                        <div class="custom-file-input">
+                            <label class="rec_letter-label">
+                                <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
+                            </label>
+                            <input type="file" name="rec_letter" id="rec_letter" class="input-file" required/>
                         </div>
                     </div>
                     <div class="input-group">
@@ -148,3 +179,4 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+{{-- <script src="{{ asset('js/signup.js') }}"></script> --}}

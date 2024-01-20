@@ -41,16 +41,23 @@ class AuthController extends Controller
 
     public function register_post(Request $req) {
         $filePath = $this->saveFileRecord($req->file('file_record'));
+        $birthCert = $this->saveBirthCert($req->file('birth_cert'));
+        $letterIntent = $this->saveLetterIntent($req->file('letter_intent'));
+        $recLetter = $this->saveRecLetter($req->file('rec_letter'));
 
         $student = Student::create([
             'student_type' => $req->input('student_type'),
             'student_status' => $req->input('student_status'),
+            'years_stop' => $req->input('years_stop'),
             'name' => $req->input('name'),
             'nationality' => $req->input('nationality'),
             'address' => $req->input('address'),
             'mobile_number' => $req->input('mobile_number'),
             'program' => $req->input('program'),
             'file_record' => $filePath,
+            'birth_cert' => $birthCert,
+            'letter_intent' => $letterIntent,
+            'rec_letter' => $recLetter,
             'payment_mode' => $req->input('payment_mode'),
         ]);
 
@@ -138,6 +145,18 @@ class AuthController extends Controller
 
     private function saveFileRecord($file) {
         return Storage::putFile('file_records', $file);
+    }
+
+    private function saveBirthCert($file) {
+        return Storage::putFile('birt_certs', $file);
+    }
+
+    private function saveLetterIntent($file) {
+        return Storage::putFile('letter_intents', $file);
+    }
+
+    private function saveRecLetter($file) {
+        return Storage::putFile('recco_letters', $file);
     }
 
     private function saveStudentCourses($studentId, $courseIds) {
