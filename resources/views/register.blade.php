@@ -13,17 +13,29 @@
         <div class="left-side">
             <img id="logo" src="images/logo.png" alt="Login Image">
             <h2 class="heading-text">Create an account</h2>
-            <ul class="progress-bar">
-                <li id="student-status" class="active"> Student Type </li>
-                <li id="info-status"> Personal Information </li>
-                <li id="program-status"> Program Offerings </li>
-                <li id="file-status"> OTR and Payment Mode </li>
+            <ul class="progress-steps">
+                <li class="tab-one tab-status step active">
+                    <span>1</span>
+                    <p>Student Type</p>
+                </li>
+                <li class="tab-two tab-status step">
+                    <span>2</span>
+                    <p>Personal Information</p>
+                </li>
+                <li class="tab-three tab-status step">
+                    <span>3</span>
+                    <p>Program Offerings</p>
+                </li>
+                <li class="tab-four tab-status step">
+                    <span>4</span>
+                    <p>OTR and Payment Mode</p>
+                </li>
             </ul>
             <p id="below-login-text"></a> Already have an account? <a id="signin-nav" href="{{route('login')}}">Sign in to your account.</a></p>
         </div>
         <form action="{{ route('register_post') }}" method="POST" id="signup-form" enctype="multipart/form-data">
             @csrf
-            <div id="student-type" class="form-container">
+            <div class="form-container form-one">
                 <div class="form-input">
                     <h3 class="sub-heading-text">Student Type</h3>
                     <div class="input-group">
@@ -40,11 +52,11 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <i id="studtype-button" class="form-button">Continue</i>
+                    <i class="continue-button continue-one">Continue</i>
                 </div>
             </div>
 
-            <div id="personal-information" class="form-container d-none">
+            <div class="form-container form-two d-none">
                 <div class="form-input">
                     <h3 class="sub-heading-text">Personal Information</h3>
                     <div class="input-group">
@@ -65,11 +77,12 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <i id="personinfo-button" class="form-button">Continue</i>
+                    <i class="back-button back-two">Back</i>
+                    <i class="continue-button continue-two">Continue</i>
                 </div>
             </div>
 
-            <div id="program-offerings" class="form-container d-none">
+            <div class="form-container form-three d-none">
                 <div class="form-input">
                     <h3 class="sub-heading-text">Program Offerings</h3>
                     <div class="input-group">
@@ -93,11 +106,12 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <i id="program-button" class="form-button">Continue</i>
+                    <i class="back-button back-three">Back</i>
+                    <i class="continue-button continue-three">Continue</i>
                 </div>
             </div>
 
-            <div id="files-upload" class="form-container d-none">
+            <div class="form-container form-four d-none">
                 <div class="form-input">
                     <h3 class="sub-heading-text">Official Transcript of Records and Payment Mode</h3>
                     <div class="input-group">
@@ -122,14 +136,15 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <button type="submit" id="signup-button" class="form-button">Submit</button>
+                    <i class="back-button back-four">Back</i>
+                    <button type="submit" class="continue-button">Submit</button>
                 </div>
             </div>
-
+            <p id="mobile-login-link"></a> Already have an account? <a id="signin-nav" href="{{route('login')}}">Sign in to your account.</a></p>
         </form>
     </div>
 </body>
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="{{ asset('js/signup.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>

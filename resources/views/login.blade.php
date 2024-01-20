@@ -16,7 +16,7 @@
                 <p id="heading-text">Welcome Back!</p>
                 <p id="sub-heading-text">Sign in to access your account</p>
                 @if(Session::has('error'))
-                    <div class="text-danger" role="alert">
+                    <div class="error-text" role="alert">
                         {{ Session::get('error') }}
                     </div>
                 @endif

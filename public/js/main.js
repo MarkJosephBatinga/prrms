@@ -2,6 +2,11 @@ var mainJs = {
 
     elements : {
 
+        programRegField: '#program',
+        courseCheckbox: '#populate_checkbox',
+        fileInput: '#file_record',
+        fileLabel: '.file-label',
+
         formClass: '.multi-form',
         form1: '.form-one',
         form2: '.form-two',
@@ -120,6 +125,47 @@ var mainJs = {
     },
 
     events : {
+
+        onPopulateCourseByProgram : function (){
+
+            var self = mainJs;
+
+            $(self.elements.programRegField).change(function(){
+
+                var programId = $(this).val();
+
+                $.ajax({
+                    url: '/register/get_course/' + programId,
+                    method: 'GET',
+                    success: function (data) {
+                      
+                        $(self.elements.courseCheckbox).empty();
+
+                        data.forEach(function (course) {
+                            var new_checkbox = '<div>';
+                            new_checkbox += '<input type="checkbox" id="course_' + course.course.id + '" name="courses[]" value="' + course.course.id + '"/>';
+                            new_checkbox += '<label class="checkbox-label">' + course.course.descriptive_title + '</label>';
+                            new_checkbox += '</div>';
+        
+                            $(self.elements.courseCheckbox).append(new_checkbox);
+                        });
+                    },
+                    error: function (error) {
+                        console.log('Error fetching courses:', error);
+                    }
+                });
+            })
+        },
+
+        onFileChange : function (){
+
+            var self = mainJs;
+
+            $(self.elements.fileInput).change(function(){
+                const fileName = $(this).val().split('\\').pop();
+                $(self.elements.fileLabel).text(fileName);
+            })
+        },
 
         onNavigateForm : function (){
 
@@ -294,6 +340,8 @@ var mainJs = {
         init : function () {
             var _self = this;
 
+            _self.onPopulateCourseByProgram();
+            _self.onFileChange();
             _self.onNavigateForm();
             _self.onNavigateDetails();
             _self.onClearForm();
