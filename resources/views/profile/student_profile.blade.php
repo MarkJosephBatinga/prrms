@@ -1,13 +1,15 @@
 @extends('includes.app')
 
-@push('css_scripts')
-    <link rel='stylesheet' href="{{ asset('css/pre-register.css') }}">
-@endpush
-
 @section('body')
     <div class="content">
         <!-- Content Header -->
-        <div class="content-header">
+        <div class="header-buttons">
+            <a href="{{route('dashboard')}}" class="view-back-button"> < Back </a>
+            <div class="action-container">
+                <a href="edit_profile.php"><i class='bx bx-pencil action-icons'></i></a>
+            </div>
+        </div>
+        <div class="view-page-header mt-4 mb-n4">
             <h3 class="content-header mt-2">{{$student->name}}</h3>
             <div class="action-container">
                 <a href="edit_profile.php"><i class='bx bx-pencil action-icons'></i></a>

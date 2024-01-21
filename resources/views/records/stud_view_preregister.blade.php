@@ -2,7 +2,6 @@
 
 @push('css_scripts')
     <link rel='stylesheet' href="{{ asset('css/input_fields.css') }}">
-    <link rel='stylesheet' href="{{ asset('css/pre-register.css') }}">
 @endpush
 
 @section('body')
@@ -47,6 +46,7 @@
                     <i class="header-two">Personal Information</i>
                     <i class="header-three">Program Offerings</i>
                     <i class="header-four">Payment Mode</i>
+                    <i class="header-five">Student Files</i>
                 </div>
                 <div class="detail-one info">
                     <div class="detail-group">
@@ -98,6 +98,24 @@
                     <div class="detail-group">
                         <p class="detail-label">Payment</p>
                         <p class="details-value">{{$student->payment_mode}}</p>
+                    </div>
+                </div>
+                <div id="file-details" class="detail-five info d-none">
+                    <div class="detail-group">
+                        <p class="detail-label">OTR</p>
+                        <button class="download-button">Download</button>
+                    </div>
+                    <div class="detail-group">
+                        <p class="detail-label">Birth Certificate</p>
+                        <button class="download-button">Download</button>
+                    </div>
+                    <div class="detail-group">
+                        <p class="detail-label">Letter of Intent</p>
+                        <button class="download-button">Download</button>
+                    </div>
+                    <div class="detail-group">
+                        <p class="detail-label">Recommendation Letter</p>
+                        <button class="download-button">Download</button>
                     </div>
                 </div>
             </div>

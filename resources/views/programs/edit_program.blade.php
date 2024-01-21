@@ -8,7 +8,7 @@
 @section('body')
     <div class="content">
         <!-- Content Header -->
-        <div class="content-header">
+        <div class="sub-page-header">
             <h3 class="content-header mt-2">Edit Program</h3>
             <div class="tab-status-container">
                 <div id="prog-info-tab" class="tab-one tab-status"></div>
@@ -52,6 +52,7 @@
                     <div class="button-container">
                         <a href="{{ route('programs') }}"><i class="back-button">Back</i></a>
                         <i class="continue-button continue-one ml-3">Continue</i>
+                        <i class="clear-button-responsive clear-one">Clear all Answers</i>
                     </div>
                 </div>
             </div>
@@ -61,21 +62,22 @@
                         <p>Program Courses</p>
                         <p class="course-type">(Core Courses)</p>
                     </div>
-                </div>
-                <div class="program-courses-container">
-                    @foreach ($core_courses as $c_course)
-                        <div class="checkbox-group">
-                            <input type="checkbox" class="core_course" name='program_courses[]' value="{{$c_course->id}}"
-                                {{ $program->program_courses->contains('course_id', $c_course->id) ? 'checked' : '' }} />
-                            <label class="checkbox-label">{{$c_course->descriptive_title}}({{$c_course->course_code}})</label>
-                        </div>
-                    @endforeach
+                    <div class="form-input input-checkbox mt-1">
+                        @foreach ($core_courses as $c_course)
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="core_course" name='program_courses[]' value="{{$c_course->id}}"
+                                    {{ $program->program_courses->contains('course_id', $c_course->id) ? 'checked' : '' }} />
+                                <label class="checkbox-label">{{$c_course->descriptive_title}}({{$c_course->course_code}})</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="form-bottom-container">
                     <i class="clear-button clear-two">Clear</i>
                     <div class="button-container">
                         <i class="back-button back-two">Back</i>
                         <i class="continue-button continue-two ml-3">Continue</i>
+                        <i class="clear-button-responsive clear-two">Clear all Answers</i>
                     </div>
                 </div>
             </div>
@@ -85,21 +87,22 @@
                         <p>Program Courses</p>
                         <p class="course-type">(Major Courses)</p>
                     </div>
-                </div>
-                <div class="program-courses-container">
-                    @foreach ($major_courses as $m_course)
-                        <div class="checkbox-group">
-                            <input type="checkbox" class="major_course" name='program_courses[]' value="{{$m_course->id}}"
-                                {{ $program->program_courses->contains('course_id', $m_course->id) ? 'checked' : '' }} />
-                            <label class="checkbox-label">{{$m_course->descriptive_title}}({{$m_course->course_code}})</label>
-                        </div>
-                    @endforeach
+                    <div class="form-input input-checkbox mt-1">
+                        @foreach ($major_courses as $m_course)
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="major_course" name='program_courses[]' value="{{$m_course->id}}"
+                                    {{ $program->program_courses->contains('course_id', $m_course->id) ? 'checked' : '' }} />
+                                <label class="checkbox-label">{{$m_course->descriptive_title}}({{$m_course->course_code}})</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="form-bottom-container">
                     <i class="clear-button clear-three">Clear</i>
                     <div class="button-container">
                         <i class="back-button back-three">Back</i>
                         <i class="continue-button continue-three ml-3">Continue</i>
+                        <i class="clear-button-responsive clear-three">Clear all Answers</i>
                     </div>
                 </div>
             </div>
@@ -109,21 +112,22 @@
                         <p>Program Courses</p>
                         <p class="course-type">(Elective Courses)</p>
                     </div>
-                </div>
-                <div class="program-courses-container">
-                    @foreach ($elective_courses as $e_course)
-                        <div class="checkbox-group">
-                            <input type="checkbox" class="elective_course" name='program_courses[]' value="{{$e_course->id}}"
-                                {{ $program->program_courses->contains('course_id', $e_course->id) ? 'checked' : '' }} />
-                            <label class="checkbox-label">{{$e_course->descriptive_title}}({{$e_course->course_code}})</label>
-                        </div>
-                    @endforeach
+                    <div class="form-input input-checkbox mt-1">
+                        @foreach ($elective_courses as $e_course)
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="elective_course" name='program_courses[]' value="{{$e_course->id}}"
+                                    {{ $program->program_courses->contains('course_id', $e_course->id) ? 'checked' : '' }} />
+                                <label class="checkbox-label">{{$e_course->descriptive_title}}({{$e_course->course_code}})</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="form-bottom-container">
                     <i class="clear-button clear-four">Clear</i>
                     <div class="button-container">
                         <i class="back-button back-four">Back</i>
                         <i class="continue-button continue-four ml-3">Continue</i>
+                        <i class="clear-button-responsive clear-four">Clear all Answers</i>
                     </div>
                 </div>
             </div>
@@ -133,15 +137,15 @@
                         <p>Program Courses</p>
                         <p class="course-type">(Institutional Requirement for Graduation)</p>
                     </div>
-                </div>
-                <div class="program-courses-container">
-                    @foreach ($institutional_reqs as $i_req)
-                        <div class="checkbox-group">
-                            <input type="checkbox" class="ins_course" name='program_courses[]' value="{{$i_req->id}}"
-                                {{ $program->program_courses->contains('course_id', $i_req->id) ? 'checked' : '' }} />
-                            <label class="checkbox-label">{{$i_req->descriptive_title}}({{$i_req->course_code}})</label>
-                        </div>
-                    @endforeach
+                    <div class="form-input input-checkbox mt-1">
+                        @foreach ($institutional_reqs as $i_req)
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="ins_course" name='program_courses[]' value="{{$i_req->id}}"
+                                    {{ $program->program_courses->contains('course_id', $i_req->id) ? 'checked' : '' }} />
+                                <label class="checkbox-label">{{$i_req->descriptive_title}}({{$i_req->course_code}})</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="form-bottom-container">
                     <i class="clear-button clear-five">Clear</i>
@@ -149,6 +153,7 @@
                         <div class="button-container">
                             <i class="back-button back-five">Back</i>
                             <button id="prog_submit" type="submit" class="continue-button ml-3">Submit</button>
+                            <i class="clear-button-responsive clear-five">Clear all Answers</i>
                         </div>
                     </div>
                 </div>

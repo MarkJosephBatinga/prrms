@@ -6,10 +6,16 @@
 
 @section('body')
     <div class="content">
-        <a href="{{route('courses')}}" class="back-button"> < Back </a>
+        <div class="header-buttons">
+            <a href="{{route('courses')}}" class="view-back-button"> < Back </a>
+            <div class="action-container">
+                <a href="{{route('edit_course', $course->id)}}"><i class='bx bx-pencil action-icons'></i></a>
+                <a href="#" id="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
+            </div>
+        </div>
         <!-- Content Header -->
-        <div class="content-header mt-4 mb-n4">
-            <h3 class="content-header mt-2">{{$course->descriptive_title}}</h3>
+        <div class="view-page-header mt-4 mb-n4">
+            <h3 class="view-header mt-2">{{$course->descriptive_title}}</h3>
             <div class="action-container">
                 <a href="{{route('edit_course', $course->id)}}"><i class='bx bx-pencil action-icons'></i></a>
                 <a href="#" id="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>

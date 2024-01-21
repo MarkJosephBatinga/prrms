@@ -30,9 +30,7 @@
             <p class="card-text-count">{{$course_count}}</p>
             <i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i>
         </a>
-    </div>
 
-    <div class="dashboard-cards">
         <a href="{{ route('filter_student', ['status' => 1]) }}" class="card-container">
             <i class='bx bxs-user-account card-icon'></i>
             <p class="card-text-heading">Pre-registered <br>Students</p>
@@ -57,3 +55,7 @@
 
 </div>
 @endsection
+
+@push('js_scripts')
+    <script src="{{ asset('js/main.js') }}"></script>
+@endpush

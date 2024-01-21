@@ -119,39 +119,44 @@
                 <div class="form-input">
                     <h3 class="sub-heading-text">File Records and Payment</h3>
                     <div class="input-group">
-                        <label class="label-input">Upload here the scanned copy of your Official Transcript of Records (PDF Only)</label>
-                        <div class="custom-file-input">
-                            <label class="file-label">
-                                <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
-                            </label>
-                            <input type="file" name="file_record" id="file_record" class="input-file" required/>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="label-input">Upload here the scanned copy of your Birth Certificate (PDF Only)</label>
-                        <div class="custom-file-input">
-                            <label class="birth_cert-label">
-                                <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
-                            </label>
-                            <input type="file" name="birth_cert" id="birth_cert" class="input-file" required/>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="label-input">Upload here the scanned copy of your Letter of Intent (PDF Only)</label>
-                        <div class="custom-file-input">
-                            <label class="letter_intent-label">
-                                <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
-                            </label>
-                            <input type="file" name="letter_intent" id="letter_intent" class="input-file" required/>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label class="label-input">Upload here the scanned copy of your Recommendation Letter (PDF Only)</label>
-                        <div class="custom-file-input">
-                            <label class="rec_letter-label">
-                                <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
-                            </label>
-                            <input type="file" name="rec_letter" id="rec_letter" class="input-file" required/>
+                        <label class="label-input">Upload here the scanned copy (PDF Only)</label>
+                        <div class="file-uploads">
+                            <div>
+                                <label class="sub-text">Official Transcript of Records</label>
+                                <div class="custom-file-input">
+                                    <label class="file-label">
+                                        <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
+                                    </label>
+                                    <input type="file" name="file_record" id="file_record" class="input-file" required accept="application/pdf"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="sub-text">Birth Certificate</label>
+                                <div class="custom-file-input">
+                                    <label class="birth_cert-label">
+                                        <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
+                                    </label>
+                                    <input type="file" name="birth_cert" id="birth_cert" class="input-file" required accept="application/pdf"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="sub-text">Letter of Intent</label>
+                                <div class="custom-file-input">
+                                    <label class="letter_intent-label">
+                                        <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
+                                    </label>
+                                    <input type="file" name="letter_intent" id="letter_intent" class="input-file" required accept="application/pdf"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="sub-text">Recommendation Letter</label>
+                                <div class="custom-file-input">
+                                    <label class="rec_letter-label">
+                                        <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
+                                    </label>
+                                    <input type="file" name="rec_letter" id="rec_letter" class="input-file" required accept="application/pdf"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="input-group">

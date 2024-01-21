@@ -1,16 +1,17 @@
 @extends('includes.app')
 
 @push('css_scripts')
-    <link rel='stylesheet' href="{{ asset('css/pre-register.css') }}">
     <link rel='stylesheet' href="{{ asset('css/modal.css') }}">
 @endpush
 
 @section('body')
     <div class="content">
-        <a href="{{route('student_course')}}" class="back-button"> < Back </a>
         <!-- Content Header -->
-        <div class="content-header mt-4 mb-n4">
-            <h3 class="content-header mt-2">{{$course->descriptive_title}}</h3>
+        <div class="header-buttons">
+            <a href="{{route('student_course')}}" class="view-back-button"> < Back </a>
+        </div>
+        <div class="view-page-header mt-4 mb-n4">
+            <h3 class="view-header mt-2">{{$course->descriptive_title}}</h3>
         </div>
         <!-- Program Details -->
         <div class="sub-page-content">

@@ -38,8 +38,8 @@
                             <td>{{$student->name}}</td>
                             <td>{{$student->nationality}}</td>
                             <td>{{$student->program_info->program_name}}</td>
-                            <td>
-                                <a href="{{route('view_record', $student->id)}}"> <i class='bx bx-low-vision action-icons mr-2'></i> </a>
+                            <td class="table-actions">
+                                <a href="{{route('view_record', $student->id)}}"> <i class='bx bx-file-find action-icons mr-2'></i> </a>
                                 <a href="{{route('edit_record', $student->id)}}"> <i class='bx bx-pencil action-icons mr-2'></i> </a>
                                 <i class='bx bx-trash action-icons openStudentDelete' data-modal="{{ $student->id }}"></i>
                             </td>
@@ -84,4 +84,5 @@
 
 @push('js_scripts')
     <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 @endpush

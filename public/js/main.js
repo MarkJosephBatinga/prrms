@@ -4,8 +4,18 @@ var mainJs = {
 
         programRegField: '#program',
         courseCheckbox: '#populate_checkbox',
-        fileInput: '#file_record',
-        fileLabel: '.file-label',
+
+        otrInput : '#file_record',
+        otrLabel : '.file-label',
+        birthCertInput : '#birth_cert',
+        birthCertLabel : '.birth_cert-label',
+        letterIntentInput : '#letter_intent',
+        letterIntentLabel : '.letter_intent-label',
+        recLetterInput : '#rec_letter',
+        recLetterLabel : '.rec_letter-label',
+
+        hamburgerButton: '#hamburger-button',
+        responsiveMenu: '.responsive-menu',
 
         formClass: '.multi-form',
         form1: '.form-one',
@@ -145,7 +155,7 @@ var mainJs = {
                         $(self.elements.courseCheckbox).empty();
 
                         data.forEach(function (course) {
-                            var new_checkbox = '<div>';
+                            var new_checkbox = '<div class="checkbox-container">';
                             new_checkbox += '<input type="checkbox" id="course_' + course.course.id + '" name="courses[]" value="' + course.course.id + '"/>';
                             new_checkbox += '<label class="checkbox-label">' + course.course.descriptive_title + '</label>';
                             new_checkbox += '</div>';
@@ -164,9 +174,24 @@ var mainJs = {
 
             var self = mainJs;
 
-            $(self.elements.fileInput).change(function(){
-                const fileName = $(this).val().split('\\').pop();
-                $(self.elements.fileLabel).text(fileName);
+            $(self.elements.otrInput).change(function(){
+                const otrFileName = $(this).val().split('\\').pop();
+                $(self.elements.otrLabel).text(otrFileName);
+            })
+
+            $(self.elements.birthCertInput).change(function(){
+                const birthFileName = $(this).val().split('\\').pop();
+                $(self.elements.birthCertLabel).text(birthFileName);
+            })
+
+            $(self.elements.letterIntentInput).change(function(){
+                const intentFileName = $(this).val().split('\\').pop();
+                $(self.elements.letterIntentLabel).text(intentFileName);
+            })
+
+            $(self.elements.recLetterInput).change(function(){
+                const recFileName = $(this).val().split('\\').pop();
+                $(self.elements.recLetterLabel).text(recFileName);
             })
         },
 
@@ -344,6 +369,23 @@ var mainJs = {
             })
         },
 
+        onClickHamBurgerMenu : function (){
+
+            var self = mainJs;
+
+            $(self.elements.hamburgerButton).click(function() {
+
+                var responsiveMenu = $(self.elements.responsiveMenu);
+            
+                if (responsiveMenu.css('display') == 'none') {
+                    responsiveMenu.css('display', 'block');
+                } else {
+                    responsiveMenu.css('display', 'none');
+                }
+            });
+
+        }, 
+
         init : function () {
             var _self = this;
 
@@ -352,6 +394,7 @@ var mainJs = {
             _self.onNavigateForm();
             _self.onNavigateDetails();
             _self.onClearForm();
+            _self.onClickHamBurgerMenu();
         }
     },
 

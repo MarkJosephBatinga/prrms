@@ -2,7 +2,6 @@
 
 @push('css_scripts')
     <link rel='stylesheet' href="{{ asset('css/input_fields.css') }}">
-    <link rel='stylesheet' href="{{ asset('css/pre-register.css') }}">
 @endpush
 
 @section('body')

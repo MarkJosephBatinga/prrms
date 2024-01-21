@@ -10,17 +10,16 @@
 <body>
     <div class="container">
         <img id="success-image" src="{{ asset('images/registered.svg') }}" />
-        <h2></h2>
-
         <div class="text-container">
+            <p class="heading-text">You are now registered!</p>
             <p class="sub-heading-text">Temporary Student ID:</p>
-            <p>{{$student_id}}</p>
-            <p class="sub-heading-text">Password</p>
-            <p>{{$password}}</p>
+            <p class="value-text">{{$student_id}}</p>
+            <p class="sub-heading-text">Password:</p>
+            <p class="value-text">{{$password}}</p>
         </div>
 
         <div class="button-container">
-            <a type="button" class="form-button" href="{{ route('login')}}">Go to Login</a>
+            <a type="button" class="form-button" href="{{ route('login')}}">Go to Dashboard</a>
         </div>
     </div>
 </body>

@@ -143,7 +143,7 @@ function getStudentCourse(program_id, student_id) {
 
             // Populate checkboxes based on the fetched courses
             data.forEach(function (course) {
-                var new_checkbox = '<div>';
+                var new_checkbox = '<div class="checkbox-container">';
                 new_checkbox += '<input type="checkbox" id="course_' + course.course_id + '" name="courses[]" value="' + course.course_id + '"'+ course.is_selected +'/>';
                 new_checkbox += '<label class="checkbox-label">' + course.descriptive_title + '</label>';
                 new_checkbox += '</div>';

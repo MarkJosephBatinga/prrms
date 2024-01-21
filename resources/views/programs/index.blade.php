@@ -57,4 +57,5 @@
 
 @push('js_scripts')
     <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 @endpush

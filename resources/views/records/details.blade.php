@@ -2,15 +2,16 @@
 
 @push('css_scripts')
     <link rel='stylesheet' href="{{ asset('css/input_fields.css') }}">
-    <link rel='stylesheet' href="{{ asset('css/pre-register.css') }}">
     <link rel='stylesheet' href="{{ asset('css/modal.css') }}">
 @endpush
 
 @section('body')
     <div class="content">
-        <a href="{{route('records')}}" class="back-button"> < Back </a>
         <!-- Content Header -->
-        <div class="content-header mt-4 mb-n4">
+        <div class="header-buttons">
+            <a href="{{route('records')}}" class="view-back-button"> < Back </a>
+        </div>
+        <div class="view-page-header mt-4 mb-n4">
             <h3 class="content-header mt-2">Student Pre-Registration</h3>
         </div>
         <!-- Approval Logs -->
@@ -63,7 +64,7 @@
         <div class="details-body">
             <div class="tab-headers">
                 <i id="type-header" class="active header-one">Student Type</i>
-                <i id="info-header" class="header-two">Personal Information</i>
+                <i id="info-header" class="header-two">Personal Info</i>
                 <i id="program-header" class="header-three">Program Offerings</i>
                 <i id="payment-header" class="header-four">Payment Mode</i>
                 <i id="file-header" class="header-five">Student Files</i>

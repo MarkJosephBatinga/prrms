@@ -31,7 +31,7 @@
                             <td>{{$student->nationality}}</td>
                             <td>{{$student->program}}</td>
                             <td>
-                                <a href="{{route('view_grades', $student->id)}}"><i class='bx bx-low-vision action-icons mr-2'></i></a>
+                                <a href="{{route('view_grades', $student->id)}}"><i class='bx bx-file-find action-icons mr-2'></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -40,3 +40,6 @@
         </div>
     </div>
 @endsection
+@push('js_scripts')
+    <script src="{{ asset('js/main.js') }}"></script>
+@endpush

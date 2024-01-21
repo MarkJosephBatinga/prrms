@@ -28,15 +28,121 @@
     margin-top: 0;
 }
 .checkbox-label{
+    margin: 0 0 0 8px;
     font-size: 14px;
     color: black;
 }
 .input-checkbox{
-    margin-top: -25px;
+    margin-top: -15px;
     display: flex;
     flex-direction: column;
-}
-input[type="checkbox"] {
-    margin-right: 10px;
+    gap:10px;
 }
 
+.file-uploads{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.custom-file-input {
+    position: relative;
+    height: 35px;
+    color: #6D6D6D;
+    border-radius: 5px;
+    border: 1px solid #6D6D6D;
+    background: #FFF;
+    font-size: 14px;
+    opacity: 1;
+    z-index: 1;
+    width: 100%;
+}
+.input-file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.file-label, .birth_cert-label, .letter_intent-label, .rec_letter-label {
+    height: 100%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+.file-uploads .icon {
+    margin-right: -15px;
+    font-size: 12px;
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .label-input{
+        font-size: 14px;
+    }
+    .input-group{
+        margin-bottom: 15px;
+    }
+    .input-text{
+        height: 35px;
+        font-size: 12px;
+    }
+    .input-group .sub-text{
+        font-size: 14px;
+    }
+
+    .checkbox-label{
+        font-size: 12px;
+    }
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .file-uploads{
+        gap: 10px;
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 767px){
+    .label-input{
+       font-size: 10px;
+    }
+    .input-group{
+        margin-bottom: 15px;
+    }
+    .input-text{
+        height: 30px;
+        font-size: 10px;
+    }
+    .input-group .sub-text{
+        font-size: 10px;
+    }
+
+    .checkbox-container{
+        display: flex;
+        align-items: center;
+    }
+    .checkbox-label{
+        font-size: 10px;
+    }
+
+    .file-uploads{
+        gap: 5px;
+    }
+    .custom-file-input {
+        height: 30px;
+        font-size: 10px;
+    }
+    .file-label, .birth_cert-label, .letter_intent-label, .rec_letter-label {
+        font-size: 10px;
+    }    
+    .file-uploads .icon{
+        font-size: 10px;
+    }
+}

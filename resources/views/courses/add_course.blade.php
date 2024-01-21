@@ -8,7 +8,7 @@
 @section('body')
     <div class="content">
         <!-- Content Header -->
-        <div class="content-header">
+        <div class="sub-page-header">
             <h3 class="content-header mt-2">Add Course</h3>
             <div class="tab-status-container">
                 <div id="course-info-tab" class="tab-one tab-status"></div>
@@ -54,44 +54,46 @@
                     <div class="button-container">
                         <a href="{{ route('courses') }}"><i class="back-button">Back</i></a>
                         <i class="continue-button continue-one ml-3">Continue</i>
+                        <i class="clear-button-responsive clear-one">Clear all Answers</i>
                     </div>
                 </div>
             </div>
             <div id="course-schedule-form" class="form-two d-none">
                 <div class="form-top-container">
                     <p class="form-header">Schedule</p>
-                </div>
-                <div id="schedule-input">
-                    <div class="input-group">
-                        <label class="label-input">Day</label>
-                        <select class="input-text" name="day[]" required>
-                            <option value="" selected>Select Day</option>
-                            <option value="Monday">Monday</option>
-                            <option  value="Tuesday">Tuesday</option>
-                            <option value="Wednesday">Wednesday</option>
-                            <option value="Thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
-                            <option value="Saturday">Saturday</option>
-                            <option value="Sunday">Sunday</option>
-                        </select>
+                    <div class="form-input">
+                        <div id="schedule-input">
+                            <div class="input-group">
+                                <label class="label-input">Day</label>
+                                <select class="input-text" name="day[]" required>
+                                    <option value="" selected>Select Day</option>
+                                    <option value="Monday">Monday</option>
+                                    <option  value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label class="label-input">Time</label>
+                                <input type="text" class="input-text" name="time[]" required/>
+                            </div>
+                        </div>
+                        <div id="schedule-container"></div>
+                        <div class="schedule-actions">
+                            <i class='bx bx-x delete-row'></i>
+                            <i class='bx bx-plus add-row'></i>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label class="label-input">Time</label>
-                        <input type="text" class="input-text" name="time[]" required/>
-                    </div>
                 </div>
-                <div id="schedule-container"></div>
-
-                <div class="schedule-actions">
-                    <i class='bx bx-x delete-row'></i>
-                    <i class='bx bx-plus add-row'></i>
-                </div>
-
                 <div class="form-bottom-container">
                     <i class="clear-button clear-two">Clear</i>
                     <div class="button-container">
                         <i class="back-button back-two">Back</i>
                         <button type="submit" class="continue-button ml-3">Submit</button>
+                        <i class="clear-button-responsive clear-two">Clear all Answers</i>
                     </div>
                 </div>
             </div>

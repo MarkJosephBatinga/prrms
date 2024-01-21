@@ -2,14 +2,17 @@
 
 @section('body')
     <div class="content">
-        <a href="{{route('grades')}}" class="back-button"> < Back </a>
+
         <!-- Content Header -->
-        <div class="content-header mt-4">
-            <h3 class="content-header mt-2">My Grades</h3>
+        <div class="header-buttons">
+            <a href="{{route('grades')}}" class="view-back-button"> < Back </a>
+        </div>
+        <div class="view-page-header mt-4">
+            <h3 class="content-header">My Grades</h3>
         </div>
         <!-- Search  -->
-        <div class="search-button-container">
-            <p class="grade-student-name ml-4 mt-3">{{$student->name}}</p>
+        <div class="grade-search-container">
+            <p class="grade-student-name">{{$student->name}}</p>
             <div class="select-filter-container">
                 <select class="select-filter">
                     <option>2021-2022</option>
@@ -57,4 +60,5 @@
 
 @push('js_scripts')
     <script src="{{ asset('js/grades.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 @endpush
