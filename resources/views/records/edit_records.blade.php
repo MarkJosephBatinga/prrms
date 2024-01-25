@@ -24,7 +24,7 @@
         <form action="{{ route('update_record') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="sub-page-content">
-                <div id="type-form" class="form-one d-none">
+                <div id="type-form" class="form-one">
                     <div class="form-top-container">
                         <p class="form-header">Student Type</p>
                         <div class="form-input">
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="payment-form" class="form-four">
+                <div id="payment-form" class="form-four d-none">
                     <div class="form-top-container">
                         <p class="form-header">OTR and Payment Mode</p>
                         <div class="form-input">

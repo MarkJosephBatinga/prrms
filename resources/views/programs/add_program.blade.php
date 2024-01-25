@@ -49,7 +49,7 @@
                 <div class="form-bottom-container">
                     <i class="clear-button clear-one">Clear</i>
                     <div class="button-container">
-                        <a href="{{ route('programs') }}"><i class="back-button">Back</i></a>
+                        <a href="{{ route('programs') }}" class="back-button"><i>Back</i></a>
                         <i class="continue-button continue-one ml-3" id="prog-info-next">Continue</i>
                         <i class="clear-button-responsive clear-one">Clear all Answers</i>
                     </div>

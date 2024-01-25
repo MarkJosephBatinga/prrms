@@ -470,11 +470,15 @@ body {
 /* STUDENT STYLES START HERE */
 
     .progress-status-card{
-        margin-top: 40px;
+        margin-bottom: 40px;
         padding: 20px;
         border-radius: 10px;
         border: 3px solid #104F88;
         box-shadow: 4px 5px 5px 0px rgba(0, 0, 0, 0.25);
+    }
+    .progress-status-card p{
+        font-weight: 500;
+        font-size: 16px;
     }
 
     .step-wizard {
@@ -484,6 +488,8 @@ body {
         align-items: center;
     }
     .step-wizard-list{
+        padding: 0;
+        width: 100%;
         color: #000;
         list-style-type: none;
         border-radius: 10px;
@@ -496,11 +502,9 @@ body {
         -webkit-box-flex: 1;
         -ms-flex-positive:1;
         flex-grow: 1;
-        max-width: 100%;
         display: flex;
         flex-direction: column;
         text-align: center;
-        min-width: 250px;
         position: relative;
     }
     .step-wizard-item + .step-wizard-item:after{
@@ -592,47 +596,21 @@ body {
         text-align: left;
     }
 
-    .top-nav-container a{
-        color: #000;
-        text-decoration: none;
+    .course-sched-item{
+        line-height: 0.5;
+        padding: 20px 10px 5px 10px;
+        display: none;
+        background: #6EB1EE;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .course-sched-item .course-name{
+        width: 70%;
     }
 
-    .modal-container .body{
-        padding: 1rem 2rem 2rem 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-        line-height: 1;
-    }
-    .modal-container .body .heading-text{
-        color: #104F88;
-        font-weight: 600;
-        text-align: center;
-        font-size: 25px;
-    }
-    .modal-container .body .info-text{
-        color: #6C757D;
-        text-align: center;
-        font-size: 14px;
-    }
-    .modal-container .body .button-container{
-        display: flex;
-        flex-direction: row;
-        gap: 15px;
-        margin-top: 10px;
-    }
-    .modal-container .continue-button{
-        background: #104F88;
-    }
-    .body .button-container .cancel{
-        color: #FFF;
-        background : #1777CD;
-    }
-    .body .button-container .delete{
-        color: #FFF;
-        background : #D61422;
+    .course-sched-item .course-time{
+        width: 30%;
     }
 
     .pre-registration-status{
@@ -643,7 +621,6 @@ body {
         flex-direction: column;
         padding: 30px 30px 0 30px;
     }
-        
     .pre-registration-status p{
         font-weight: 600;
     }
@@ -750,7 +727,13 @@ body {
         border-radius: 4px;
     }
     .button-container .continue-button{
+        font-size: 14px;
+        width: 100%;
         margin: 0 !important;
+    }
+    .button-container .back-button{
+        font-size: 14px;
+        width: 100%;
     }
     .button-container .clear-button-responsive{
         display: block;
@@ -877,6 +860,56 @@ body {
         font-size: 14px;
     }
 
+    .progress-status-card{
+        padding: 15px;
+        border: 2px solid #104F88;
+    }
+    .progress-status-card p{
+        font-size: 13px;
+    }
+    .progress-count:after{
+        height: 35px;
+        width: 35px;
+    }
+    .progress-count:before{
+        height: 8px;
+        width: 15px;
+    }
+    .progress-label{
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .pre-registration-status{
+        border-bottom: 2px solid #104F88;
+        padding: 10px;
+    }
+    .pre-registration-status p{
+        font-size: 12px;
+    }
+
+    .non-centered table{
+        display: none;
+    }
+
+    .course-sched-item{
+        display: flex;
+    }
+    .course-sched-item .course-name{
+        font-size: 12px;
+    }
+    .course-name .desc{
+        font-weight: 300;
+        font-size: 11px;
+    }
+    .course-sched-item .course-time{
+        font-size: 8px;
+    }
+    .course-time .sched-time{
+        font-weight: 300;
+        font-size: 12px;
+    }
+
 }
 
 @media (min-width: 320px) and (max-width: 767px){
@@ -978,7 +1011,13 @@ body {
         border-radius: 4px;
     }
     .button-container .continue-button{
+        font-size: 12px;
+        width: 100%;
         margin: 0 !important;
+    }
+    .button-container .back-button{
+        font-size: 12px;
+        width: 100%;
     }
     .button-container .clear-button-responsive{
         display: block;
@@ -1113,4 +1152,55 @@ body {
     .grade-card-heading{
         font-size: 12px;
     }
+
+    .progress-status-card{
+        padding: 15px;
+        border: 2px solid #104F88;
+    }
+    .progress-status-card p{
+        font-size: 10px;
+    }
+    .progress-count:after{
+        height: 30px;
+        width: 30px;
+    }
+    .progress-count:before{
+        height: 8px;
+        width: 15px;
+    }
+    .progress-label{
+        font-size: 8px;
+        margin-top: 5px;
+    }
+
+    .pre-registration-status{
+        border-bottom: 2px solid #104F88;
+        padding: 10px;
+    }
+    .pre-registration-status p{
+        font-size: 10px;
+    }
+
+    .non-centered table{
+        display: none;
+    }
+
+    .course-sched-item{
+        display: flex;
+    }
+    .course-sched-item .course-name{
+        font-size: 8px;
+    }
+    .course-name .desc{
+        font-weight: 300;
+        font-size: 8px;
+    }
+    .course-sched-item .course-time{
+        font-size: 8px;
+    }
+    .course-time .sched-time{
+        font-weight: 300;
+        font-size: 8px;
+    }
+
 }

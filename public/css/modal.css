@@ -17,8 +17,45 @@
         font-weight: 600;
         color: #104F88;
     }
-/* END */
 
+    .modal-container .body{
+        padding: 1rem 2rem 2rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        line-height: 1;
+    }
+    .modal-container .body .heading-text{
+        color: #104F88;
+        font-weight: 600;
+        text-align: center;
+        font-size: 25px;
+    }
+    .modal-container .body .info-text{
+        color: #6C757D;
+        text-align: center;
+        font-size: 14px;
+    }
+    .modal-container .body .button-container{
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-top: 10px;
+    }
+    .modal-container .continue-button{
+        background: #104F88;
+    }
+    .body .button-container .cancel{
+        color: #FFF;
+        background : #1777CD;
+    }
+    .body .button-container .delete{
+        color: #FFF;
+        background : #D61422;
+    }
+/* END */
 
 /* PRE REGISTRATION */
     .modal-container .modal-header{
@@ -71,44 +108,41 @@
 /* END */
 
 
-/* PROGRAM */
-    .modal-container .prog-modal-body{
-        padding: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-    }
-    .prog-modal-body .courses-checkbox{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-    }
-    .prog-modal-body .button-container{
-        gap: 30px;
-        margin-top: 40px;
-        width: 90%;
-        display: flex;
-        justify-content: space-between;
-    }
-    .prog-modal-body .button-container button , .prog-modal-body .button-container i{
-        width: 200px;
-    }
-    .prog-modal-body .button-container .cancel-btn{
-        color: #FFF;
-        background:#0B4870;
-    }
-    .prog-modal-body .button-container .add-btn{
-        color: #FFF;
-        background: #104F88;
-        width: 200px;
-    }
-/* END */
-
-
 @media (min-width: 768px) and (max-width: 1024px){
+    .modal-container{
+        left: 50%;
+    }
+    .modal-container .modal-content{
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .modal-container .body img{
+        width: 320px;
+    }
+    .modal-container .body .heading-text{
+        font-size: 14px;
+    }
+    .modal-container .body .info-text{
+        font-size: 12px;
+    }
+    .button-container a, .button-container button{
+        font-size: 14px;
+        width: 150px;
+    }
+
+    .modal-container .modal-content p{
+        font-size: 18px;
+    }
+    .modal-container .eval-modal-body textarea{
+        width: 350px;
+        font-size: 12px;
+    }
+    .modal-header i{
+        font-size: 20px;
+    }
+
+
 }
 
 @media (min-width: 320px) and (max-width: 767px){
@@ -120,7 +154,45 @@
         width: 100%;
         border-radius: 20px;
     }
-    .modal-container .modal-content p{
+    
+    .modal-container .body img{
+        width: 220px;
+    }
+    .modal-container .body .heading-text{
         font-size: 12px;
     }
+    .modal-container .body .info-text{
+        font-size: 8px;
+    }
+    .button-container a, .button-container button{
+        font-size: 10px;
+        width: 100px;
+    }
+
+
+    .modal-container .modal-content p{
+        font-size: 14px;
+    }
+    .modal-container .eval-modal-body{
+        padding: 0 20px 20px 20px;
+    }
+    .modal-container .eval-modal-body textarea{
+        width: 250px;
+        font-size: 8px;
+    }
+    .modal-header i{
+        font-size: 16px;
+    }
+    .eval-modal-body .button-container{
+        flex-direction: column;
+        width: 100%;
+    }
+    .eval-modal-body .button-container button{
+        width: 100%;
+    }
+    .eval-modal-body .button-container #approve-btn{
+       margin-top: 15px;
+    }
+
+    
 }

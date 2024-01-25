@@ -62,6 +62,19 @@
                 </tbody>
             </table>
         </div>
+
+        @foreach ($student->course as $course)
+            <div class="course-sched-item">
+                <div class="course-name">
+                    <p class="code">{{$course->course->course_code}}</p>
+                    <p class="desc">{{$course->course->descriptive_title}}</p>
+                </div>
+                <div class="course-time">
+                    <p class="sched-day">{{ optional($course->course->schedules)->day ?? 'No schedule' }}</p>
+                    <p class="sched-time">{{ optional($course->course->schedules)->time ?? '' }}</p>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection

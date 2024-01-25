@@ -7,7 +7,7 @@
 @section('body')
     <div class="content">
         <!-- Content Header -->
-        <div class="content-header mt-4 mb-n4">
+        <div class="content-header mb-n4">
             <h3 class="content-header mt-2">Student Pre-Registration</h3>
         </div>
         <!-- Registration Status -->
