@@ -116,6 +116,12 @@ class AuthController extends Controller
         return view('profile.student_profile', $data);
     }
 
+    public function profile_edit() {
+        $user_id = Auth::user()->student_id;
+        $data['student'] = Student::with(['program_info'])->where('id', $user_id)->first();
+        return view('profile.edit_profile', $data);
+    }
+
     private function generateStudentId() {
         $currentYear = Carbon::now()->format('Y');
         $lastStudent = User::whereYear('created_at', '=', Carbon::now()->year)->orderByDesc('id')->first();
