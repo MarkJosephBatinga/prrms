@@ -1,5 +1,9 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,6 +11,8 @@ body {
     background-color: #FAFCFE;
 }
 .container {
+    height: 100vh;
+    margin: 0;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -67,14 +73,14 @@ body {
     }
     .input-text {
         width: 100%;
-        padding-left: 10px; 
+        padding-left: 10px;
         box-sizing: border-box;
         height: 35px;
     }
     .input-text, select {
         background: #FFF;
         border: 1px solid #6D6D6D;
-        border-radius: 5px; 
+        border-radius: 5px;
         outline: none;
     }
 
@@ -82,7 +88,7 @@ body {
         margin-top: -15px;
         display: flex;
         flex-wrap: wrap;
-        gap: 15px; 
+        gap: 15px;
         padding: 10px;
     }
     .input-checkbox div {
@@ -151,7 +157,7 @@ body {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        height: 20%; 
+        height: 20%;
     }
     .button-container i,  .button-container button{
         height: 40px;
@@ -193,7 +199,7 @@ body {
         margin: 10px 0 -30px 0;
     }
     .d-none{
-        display:none;   
+        display:none;
     }
 
     ul.progress-steps{
@@ -261,19 +267,19 @@ body {
         height: 80px;
         background-color: #B9B9B9;;
     }
-    
+
 /* END */
 
 
 @media (min-width: 768px) and (max-width: 1024px) {
- 
+
     body{
-        overflow-x: hidden; 
-        overflow-y: scroll; 
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
-    
+
     .container {
-        flex-direction: column; 
+        flex-direction: column;
         height: auto;
         overflow-x: hidden;
     }
@@ -332,7 +338,7 @@ body {
         font-size: 18px;
     }
     .sub-text{
-        font-size: 14px;
+            font-size: 14px;
     }
     #mobile-login-link{
         padding: 10px 0 15px 0;
@@ -353,11 +359,11 @@ body {
     .file-uploads {
         flex-direction: column;
         gap: 10px;
-    }  
+    }
     .custom-file-input {
         width: 100%;
         font-size: 12px;
-    }  
+    }
 
     .form-input{
         margin-top: 30px;
@@ -384,12 +390,12 @@ body {
 @media (min-width: 320px) and (max-width: 767px) {
 
     body {
-        overflow-x: hidden; 
-        overflow-y: scroll; 
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
-    
+
     .container {
-        flex-direction: column; 
+        flex-direction: column;
         height: auto;
         overflow-x: hidden;
     }
@@ -475,7 +481,7 @@ body {
         height: 30px;
         width: 100%;
         font-size: 10px;
-    }    
+    }
 
     .form-input{
         margin-top: 30px;
@@ -497,8 +503,8 @@ body {
     .button-container .continue-button{
         margin: 15px 0 0 0;
     }
-    
-} 
+
+}
 
 
 

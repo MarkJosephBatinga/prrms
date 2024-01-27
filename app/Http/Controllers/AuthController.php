@@ -26,6 +26,10 @@ class AuthController extends Controller
         return view('register', $data);
     }
 
+    public function new_student() {
+        return view('new_student');
+    }
+
     public function login_post(Request $req) {
         $credentials = [
             'email' => $req->id_number,
@@ -53,7 +57,7 @@ class AuthController extends Controller
             'nationality' => $req->input('nationality'),
             'address' => $req->input('address'),
             'mobile_number' => $req->input('mobile_number'),
-            'program' => $req->input('program'),
+            'program' => ($req->input('program') != null) ? $req->input('program') : 'No Program',
             'file_record' => $filePath,
             'birth_cert' => $birthCert,
             'letter_intent' => $letterIntent,
@@ -64,7 +68,9 @@ class AuthController extends Controller
         $studentId = $student->id;
         $courses = $req->input('courses');
 
-        $this->saveStudentCourses($studentId, $courses);
+        if($courses !== null) {
+            $this->saveStudentCourses($studentId, $courses);
+        }
 
         $data['student_id'] = $this->generateStudentId();
         $data['password'] = 'pass';

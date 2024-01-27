@@ -79,6 +79,10 @@ body {
     font-size: 12px;
     margin-bottom: 40px;
 }
+
+#login-text{
+    font-size: 12px;
+}
 #signup-nav{
     font-style: none;
     color: #104F88;
@@ -123,7 +127,7 @@ body {
     #sub-heading-text{
         font-size: 14px;
     }
-    
+
     .error-text{
         font-size: 12px;
     }
@@ -144,7 +148,7 @@ body {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-  
+
     body{
         background: linear-gradient(192deg, #1464AB 0%, #D7EAFA 104.34%);
     }
@@ -153,7 +157,7 @@ body {
         display: flex;
         justify-content: center;
     }
-   
+
     .login-form-container{
         width: 100%;
     }

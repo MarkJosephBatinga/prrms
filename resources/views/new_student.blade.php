@@ -22,12 +22,8 @@
                     <span>2</span>
                     <p>Personal Information</p>
                 </li>
-                <li class="tab-three tab-status step" id="tab_three">
-                    <span>3</span>
-                    <p>Program Offerings</p>
-                </li>
                 <li class="tab-four tab-status step">
-                    <span>4</span>
+                    <span>3</span>
                     <p>OTR and Payment Mode</p>
                 </li>
             </ul>
@@ -40,19 +36,15 @@
                     <h3 class="sub-heading-text">Student Type</h3>
                     <div class="input-group">
                         <label class="label-input">Student Type:</label>
-                        <select class="input-text student_type" id="student_type" name="student_type">
-                            <option value="Old Student">Old Student</option>
-                            <option value="Returning Student">Returning Student</option>
-                        </select>
+                        <input type="text" class="input-text student_type" id="student_type" name="student_type" value="New Student" readonly/>
                     </div>
                     <div class="input-group">
                         <label class="label-input">Student Status:</label>
                         <input type="text" class="input-text student_type" id="student_status" name="student_status"/>
                     </div>
-                    <div class="input-group" id="years_stop_grp">
-                        <label class="label-input">Number of Years Stop:</label>
-                        <input type="number" class="input-text non_req" id="years_stop" name="years_stop"/>
-                    </div>
+                    <input type="hidden" class="input-text non_req" id="years_stop" name="years_stop"/>
+                    <input type="hidden" class="input-text non_req" id="courses" name="courses" value=""/>
+                    <input type="hidden" class="input-text non_req" id="program" name="program" value=""/>
                 </div>
                 <div class="button-container">
                     <i class="continue-button continue-one">Continue</i>
@@ -86,35 +78,6 @@
             </div>
 
             <div class="form-container form-three d-none">
-                <div class="form-input">
-                    <h3 class="sub-heading-text">Program Offerings</h3>
-                    <div class="input-group">
-                        <label class="label-input">Program</label>
-                        <select name="program" id="program" class="input-text program_offer">
-                            <option value="">Select</option>
-                            @if(isset($programs) && $programs != null)
-                                @foreach($programs as $program)
-                                <option value="{{$program->id}}">{{$program->program_name}}</option>
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label class="label-input">Courses to Enroll</label>
-                        <p class="sub-text">To be enrolled only by those who have completed the academic requirements</p>
-                    </div>
-                    <div class="input-checkbox">
-                        <div class="input-checkbox" id="populate_checkbox">
-                        </div>
-                    </div>
-                </div>
-                <div class="button-container">
-                    <i class="back-button back-three">Back</i>
-                    <i class="continue-button continue-three">Continue</i>
-                </div>
-            </div>
-
-            <div class="form-container form-four d-none">
                 <div class="form-input">
                     <h3 class="sub-heading-text">File Records and Payment</h3>
                     <div class="input-group">
@@ -171,7 +134,7 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <i class="back-button back-four">Back</i>
+                    <i class="back-button back-three">Back</i>
                     <button type="submit" class="continue-button">Submit</button>
                 </div>
             </div>

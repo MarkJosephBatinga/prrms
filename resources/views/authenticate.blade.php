@@ -19,7 +19,7 @@
         </div>
 
         <div class="button-container">
-            <a type="button" class="form-button" href="{{ route('login')}}">Go to Dashboard</a>
+            <a type="button" class="form-button" href="{{ route('login')}}">Login Account</a>
         </div>
     </div>
 </body>

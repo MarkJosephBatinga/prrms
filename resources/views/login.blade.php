@@ -23,7 +23,8 @@
                 <input name="id_number" id="id_number" type="text" placeholder="ID Number" class="login-text-box"/>
                 <input name="password" id="password" type="password" placeholder="Password" class="login-text-box" />
                 <button type="submit" id="signin-btn">Sign In</button>
-                <p id="below-login-text"></a> Don't have an account yet? <a id="signup-nav" href="{{ route('register') }}">Create an account here.</a></p>
+                <p id="login-text"></a> Old and Returning Student? <a id="signup-nav" href="{{ route('register') }}">Create an account here.</a></p>
+                <p id="below-login-text"></a> New Student? <a id="signup-nav" href="{{ route('new_student') }}">Pre-register here.</a></p>
             </div>
         </form>
         <div class="login-image-container">
