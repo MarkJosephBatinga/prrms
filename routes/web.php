@@ -7,6 +7,7 @@ use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RegistrarController;
+use App\Http\Controllers\DownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,4 +84,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/student/profile/edit', [AuthController::class, 'profile_edit'])->name('profile_edit');
 
     Route::get('/student/grades', [RegistrarController::class, 'student_grades'])->name('student_grades');
+    Route::post('/download', [DownloadController::class, 'download_file'])->name('download_file');
 });
