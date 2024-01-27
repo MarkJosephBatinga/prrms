@@ -37,7 +37,7 @@
                             <td>{{$student->student_type}}</td>
                             <td>{{$student->name}}</td>
                             <td>{{$student->nationality}}</td>
-                            <td>{{$student->program_info->program_name}}</td>
+                            <td>{{isset($student->program_info) ? $student->program_info->program_name : 'No Program'}}</td>
                             <td class="table-actions">
                                 <a href="{{route('view_record', $student->id)}}"> <i class='bx bx-file-find action-icons mr-2'></i> </a>
                                 <a href="{{route('edit_record', $student->id)}}"> <i class='bx bx-pencil action-icons mr-2'></i> </a>

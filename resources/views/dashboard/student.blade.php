@@ -42,7 +42,7 @@
 
     <div class="progress-status-card">
         <div class="text-header">
-            <p>{{$student->program_info->program_name}}</p>
+            <p>{{(isset($student->program_info)) ? $student->program_info->program_name : 'No Program'}}</p>
             <p>School Year: {{ date('Y') . '-' . date('Y', strtotime('+1 year')) }}</p>
         </div>
         <div class="table-container non-centered">

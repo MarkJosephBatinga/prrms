@@ -108,13 +108,17 @@
             <div id="program-details" class="detail-three info d-none">
                 <div class="detail-group">
                     <p class="detail-label">Program</p>
-                    <p class="details-value">{{$student->program_info->program_name}}</p>
+                    <p class="details-value">{{(isset($student->program_info)) ? $student->program_info->program_name : 'No Program'}}</p>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Course to Enroll</p>
-                    @foreach ($student->course as $c)
-                        <p class="details-value">{{$c->course->descriptive_title}} ({{$c->course->course_code}})</p>
-                    @endforeach
+                    @if($student->course !== null)
+                        @foreach ($student->course as $c)
+                            <p class="details-value">{{$c->course->descriptive_title}} ({{$c->course->course_code}})</p>
+                        @endforeach
+                    @else
+                    <p class="details-value">No Courses</p>
+                    @endif
                 </div>
             </div>
             <div id="payment-details" class="detail-four info d-none">
