@@ -83,7 +83,7 @@
                 <div class="detail-three info d-none">
                     <div class="detail-group">
                         <p class="detail-label">Program</p>
-                        <p class="details-value">{{$student->program_info->program_name}}</p>
+                        <p class="details-value">{{(isset($student->program_info)) ? $student->program_info->program_name : 'No Program'}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Courses</p>
