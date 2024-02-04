@@ -11,14 +11,14 @@
             <a href="{{route('programs')}}" class="view-back-button"> < Back </a>
             <div class="action-container">
                 <a href="{{route('edit_program', $program->id)}}"><i class='bx bx-pencil action-icons'></i></a>
-                <a href="#" id="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
+                <a href="#" class="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
             </div>
         </div>
         <div class="view-page-header mt-4 mb-n4">
             <h3 class="view-header mt-2">{{$program->program_name}}</h3>
             <div class="action-container">
                 <a href="{{route('edit_program', $program->id)}}"><i class='bx bx-pencil action-icons'></i></a>
-                <a href="#" id="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
+                <a href="#" class="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
             </div>
         </div>
         <!-- Program Details -->
@@ -202,6 +202,6 @@
 @endpush
 
 @push('js_scripts')
-    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 @endpush

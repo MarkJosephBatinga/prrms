@@ -178,6 +178,7 @@ class AuthController extends Controller
     public function profile_edit() {
         $user_id = Auth::user()->student_id;
         $data['student'] = Student::with(['program_info'])->where('id', $user_id)->first();
+        $data['programs'] = Program::all();
         $data['student_status'] = ApprovalLog::where('student_id', $user_id)->first();
         return view('profile.edit_profile', $data);
     }

@@ -10,7 +10,7 @@
             <a href="{{route('courses')}}" class="view-back-button"> < Back </a>
             <div class="action-container">
                 <a href="{{route('edit_course', $course->id)}}"><i class='bx bx-pencil action-icons'></i></a>
-                <a href="#" id="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
+                <a href="#" class="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
             </div>
         </div>
         <!-- Content Header -->
@@ -18,7 +18,7 @@
             <h3 class="view-header mt-2">{{$course->descriptive_title}}</h3>
             <div class="action-container">
                 <a href="{{route('edit_course', $course->id)}}"><i class='bx bx-pencil action-icons'></i></a>
-                <a href="#" id="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
+                <a href="#" class="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
             </div>
         </div>
         <!-- Program Details -->

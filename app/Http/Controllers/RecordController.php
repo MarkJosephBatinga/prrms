@@ -10,6 +10,8 @@ use App\Models\ApprovalLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class RecordController extends Controller
 {
@@ -50,9 +52,14 @@ class RecordController extends Controller
     public function get_courses($program_id, $student_id) {
         $courses = ProgramCourse::with(['course'])->where('program_id', $program_id)->get();
         $student_courses = StudentCourse::where('student_id', $student_id)->get();
+        $selected_courses = null;
 
         foreach ($courses as $course) {
-            $is_selected = $student_courses->contains('course_id', $course->course->id);
+            if($student_courses !== null) {
+                $is_selected = $student_courses->contains('course_id', $course->course->id);
+            } else {
+                $is_selected = false;
+            }
 
             $selected_courses[] = [
                 'course_id' => $course->course->id,

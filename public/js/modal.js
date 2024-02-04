@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $('#openDeleteModal').on('click', function () {
+    $('.openDeleteModal').on('click', function () {
+        console.log('hello');
         // Show the modal
         $('.delete-modal').removeClass('d-none');
     });

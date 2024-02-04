@@ -226,4 +226,45 @@
 
 @push('js_scripts')
     <script src="{{ asset('js/main.js') }}"></script>
+    <script>
+        function getStudentCourse(program_id, student_id) {
+            $.ajax({
+                url: '/records/get_student_course/' + program_id + '/' + student_id,
+                method: 'GET',
+                success: function (data) {
+                    // Clear existing checkboxes
+                    $('#populate_checkbox').empty();
+
+                    // Populate checkboxes based on the fetched courses
+                    data.forEach(function (course) {
+                        var new_checkbox = '<div class="checkbox-container">';
+                        new_checkbox += '<input type="checkbox" id="course_' + course.course_id + '" name="courses[]" value="' + course.course_id + '"'+ course.is_selected +'/>';
+                        new_checkbox += '<label class="checkbox-label">' + course.descriptive_title + '</label>';
+                        new_checkbox += '</div>';
+
+                        $('#populate_checkbox').append(new_checkbox);
+                    });
+                },
+                error: function (error) {
+                    console.log('Error fetching courses:', error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            getStudentCourse($('#program').val(), $('#id').val())
+
+            // On change of the program select
+            $('#program').change(function () {
+                // Get the selected program ID
+                var programId = $(this).val();
+                var studentId = $('#id').val();
+
+                // Make an Ajax request to get courses based on the program ID
+                getStudentCourse(programId, studentId)
+            });
+
+
+        });
+    </script>
 @endpush
