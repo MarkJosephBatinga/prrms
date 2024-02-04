@@ -82,6 +82,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/student/course/view/{id}', [CourseController::class, 'student_view'])->name('student_course_view');
     Route::get('/student/profile', [AuthController::class, 'profile_view'])->name('profile_view');
     Route::get('/student/profile/edit', [AuthController::class, 'profile_edit'])->name('profile_edit');
+    Route::post('/student/profile/edit_save', [AuthController::class, 'edit_post'])->name('edit_post');
 
     Route::get('/student/grades', [RegistrarController::class, 'student_grades'])->name('student_grades');
     Route::post('/download', [DownloadController::class, 'download_file'])->name('download_file');

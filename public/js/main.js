@@ -376,7 +376,7 @@ var mainJs = {
             $(self.elements.hamburgerButton).click(function() {
 
                 var responsiveMenu = $(self.elements.responsiveMenu);
-            
+
                 if (responsiveMenu.css('display') == 'none') {
                     responsiveMenu.css('display', 'block');
                 } else {
@@ -384,7 +384,7 @@ var mainJs = {
                 }
             });
 
-        }, 
+        },
 
         init : function () {
             var _self = this;
@@ -421,9 +421,43 @@ document.addEventListener('DOMContentLoaded', function () {
         if (studentTypeSelect.value === 'Returning Student') {
             yearsStopInput.style.display = 'block';
         } else if (studentTypeSelect.value === 'New Student') {
-            yearsStopInput.style.display = 'block';
+            yearsStopInput.style.display = 'none';
         } else  {
             yearsStopInput.style.display = 'none';
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+         // Get the input elements and the error message element
+         var newPasswordInput = document.getElementById('new_pass');
+         var confirmPasswordInput = document.getElementById('con_pass');
+         var errorMessage = document.querySelector('.text-danger');
+         var submitButton = document.querySelector('.continue-button');
+
+         errorMessage.style.display = 'none';
+         submitButton.disabled = false;
+         submitButton.style.backgroundColor = '';
+
+         // Function to check if passwords match and are not empty
+         function checkPasswords() {
+             var newPassword = newPasswordInput.value;
+             var confirmPassword = confirmPasswordInput.value;
+
+            if (newPassword === confirmPassword) {
+                errorMessage.style.display = 'none';
+                submitButton.disabled = false;
+                submitButton.style.backgroundColor = ''; // Reset to default style
+            } else {
+                errorMessage.style.display = 'block';
+                submitButton.disabled = true;
+                submitButton.style.backgroundColor = 'red';
+            }
+
+         }
+
+         // Add event listeners to the input fields
+         newPasswordInput.addEventListener('input', checkPasswords);
+         confirmPasswordInput.addEventListener('input', checkPasswords);
+
 });

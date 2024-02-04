@@ -74,26 +74,42 @@
                     <div id="file-details">
                         <div class="detail-group">
                             <p class="detail-label">OTR</p>
-                            <button class="download-button">Download</button>
+                            <form action="{{ route('download_file') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="filename" value="{{$student->file_record}}">
+                                <button class="download-button"  type="submit" class="download-button">Download</button>
+                            </form>
                         </div>
                         <div class="detail-group">
                             <p class="detail-label">Birth Certificate</p>
-                            <button class="download-button">Download</button>
+                            <form action="{{ route('download_file') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="filename" value="{{$student->birth_cert}}">
+                                <button class="download-button"  type="submit" class="download-button">Download</button>
+                            </form>
                         </div>
                         <div class="detail-group">
                             <p class="detail-label">Letter of Intent</p>
-                            <button class="download-button">Download</button>
+                            <form action="{{ route('download_file') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="filename" value="{{$student->letter_intent}}">
+                                <button class="download-button"  type="submit" class="download-button">Download</button>
+                            </form>
                         </div>
                         <div class="detail-group">
                             <p class="detail-label">Recommendation Letter</p>
-                            <button class="download-button">Download</button>
+                            <form action="{{ route('download_file') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="filename" value="{{$student->rec_letter}}">
+                                <button class="download-button"  type="submit" class="download-button">Download</button>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="detail-four info d-none">
                     <div class="detail-group">
                         <p class="detail-label">ID Number</p>
-                        <p class="details-value">2022-001</p>
+                        <p class="details-value">{{ Auth::user()->email}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Password</p>

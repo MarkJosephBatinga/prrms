@@ -94,6 +94,65 @@ class AuthController extends Controller
         ]);
     }
 
+    public function edit_post(Request $req) {
+        $student = Student::find($req->input('id'));
+
+        if ($student) {
+            $updateData = [
+                'student_type' => $req->input('student_type'),
+                'student_status' => $req->input('student_status'),
+                'years_stop' => $req->input('years_stop'),
+                'name' => $req->input('name'),
+                'nationality' => $req->input('nationality'),
+                'address' => $req->input('address'),
+                'mobile_number' => $req->input('mobile_number'),
+                'program' => ($req->input('program') != null) ? $req->input('program') : 'No Program',
+                'payment_mode' => $req->input('payment_mode'),
+            ];
+
+            if ($req->hasFile('file_record')) {
+                $updateData['file_record'] = $this->saveFileRecord($req->file('file_record'));
+            }
+
+            if ($req->hasFile('birth_cert')) {
+                $updateData['birth_cert'] = $this->saveBirthCert($req->file('birth_cert'));
+            }
+
+            if ($req->hasFile('letter_intent')) {
+                $updateData['letter_intent'] = $this->saveLetterIntent($req->file('letter_intent'));
+            }
+
+            if ($req->hasFile('rec_letter')) {
+                $updateData['rec_letter'] = $this->saveRecLetter($req->file('rec_letter'));
+            }
+
+            $student->update($updateData);
+        }
+
+        $studentId = $student->id;
+        $courses = $req->input('courses');
+
+        if($courses !== null) {
+            $this->saveStudentCourses($studentId, $courses);
+        }
+
+        if($req->input('new_pass') !== null) {
+            $data['student_id'] = $req->input('email');
+            $data['password'] = $req->input('new_pass');
+
+            $user = User::find(Auth::user()->id); // Replace $userId with the actual user ID you want to update
+
+            if ($user) {
+                $user->update([
+                    'email' => $req->input('email'),
+                    'password' => Hash::make($data['password']),
+                ]);
+            }
+        }
+
+        return redirect()->route('profile_view');
+    }
+
     public function show_credentials($student_id, $password) {
         return view('authenticate', compact('student_id', 'password'));
     }
@@ -119,6 +178,7 @@ class AuthController extends Controller
     public function profile_edit() {
         $user_id = Auth::user()->student_id;
         $data['student'] = Student::with(['program_info'])->where('id', $user_id)->first();
+        $data['student_status'] = ApprovalLog::where('student_id', $user_id)->first();
         return view('profile.edit_profile', $data);
     }
 
@@ -153,7 +213,6 @@ class AuthController extends Controller
 
         return $password;
     }
-
 
     private function saveFileRecord($file) {
         return Storage::putFile('file_records', $file);
