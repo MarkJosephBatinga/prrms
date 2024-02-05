@@ -58,4 +58,5 @@
 @push('js_scripts')
     <script src="{{ asset('js/modal.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/filterCards.js') }}"></script>
 @endpush

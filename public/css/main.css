@@ -122,7 +122,12 @@ body {
     text-decoration: none;
     color: #FFFFFF;
 }
-
+.table-container table tbody #no-result-row{
+    display: none;
+    text-align:center; 
+    color:red; 
+    font-weight:500
+}
 
 .sub-page-header{
     color:#104F88;

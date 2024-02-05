@@ -20,7 +20,7 @@
     </div>
     <!-- Records Table -->
     <div class="table-container">
-        <table>
+        <table class="table-results">
             <thead>
                 <th>Student ID</th>
                 <th>Student Type</th>
@@ -45,6 +45,9 @@
                             </td>
                         </tr>
                     @endforeach
+                    <tr id="no-result-row">
+                        <td colspan="6">No results Found!</td>
+                    </tr>
                 @endif
             </tbody>
         </table>
@@ -85,4 +88,5 @@
 @push('js_scripts')
     <script src="{{ asset('js/modal.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/filterTable.js') }}"></script>
 @endpush
