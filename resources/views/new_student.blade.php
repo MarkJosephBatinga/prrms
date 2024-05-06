@@ -22,8 +22,12 @@
                     <span>2</span>
                     <p>Personal Information</p>
                 </li>
-                <li class="tab-four tab-status step">
+                <li class="tab-three tab-status step">
                     <span>3</span>
+                    <p>Program Offerings</p>
+                </li>
+                <li class="tab-four tab-status step">
+                    <span>4</span>
                     <p>OTR and Payment Mode</p>
                 </li>
             </ul>
@@ -39,12 +43,29 @@
                         <input type="text" class="input-text student_type" id="student_type" name="student_type" value="New Student" readonly/>
                     </div>
                     <div class="input-group">
-                        <label class="label-input">Student Status:</label>
-                        <input type="text" class="input-text student_type" id="student_status" name="student_status"/>
+                        <label class="label-input">School Year</label>
+                        <select class="input-text" name="school_year">
+                            <option value="">Select School Year</option>
+                            @if(isset($school_years) && $school_years != null)
+                                @foreach($school_years as $school_year)
+                                    <option value="{{$school_year->id}}">{{$school_year->school_year}}</option>
+                                @endforeach
+                            @endif
+                        </select>
                     </div>
-                    <input type="hidden" class="input-text non_req" id="years_stop" name="years_stop"/>
-                    <input type="hidden" class="input-text non_req" id="courses" name="courses" value=""/>
-                    <input type="hidden" class="input-text non_req" id="program" name="program" value=""/>
+                    <div class="input-group">
+                        <label class="label-input">Semester</label>
+                        <select class="input-text" name="semester">
+                            <option value="">Select Semester</option>
+                            @if(isset($semesters) && $semesters != null)
+                                @foreach($semesters as $semester)
+                                    <option value="{{$semester->id}}">{{$semester->semester}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                    <input type="hidden" class="input-text non_req" name="years_stop" value="" />
+                    <input type="hidden" class="input-text non_req" name="courses" value=""/>
                 </div>
                 <div class="button-container">
                     <i class="continue-button continue-one">Continue</i>
@@ -70,6 +91,10 @@
                         <label class="label-input">Mobile Number</label>
                         <input name="mobile_number" id="mobile_number" class="input-text personal_info" />
                     </div>
+                    <div class="input-group">
+                        <label class="label-input">Email Address</label>
+                        <input type="text" class="input-text" id="email_address" name="email_address"/>
+                    </div>
                 </div>
                 <div class="button-container">
                     <i class="back-button back-two">Back</i>
@@ -78,6 +103,27 @@
             </div>
 
             <div class="form-container form-three d-none">
+                <div class="form-input">
+                    <h3 class="sub-heading-text">Program Offerings</h3>
+                    <div class="input-group">
+                        <label class="label-input">Program</label>
+                        <select name="program" id="program" class="input-text program_offer">
+                            <option value="">Select</option>
+                            @if(isset($programs) && $programs != null)
+                                @foreach($programs as $program)
+                                <option value="{{$program->id}}">{{$program->program_name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <i class="back-button back-three">Back</i>
+                    <i class="continue-button continue-three">Continue</i>
+                </div>
+            </div>
+
+            <div class="form-container form-four d-none">
                 <div class="form-input">
                     <h3 class="sub-heading-text">File Records and Payment</h3>
                     <div class="input-group">
@@ -134,10 +180,11 @@
                     </div>
                 </div>
                 <div class="button-container">
-                    <i class="back-button back-three">Back</i>
+                    <i class="back-button back-four">Back</i>
                     <button type="submit" class="continue-button">Submit</button>
                 </div>
             </div>
+
             <p id="mobile-login-link"></a> Already have an account? <a id="signin-nav" href="{{route('login')}}">Sign in to your account.</a></p>
         </form>
     </div>

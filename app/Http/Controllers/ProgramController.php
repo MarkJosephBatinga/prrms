@@ -5,6 +5,7 @@ use App\Models\Program;
 use App\Models\Course;
 use App\Models\ProgramCourse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends Controller
 {
@@ -78,13 +79,21 @@ class ProgramController extends Controller
             ]);
         }
 
-        return redirect()->route('programs')->with('success', 'Program updated successfully');;
+        if(Auth::user()->user_type == 'admin'){
+            return redirect()->route('programs')->with('success', 'Program updated successfully');
+        } else{
+            return redirect()->route('pre_register_setup')->with('success', 'Program updated successfully');
+        }
     }
 
     public function delete_program($id) {
         Program::where('id', $id)->delete();
 
-        return redirect()->route('programs')->with('success', 'Program deleted successfully');;
+        if(Auth::user()->user_type == 'admin'){
+            return redirect()->route('programs')->with('success', 'Program deleted successfully');
+        } else{
+            return redirect()->route('pre_register_setup')->with('success', 'Program deleted successfully');
+        }
     }
 
     public function view($id) {
@@ -106,4 +115,32 @@ class ProgramController extends Controller
 
         return view('programs.details', $data);
     }
+
+    public function pre_register_setup(Request $req) {
+
+        $userInfo = Auth::user();
+    
+        if ($userInfo->staff_college == 'college of information technology') {
+            $programs = Program::where('program_name', 'Master in Information Technology')->first();
+            $courses = ProgramCourse::with('course')->where('program_id', $programs->id)->get();
+        } else{
+            $programs = Program::all();
+            $courses = ProgramCourse::with('course')->get();
+        }
+    
+        $data['programs'] = $programs;
+        $data['courses'] = $courses;
+        
+        return view('programs.pre_register_setup', $data);
+    }
+
+    public function update_program_listing_status(Request $req)
+    {
+        $program = Program::findOrFail($req->id);
+        $program->update(['listing_status' => $req->status]);
+    
+        return response()->json(['success' => true]);
+    }
+    
+
 }

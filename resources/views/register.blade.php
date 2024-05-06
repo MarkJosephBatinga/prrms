@@ -39,19 +39,37 @@
                 <div class="form-input">
                     <h3 class="sub-heading-text">Student Type</h3>
                     <div class="input-group">
-                        <label class="label-input">Student Type:</label>
+                        <label class="label-input">Student Type</label>
                         <select class="input-text student_type" id="student_type" name="student_type">
                             <option value="Old Student">Old Student</option>
                             <option value="Returning Student">Returning Student</option>
                         </select>
                     </div>
-                    <div class="input-group">
-                        <label class="label-input">Student Status:</label>
-                        <input type="text" class="input-text student_type" id="student_status" name="student_status"/>
-                    </div>
                     <div class="input-group" id="years_stop_grp">
-                        <label class="label-input">Number of Years Stop:</label>
+                        <label class="label-input">Number of Years Stop</label>
                         <input type="number" class="input-text non_req" id="years_stop" name="years_stop"/>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-input">School Year</label>
+                        <select class="input-text" name="school_year">
+                            <option value="">Select School Year</option>
+                            @if(isset($school_years) && $school_years != null)
+                                @foreach($school_years as $school_year)
+                                    <option value="{{$school_year->id}}">{{$school_year->school_year}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-input">Semester</label>
+                        <select class="input-text" name="semester">
+                            <option value="">Select Semester</option>
+                            @if(isset($semesters) && $semesters != null)
+                                @foreach($semesters as $semester)
+                                    <option value="{{$semester->id}}">{{$semester->semester}}</option>
+                                @endforeach
+                            @endif
+                        </select>
                     </div>
                 </div>
                 <div class="button-container">
@@ -77,6 +95,10 @@
                     <div class="input-group">
                         <label class="label-input">Mobile Number</label>
                         <input name="mobile_number" id="mobile_number" class="input-text personal_info" />
+                    </div>
+                    <div class="input-group">
+                        <label class="label-input">Email Address</label>
+                        <input type="text" class="input-text" id="email_address" name="email_address"/>
                     </div>
                 </div>
                 <div class="button-container">

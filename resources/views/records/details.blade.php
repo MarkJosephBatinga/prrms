@@ -28,7 +28,7 @@
                     <tbody>
                         <tr>
                             <td>Recommending Approval</td>
-                            <td>Admin</td>
+                            <td>Program Chairman</td>
                             @if ($student->approval_log->status === 1)
                                 <td>
                                     <button id="show-endorse">Endorse</button>
@@ -42,7 +42,7 @@
                         </tr>
                         <tr>
                             <td>Approved By</td>
-                            <td>CGS Chairman</td>
+                            <td>Dean</td>
                             @if ($student->approval_log->status === 2)
                                 <td>
                                     <button id="show-evaluate">Evaluate</button>
@@ -55,6 +55,38 @@
                                 <td>Evaluated</td>
                             @endif
                             <td>{{($student->approval_log->status === 3) ? $student->approval_log->notes : ''}}</td>
+                        </tr>
+                        <tr>
+                            <td>Registered By</td>
+                            <td>Registrar</td>
+                            @if ($student->approval_log->status === 3)
+                                <td>
+                                    <button id="show-register">Register</button>
+                                </td>
+                            @elseif($student->approval_log->status <= 2 && $student->approval_log->status != 0)
+                                <td>Not yet evaluated</td>
+                            @elseif($student->approval_log->status === 0)
+                                <td>Rejected</td>
+                            @else
+                                <td>Registered</td>
+                            @endif
+                            <td>{{($student->approval_log->status === 4) ? $student->approval_log->notes : ''}}</td>
+                        </tr>
+                        <tr>
+                            <td>Enrolled By</td>
+                            <td>Registrar</td>
+                            @if ($student->approval_log->status === 4)
+                                <td>
+                                    <button id="show-enroll">Enroll</button>
+                                </td>
+                            @elseif($student->approval_log->status <= 3 && $student->approval_log->status != 0)
+                                <td>Not yet registered</td>
+                            @elseif($student->approval_log->status === 0)
+                                <td>Rejected</td>
+                            @else
+                                <td>Enrolled</td>
+                            @endif
+                            <td>{{($student->approval_log->status === 5) ? $student->approval_log->notes : ''}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -71,20 +103,16 @@
             </div>
             <div id="type-details" class="detail-one info">
                 <div class="detail-group">
-                    <p class="detail-label">Full Name</p>
-                    <p class="details-value">{{$student->name}}</p>
-                </div>
-                <div class="detail-group">
-                    <p class="detail-label">Nationality</p>
-                    <p class="details-value">{{$student->nationality}}</p>
-                </div>
-                <div class="detail-group">
                     <p class="detail-label">Student Type</p>
                     <p class="details-value">{{$student->student_type}}</p>
                 </div>
                 <div class="detail-group">
-                    <p class="detail-label">Student Status</p>
-                    <p class="details-value">{{$student->student_status}}</p>
+                    <p class="detail-label">School Year</p>
+                    <p class="details-value">{{$student->school_year_info->start_date}}</p>
+                </div>
+                <div class="detail-group">
+                    <p class="detail-label">Semester</p>
+                    <p class="details-value">{{$student->semester_info->semester}}</p>
                 </div>
             </div>
             <div id="info-details" class="detail-two info d-none">
@@ -97,12 +125,12 @@
                     <p class="details-value">{{$student->address}}</p>
                 </div>
                 <div class="detail-group">
-                    <p class="detail-label">Facebook Messenger ID</p>
-                    <p class="details-value">https://www.facebook.com/</p>
-                </div>
-                <div class="detail-group">
                     <p class="detail-label">Mobile Number</p>
                     <p class="details-value">{{$student->mobile_number}}</p>
+                </div>
+                <div class="detail-group">
+                    <p class="detail-label">Email Address</p>
+                    <p class="details-value">{{$student->email_address}}</p>
                 </div>
             </div>
             <div id="program-details" class="detail-three info d-none">
@@ -135,6 +163,11 @@
                         <input type="hidden" name="filename" value="{{$student->file_record}}">
                         <button class="download-button"  type="submit" class="download-button">Download</button>
                     </form>
+                    <form class="view-file-form" action="{{ route('view_file') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="filename" value="{{$student->file_record}}">
+                        <button class="download-button"  type="submit" class="download-button">View</button>
+                    </form>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Birth Certificate</p>
@@ -142,6 +175,11 @@
                         @csrf
                         <input type="hidden" name="filename" value="{{$student->birth_cert}}">
                         <button class="download-button"  type="submit" class="download-button">Download</button>
+                    </form>
+                    <form class="view-file-form" action="{{ route('view_file') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="filename" value="{{$student->birth_cert}}">
+                        <button class="download-button"  type="submit" class="download-button">View</button>
                     </form>
                 </div>
                 <div class="detail-group">
@@ -151,6 +189,11 @@
                         <input type="hidden" name="filename" value="{{$student->letter_intent}}">
                         <button class="download-button"  type="submit" class="download-button">Download</button>
                     </form>
+                    <form class="view-file-form" action="{{ route('view_file') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="filename" value="{{$student->letter_intent}}">
+                        <button class="download-button"  type="submit" class="download-button">View</button>
+                    </form>
                 </div>
                 <div class="detail-group">
                     <p class="detail-label">Recommendation Letter</p>
@@ -159,14 +202,60 @@
                         <input type="hidden" name="filename" value="{{$student->rec_letter}}">
                         <button class="download-button"  type="submit" class="download-button">Download</button>
                     </form>
+                    <form class="view-file-form" action="{{ route('view_file') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="filename" value="{{$student->rec_letter}}">
+                        <button class="download-button"  type="submit" class="download-button">View</button>
+                    </form>
                 </div>
             </div>
         </div>
+        <!-- JS Helpers -->
+        <input type="hidden" id="user-type" value="{{Auth::user()->user_type}}">
     </div>
 @endsection
 
 @push('add_content')
-   <!-- Evaluate Modal -->
+
+    <!-- Enroll Modal -->
+    <form action="{{route('edit_approval')}}" method="POST" class="modal-container d-none" id="enroll-modal">
+        @csrf
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class='bx bx-x close-btn hide-modal'></i>
+            </div>
+            <div class="eval-modal-body">
+                <p>Enroll Applicant</p>
+                <input type="hidden" name="id" value="{{$student->id}}">
+                <textarea name="notes"></textarea>
+                <div class="button-container">
+                    <button type="submit" name="status" id="reject-btn" value="0">Reject</button>
+                    <button type="submit" name="status" id="approve-btn" value="5">Approve</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Register Modal -->
+    <form action="{{route('edit_approval')}}" method="POST" class="modal-container d-none" id="register-modal">
+        @csrf
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class='bx bx-x close-btn hide-modal'></i>
+            </div>
+            <div class="eval-modal-body">
+                <p>Register Applicant</p>
+                <input type="hidden" name="id" value="{{$student->id}}">
+                <textarea name="notes"></textarea>
+                <div class="button-container">
+                    <button type="submit" name="status" id="reject-btn" value="0">Reject</button>
+                    <button type="submit" name="status" id="approve-btn" value="4">Approve</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- Evaluate Modal -->
     <form action="{{route('edit_approval')}}" method="POST" class="modal-container d-none" id="evaluate-modal">
         @csrf
         <div class="modal-content">
@@ -185,6 +274,7 @@
         </div>
     </form>
 
+    <!-- Endorse Modal -->
     <form action="{{route('edit_approval')}}" method="POST" class="modal-container d-none" id="endorse-modal">
         @csrf
         <div class="modal-content">

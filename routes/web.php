@@ -7,7 +7,10 @@ use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RegistrarController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\SemesterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,10 +72,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/courses/update', [CourseController::class, 'update_course'])->name('update_course');
     Route::get('/courses/delete/{id}', [CourseController::class, 'delete_course'])->name('delete_course');
 
-     // Registrar
-     Route::get('/grades', [RegistrarController::class, 'grades_index'])->name('grades');
-     Route::get('/grades/view/{id}', [RegistrarController::class, 'view_grades'])->name('view_grades');
-     Route::get('/grades/filter_term/{term}/{id}', [RegistrarController::class, 'get_filtered_grades'])->name('get_filtered_grades');
+    // Registrar
+    Route::get('/grades', [RegistrarController::class, 'grades_index'])->name('grades');
+    Route::get('/grades_remarks_by_course', [RegistrarController::class, 'grades_remarks_by_course'])->name('grades_remarks_by_course');
+    Route::get('/grades/view/{id}', [RegistrarController::class, 'view_grades'])->name('view_grades');
+    Route::get('/grades/filter_term/{term}/{id}', [RegistrarController::class, 'get_filtered_grades'])->name('get_filtered_grades');
 
 
     //  Students
@@ -82,8 +86,44 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/student/course/view/{id}', [CourseController::class, 'student_view'])->name('student_course_view');
     Route::get('/student/profile', [AuthController::class, 'profile_view'])->name('profile_view');
     Route::get('/student/profile/edit', [AuthController::class, 'profile_edit'])->name('profile_edit');
-    Route::post('/student/profile/edit_save', [AuthController::class, 'edit_post'])->name('edit_post');
+    Route::post('/student/profile/update', [AuthController::class, 'profile_update'])->name('profile_update');
 
     Route::get('/student/grades', [RegistrarController::class, 'student_grades'])->name('student_grades');
     Route::post('/download', [DownloadController::class, 'download_file'])->name('download_file');
+    Route::post('/view_file', [DownloadController::class, 'view_file'])->name('view_file');
+
+    // Users
+
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/users/add', [UserController::class, 'add_user'])->name('add_user');
+    Route::post('/users/create', [UserController::class, 'create_user'])->name('create_user');
+    Route::get('/users/edit/{id}', [UserController::class, 'edit_user'])->name('edit_user');
+    Route::post('/users/update', [UserController::class, 'update_user'])->name('update_user');
+    Route::get('/users/delete/{id}', [UserController::class, 'delete_user'])->name('delete_user');
+
+
+    // School Year
+
+    Route::get('/school_year', [SchoolYearController::class, 'index'])->name('school_year');
+    Route::get('/school_year/add', [SchoolYearController::class, 'add_school_year'])->name('add_school_year');
+    Route::post('/school_year/create', [SchoolYearController::class, 'create_school_year'])->name('create_school_year');
+    Route::get('/school_year/edit/{id}', [SchoolYearController::class, 'edit_school_year'])->name('edit_school_year');
+    Route::post('/school_year/update', [SchoolYearController::class, 'update_school_year'])->name('update_school_year');
+    Route::get('/school_year/delete/{id}', [SchoolYearController::class, 'delete_school_year'])->name('delete_school_year');
+
+
+    // Semester
+
+    Route::get('/semester', [SemesterController::class, 'index'])->name('semester');
+    Route::get('/semester/add', [SemesterController::class, 'add_semester'])->name('add_semester');
+    Route::post('/semester/create', [SemesterController::class, 'create_semester'])->name('create_semester');
+    Route::get('/semester/edit/{id}', [SemesterController::class, 'edit_semester'])->name('edit_semester');
+    Route::post('/semester/update', [SemesterController::class, 'update_semester'])->name('update_semester');
+    Route::get('/semester/delete/{id}', [SemesterController::class, 'delete_semester'])->name('delete_semester');
+
+    // Pre register (Program and Course Listing)
+    Route::get('/pre_register_setup', [ProgramController::class, 'pre_register_setup'])->name('pre_register_setup');
+    Route::post('/update_program_listing_status', [ProgramController::class, 'update_program_listing_status'])->name('update_program_listing_status');
+    Route::post('/update_course_listing_status', [CourseController::class, 'update_course_listing_status'])->name('update_course_listing_status');
+
 });

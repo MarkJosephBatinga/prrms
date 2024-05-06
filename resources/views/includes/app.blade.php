@@ -8,6 +8,12 @@
         <div class="wrapper">
             @if(Auth::user()->user_type === 'admin')
                 @include('includes.sidebar')
+            @elseif(Auth::user()->user_type === 'program chairman')
+                @include('includes.program_chairman_sidebar')
+            @elseif(Auth::user()->user_type === 'dean')
+                @include('includes.dean_sidebar')
+            @elseif(Auth::user()->user_type === 'registrar')
+                @include('includes.registrar_sidebar')
             @else
                 @include('includes.stud_sidebar')
             @endif

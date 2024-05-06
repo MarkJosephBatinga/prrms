@@ -36,4 +36,14 @@ class RegistrarController extends Controller
 
         return $grades;
     }
+
+    public function grades_remarks_by_course(){
+
+        $gradeModel = new StudentsGrade();
+
+        $data['grades'] = $gradeModel->grades_remarks_by_course(Auth::user()->staff_college);
+        return view('registrar.dean_grades_index', $data);
+    }
+
+
 }

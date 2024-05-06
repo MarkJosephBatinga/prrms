@@ -23,6 +23,7 @@
         <!-- Pre Registration Form -->
         <form action="{{ route('update_record') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" class="input-text" id="id" name="id" value="{{$student->id}}"/>
             <div class="sub-page-content">
                 <div id="type-form" class="form-one">
                     <div class="form-top-container">
@@ -37,9 +38,30 @@
                                 </select>
                             </div>
                             <div class="input-group">
-                                <label class="label-input">Student Status</label>
-                                <input type="text" class="input-text student_type" id="student_status" name="student_status" value="{{$student->student_status}}"/>
-                                <input type="hidden" class="input-text" id="id" name="id" value="{{$student->id}}"/>
+                                <label class="label-input">School Year</label>
+                                <select class="input-text" name="school_year">
+                                    <option value="">Select School Year</option>
+                                    @if(isset($school_years) && $school_years != null)
+                                        @foreach($school_years as $school_year)
+                                            <option value="{{$school_year->id}}" {{($student->school_year == $school_year->id) ? 'selected' : ''}}>
+                                                {{$school_year->school_year}}
+                                            </option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label class="label-input">Semester</label>
+                                <select class="input-text" name="semester">
+                                    <option value="">Select Semester</option>
+                                    @if(isset($semesters) && $semesters != null)
+                                        @foreach($semesters as $semester)
+                                            <option value="{{$semester->id}}" {{($student->semester == $semester->id) ? 'selected' : ''}}>
+                                                {{$semester->semester}}
+                                            </option>
+                                        @endforeach
+                                    @endif
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -188,9 +210,7 @@
     </div>
 @endsection
 
-
 @push('js_scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/pre-register.js') }}"></script>
 @endpush

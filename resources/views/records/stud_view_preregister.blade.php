@@ -21,19 +21,19 @@
                     </li>
                     <li class="step-wizard-item {{($student->approval_log->status == 1) ? 'current-item' : ''}}">
                         <span class="progress-count">2</span>
-                        <span class="progress-label">Endorsed</span>
+                        <span class="progress-label">{{($student->approval_log->status == 1) ? 'In-Progress' : 'Endorsed'}}</span>
                     </li>
                     <li class="step-wizard-item {{($student->approval_log->status == 2) ? 'current-item' : ''}}">
                         <span class="progress-count">3</span>
-                        <span class="progress-label">Approved</span>
+                        <span class="progress-label">{{($student->approval_log->status == 2) ? 'In-Progress' : 'Approved'}}</span>
                     </li>
                     <li class="step-wizard-item {{($student->approval_log->status == 3) ? 'current-item' : ''}}">
                         <span class="progress-count">4</span>
-                        <span class="progress-label">Registered</span>
+                        <span class="progress-label">{{($student->approval_log->status == 3) ? 'In-Progress' : 'Registered'}}</span>
                     </li>
                     <li class="step-wizard-item {{($student->approval_log->status == 4) ? 'current-item' : ''}}">
                         <span class="progress-count">5</span>
-                        <span class="progress-label">Enrolled</span>
+                        <span class="progress-label">{{($student->approval_log->status == 4) ? 'In-Progress' : 'Enrolled'}}</span>
                     </li>
                 </ul>
             </section>
@@ -50,20 +50,16 @@
                 </div>
                 <div class="detail-one info">
                     <div class="detail-group">
-                        <p class="detail-label">Full Name</p>
-                        <p class="details-value">{{$student->name}}</p>
-                    </div>
-                    <div class="detail-group">
-                        <p class="detail-label">Nationality</p>
-                        <p class="details-value">{{$student->nationality}}</p>
-                    </div>
-                    <div class="detail-group">
                         <p class="detail-label">Student Type</p>
                         <p class="details-value">{{$student->student_type}}</p>
                     </div>
                     <div class="detail-group">
-                        <p class="detail-label">Student Status</p>
-                        <p class="details-value">{{$student->student_status}}</p>
+                        <p class="detail-label">School Year</p>
+                        <p class="details-value">{{$student->school_year_info->start_date}}</p>
+                    </div>
+                    <div class="detail-group">
+                        <p class="detail-label">Semester</p>
+                        <p class="details-value">{{$student->semester_info->semester}}</p>
                     </div>
                 </div>
                 <div class="detail-two info d-none">
@@ -76,8 +72,16 @@
                         <p class="details-value">{{$student->address}}</p>
                     </div>
                     <div class="detail-group">
+                        <p class="detail-label">Nationality</p>
+                        <p class="details-value">{{$student->nationality}}</p>
+                    </div>
+                    <div class="detail-group">
                         <p class="detail-label">Mobile Number</p>
                         <p class="details-value">{{$student->mobile_number}}</p>
+                    </div>
+                    <div class="detail-group">
+                        <p class="detail-label">Email Address</p>
+                        <p class="details-value">{{$student->email_address}}</p>
                     </div>
                 </div>
                 <div class="detail-three info d-none">
@@ -103,19 +107,55 @@
                 <div id="file-details" class="detail-five info d-none">
                     <div class="detail-group">
                         <p class="detail-label">OTR</p>
-                        <button class="download-button">Download</button>
+                        <form action="{{ route('download_file') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="filename" value="{{$student->file_record}}">
+                            <button class="download-button"  type="submit" class="download-button">Download</button>
+                        </form>
+                        <form class="view-file-form" action="{{ route('view_file') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="filename" value="{{$student->file_record}}">
+                            <button class="download-button"  type="submit" class="download-button">View</button>
+                        </form>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Birth Certificate</p>
-                        <button class="download-button">Download</button>
+                        <form action="{{ route('download_file') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="filename" value="{{$student->birth_cert}}">
+                            <button class="download-button"  type="submit" class="download-button">Download</button>
+                        </form>
+                        <form class="view-file-form" action="{{ route('view_file') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="filename" value="{{$student->birth_cert}}">
+                            <button class="download-button"  type="submit" class="download-button">View</button>
+                        </form>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Letter of Intent</p>
-                        <button class="download-button">Download</button>
+                        <form action="{{ route('download_file') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="filename" value="{{$student->letter_intent}}">
+                            <button class="download-button"  type="submit" class="download-button">Download</button>
+                        </form>
+                        <form class="view-file-form" action="{{ route('view_file') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="filename" value="{{$student->letter_intent}}">
+                            <button class="download-button"  type="submit" class="download-button">View</button>
+                        </form>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Recommendation Letter</p>
-                        <button class="download-button">Download</button>
+                        <form action="{{ route('download_file') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="filename" value="{{$student->rec_letter}}">
+                            <button class="download-button"  type="submit" class="download-button">Download</button>
+                        </form>
+                        <form class="view-file-form" action="{{ route('view_file') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="filename" value="{{$student->rec_letter}}">
+                            <button class="download-button"  type="submit" class="download-button">View</button>
+                        </form>
                     </div>
                 </div>
             </div>

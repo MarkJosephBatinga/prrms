@@ -231,6 +231,21 @@ body {
     display: none;
 }
 
+.notification-box {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    z-index: 20;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-size: 14px;
+    display: none;
+    max-width: 16rem;
+    min-width: 16rem;
+}
 
 .header-buttons{
     display: flex;
@@ -1206,6 +1221,11 @@ body {
     .course-time .sched-time{
         font-weight: 300;
         font-size: 8px;
+    }
+
+    .notification-box {
+        top: 70px;
+        font-size: 10px;
     }
 
 }

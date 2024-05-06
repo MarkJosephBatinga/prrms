@@ -8,6 +8,8 @@ use App\Models\Program;
 use App\Models\Course;
 use App\Models\ApprovalLog;
 use App\Models\User;
+use App\Models\SchoolYear;
+use App\Models\Semester;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +18,14 @@ use Carbon\Carbon;
 class RecordController extends Controller
 {
     public function index() {
-        $data['students'] = Student::with(['user_info', 'program_info'])->get();
+
+        if(Auth::user()->user_type == 'dean' && Auth::user()->staff_college == 'college of information technology'){
+            $data['students'] = Student::with(['user_info', 'program_info'])->whereHas('program_info', function ($query) {$query->where('program_name', 'Master in Information Technology');})->get();
+        } else if(Auth::user()->user_type == 'program chairman'){
+            $data['students'] = Student::with(['user_info', 'program_info'])->whereHas('program_info', function ($query) {$query->where('id', Auth::user()->staff_program);})->get();
+        }else{
+            $data['students'] = Student::with(['user_info', 'program_info'])->get();
+        }
 
         return view('records.index', $data);
     }
@@ -31,20 +40,22 @@ class RecordController extends Controller
     }
 
     public function pre_register() {
-        $data['programs'] = Program::all();
+        $data['programs'] =  Program::where('listing_status', 1)->get();
 
         return view('records.preregister', $data);
     }
 
     public function edit_record($id) {
-        $data['programs'] = Program::all();
+        $data['programs'] =  Program::where('listing_status', 1)->get();
+        $data['school_years'] = SchoolYear::all();
+        $data['semesters'] = Semester::all();
         $data['student'] = Student::with('course.course')->find($id);
 
         return view('records.edit_records', $data);
     }
 
     public function view($id) {
-        $data['student'] = Student::with('program_info', 'course.course', 'approval_log')->find($id);
+        $data['student'] = Student::with('program_info', 'course.course', 'approval_log', 'school_year_info', 'semester_info')->find($id);
 
         return view('records.details', $data);
     }
@@ -118,7 +129,7 @@ class RecordController extends Controller
 
     public function student_record() {
         $student_id = Auth::user()->student_id;
-        $data['student'] = Student::with('program_info', 'course.course.schedules', 'approval_log')->find($student_id);
+        $data['student'] = Student::with('program_info', 'course.course.schedules', 'approval_log', 'school_year_info', 'semester_info')->find($student_id);
 
         return view('records.stud_view_preregister', $data);
     }

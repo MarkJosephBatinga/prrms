@@ -9,17 +9,21 @@
         <!-- Content Header -->
         <div class="header-buttons">
             <a href="{{route('programs')}}" class="view-back-button"> < Back </a>
-            <div class="action-container">
-                <a href="{{route('edit_program', $program->id)}}"><i class='bx bx-pencil action-icons'></i></a>
-                <a href="#" class="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
-            </div>
+            @if(Auth::user()->user_type == 'admin')
+                <div class="action-container">
+                    <a href="{{route('edit_program', $program->id)}}"><i class='bx bx-pencil action-icons'></i></a>
+                    <a href="#" class="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
+                </div>
+            @endif
         </div>
         <div class="view-page-header mt-4 mb-n4">
             <h3 class="view-header mt-2">{{$program->program_name}}</h3>
-            <div class="action-container">
-                <a href="{{route('edit_program', $program->id)}}"><i class='bx bx-pencil action-icons'></i></a>
-                <a href="#" class="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
-            </div>
+            @if(Auth::user()->user_type == 'admin')
+                <div class="action-container">
+                    <a href="{{route('edit_program', $program->id)}}"><i class='bx bx-pencil action-icons'></i></a>
+                    <a href="#" class="openDeleteModal"><i class='bx bx-trash action-icons'></i></a>
+                </div>
+            @endif
         </div>
         <!-- Program Details -->
         <div class="sub-page-content">

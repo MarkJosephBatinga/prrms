@@ -66,13 +66,21 @@ class CourseController extends Controller
             ]);
         }
 
-        return redirect()->route('courses')->with('success', 'Course updated successfully');;
+        if(Auth::user()->user_type == 'admin'){
+            return redirect()->route('courses')->with('success', 'Course updated successfully');
+        } else{
+            return redirect()->route('pre_register_setup')->with('success', 'Course updated successfully');
+        }
     }
 
     public function delete_course($id) {
         Course::where('id', $id)->delete();
 
-        return redirect()->route('courses')->with('success', 'Course deleted successfully');
+        if(Auth::user()->user_type == 'admin'){
+            return redirect()->route('courses')->with('success', 'Course deleted successfully');
+        } else{
+            return redirect()->route('pre_register_setup')->with('success', 'Course deleted successfully');
+        }
     }
 
     public function view($id) {
@@ -93,6 +101,14 @@ class CourseController extends Controller
         $data['course'] = Course::with('schedules')->find($id);
 
         return view('courses.s_course_details', $data);
+    }
+
+    public function update_course_listing_status(Request $req)
+    {
+        $course = Course::findOrFail($req->id);
+        $course->update(['listing_status' => $req->status]);
+    
+        return response()->json(['success' => true]);
     }
 
 }

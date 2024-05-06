@@ -23,7 +23,7 @@
             <span class="text nav-text">My Grades</span>
         </a>
     </li>
-    <li>
+    <li class="mt-4">
         <a class="d-flex align-items-center p-2" href="{{ route('logout') }}">
             <i class='bx bx-log-out icon'></i>
             <span class="text nav-text">Logout</span>

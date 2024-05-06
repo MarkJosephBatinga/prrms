@@ -22,7 +22,7 @@
                 <span class="text nav-text">My Courses</span>
             </a>
         </li>
-        <li class="mb-2 mx-2">
+        <li class="mb-4 mx-2">
             <a class="d-flex align-items-center p-2" href="{{route('student_grades')}}">
                 <i class='bx bx-folder-open icon'></i>
                 <span class="text nav-text">My Grades</span>

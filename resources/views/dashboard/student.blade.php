@@ -22,19 +22,19 @@
                 </li>
                 <li class="step-wizard-item {{($student->approval_log->status == 1) ? 'current-item' : ''}}">
                     <span class="progress-count">2</span>
-                    <span class="progress-label">Endorsed</span>
+                    <span class="progress-label">{{($student->approval_log->status == 1) ? 'In-Progress' : 'Endorsed'}}</span>
                 </li>
                 <li class="step-wizard-item {{($student->approval_log->status == 2) ? 'current-item' : ''}}">
                     <span class="progress-count">3</span>
-                    <span class="progress-label">Approved</span>
+                    <span class="progress-label">{{($student->approval_log->status == 2) ? 'In-Progress' : 'Approved'}}</span>
                 </li>
                 <li class="step-wizard-item {{($student->approval_log->status == 3) ? 'current-item' : ''}}">
                     <span class="progress-count">4</span>
-                    <span class="progress-label">Registered</span>
+                    <span class="progress-label">{{($student->approval_log->status == 3) ? 'In-Progress' : 'Registered'}}</span>
                 </li>
                 <li class="step-wizard-item {{($student->approval_log->status == 4) ? 'current-item' : ''}}">
                     <span class="progress-count">5</span>
-                    <span class="progress-label">Enrolled</span>
+                    <span class="progress-label">{{($student->approval_log->status == 4) ? 'In-Progress' : 'Enrolled'}}</span>
                 </li>
             </ul>
         </section>

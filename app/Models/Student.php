@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Program;
 use App\Models\ApprovalLog;
 use App\Models\StudentCourse;
+use App\Models\SchoolYear;
+use App\Models\Semester;
 
 class Student extends Model
 {
@@ -22,7 +24,10 @@ class Student extends Model
         'nationality',
         'address',
         'mobile_number',
+        'email_address',
         'program',
+        'school_year',
+        'semester',
         'file_record',
         'payment_mode',
         'birth_cert',
@@ -49,6 +54,16 @@ class Student extends Model
     public function approval_log()
     {
         return $this->hasOne(ApprovalLog::class, 'student_id');
+    }
+
+    public function school_year_info()
+    {
+        return $this->belongsTo(SchoolYear::class, 'school_year');
+    }
+
+    public function semester_info()
+    {
+        return $this->belongsTo(Semester::class, 'semester');
     }
 
 

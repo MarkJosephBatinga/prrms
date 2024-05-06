@@ -17,7 +17,9 @@
                 <input type="text" class="search-box" placeholder="Search">
                 <i class='bx bx-search-alt search-icon'></i>
             </div>
-            <a class="add-button" href="{{ route('add_program') }}">Add Program</a>
+            @if(Auth::user()->user_type == 'admin')
+                <a class="add-button" href="{{ route('add_program') }}">Add Program</a>
+            @endif
         </div>
         <!-- Small Cards -->
         <div class="small-cards">

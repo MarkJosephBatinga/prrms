@@ -2,6 +2,12 @@ var mainJs = {
 
     elements : {
 
+        userType: '#user_type',
+        programField: '#program_field',
+        staffProgram: '#staff_program',
+        collegeField: '#college_field',
+        staffCollege: '#staff_college',
+
         programRegField: '#program',
         courseCheckbox: '#populate_checkbox',
 
@@ -102,7 +108,6 @@ var mainJs = {
         }
     },
 
-
     displayView : function (hideView, showView){
         $(hideView).addClass('d-none');
         $(showView).removeClass('d-none');
@@ -121,6 +126,15 @@ var mainJs = {
                 formInput = false;
                 return false;
             }
+
+            if ($(this).attr('id') === 'email_address') {
+                var emailValue = $(this).val();
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailValue)) {
+                    formInput = false;
+                    return false;
+                }
+            }
         });
 
         return formInput;
@@ -137,7 +151,40 @@ var mainJs = {
         }
     },
 
+    userCustomField : function (userType){
+        
+        var self = mainJs;
+
+        if(userType == 'program chairman'){
+            $(self.elements.collegeField).addClass('d-none')
+            $(self.elements.staffCollege).addClass('non_req')
+            $(self.elements.programField).removeClass('d-none')
+            $(self.elements.staffProgram).removeClass('non_req')
+        } else if(userType == 'dean'){
+            $(self.elements.staffProgram).addClass('non_req')
+            $(self.elements.programField).addClass('d-none')
+            $(self.elements.collegeField).removeClass('d-none')
+            $(self.elements.staffCollege).removeClass('non_req')
+        } else{
+            $(self.elements.staffProgram).addClass('non_req')
+            $(self.elements.staffCollege).addClass('non_req')
+            $(self.elements.programField).addClass('d-none')
+            $(self.elements.collegeField).addClass('d-none')
+        }
+    },
+
     events : {
+
+        onChangeUserType : function (){
+
+            var self = mainJs;
+
+            $(self.elements.userType).change(function(){
+
+                var type = $(this).val();
+                self.userCustomField(type)
+            })
+        },
 
         onPopulateCourseByProgram : function (){
 
@@ -207,7 +254,7 @@ var mainJs = {
                     self.displayForm(self.elements.form1, self.elements.form2)
                     self.updateTabStatus(self.elements.tab1, self.elements.tab2, 'next')
                 } else{
-                    alert('All Field is required, please try again.');
+                    alert('All Field is required and input should be valid, please try again.');
                 }
             })
             $(self.elements.continue2).click(function(){
@@ -223,7 +270,7 @@ var mainJs = {
                         alert('Please select atleast two course.');
                     }
                 } else{
-                    alert('All Field is required, please try again.');
+                    alert('All Field is required and input should be valid, please try again.');
                 }
             })
             $(self.elements.continue3).click(function(){
@@ -238,7 +285,7 @@ var mainJs = {
                         alert('Please select atleast two course.');
                     }
                 } else{
-                    alert('All Field is required, please try again.');
+                    alert('All Field is required and input should be valid, please try again.');
                 }
             })
             $(self.elements.continue4).click(function(){
@@ -254,7 +301,7 @@ var mainJs = {
                         alert('Please select atleast two course.');
                     }
                 } else{
-                    alert('All Field is required, please try again.');
+                    alert('All Field is required and input should be valid, please try again.');
                 }
             })
             $(self.elements.continuePreregister).click(function(){
@@ -269,7 +316,7 @@ var mainJs = {
                         alert('Please select atleast four course.');
                     }
                 } else{
-                    alert('All Field is required, please try again.');
+                    alert('All Field is required and input should be valid, please try again.');
                 }
             })
             $(self.elements.formClass).submit(function(e){
@@ -284,7 +331,7 @@ var mainJs = {
                     }
                 } else{
                     e.preventDefault();
-                    alert('All Field is required, please try again.');
+                    alert('All Field is required and input should be valid, please try again.');
                 }
             })
 
@@ -389,6 +436,7 @@ var mainJs = {
         init : function () {
             var _self = this;
 
+            _self.onChangeUserType();
             _self.onPopulateCourseByProgram();
             _self.onFileChange();
             _self.onNavigateForm();
@@ -401,6 +449,9 @@ var mainJs = {
     init : function () {
         var self = mainJs;
         self.events.init();
+
+        var selectedType = $(self.elements.userType).val();
+        self.userCustomField(selectedType);
     }
 }
 
@@ -433,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function () {
          var newPasswordInput = document.getElementById('new_pass');
          var confirmPasswordInput = document.getElementById('con_pass');
          var errorMessage = document.querySelector('.text-danger');
-         var submitButton = document.querySelector('.continue-button');
+         var submitButton = document.querySelector('button.continue-button');
 
          errorMessage.style.display = 'none';
          submitButton.disabled = false;
@@ -460,4 +511,24 @@ document.addEventListener('DOMContentLoaded', function () {
          newPasswordInput.addEventListener('input', checkPasswords);
          confirmPasswordInput.addEventListener('input', checkPasswords);
 
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    var viewFileForms = document.querySelectorAll('.view-file-form');
+
+    viewFileForms.forEach(function(form) {
+
+        var submitButton = form.querySelector('button.download-button');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            this.target = '_blank';
+            this.submit();
+        });
+    });
+});
+
+$('#notif').click(function() {
+    $('#notificationBox').toggle();
 });

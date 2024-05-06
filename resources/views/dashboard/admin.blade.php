@@ -12,8 +12,8 @@
     <div class="dashboard-cards">
         <a href="{{ route('records') }}" class="card-container">
             <i class='bx bx-file card-icon'></i>
-            <p class="card-text-heading">Users</p>
-            <p class="card-text-count">{{ $user_count }}</p>
+            <p class="card-text-heading">Students</p>
+            <p class="card-text-count">{{ $student_count }}</p>
             <i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i>
         </a>
 
@@ -25,7 +25,7 @@
         </a>
 
         <a href="{{ route('courses') }}" class="card-container">
-            <i class='bx bxs-user-account card-icon'></i>
+            <i class='bx bx-list-ul card-icon'></i>
             <p class="card-text-heading">Courses</p>
             <p class="card-text-count">{{$course_count}}</p>
             <i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i>

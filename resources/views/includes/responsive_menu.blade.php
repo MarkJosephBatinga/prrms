@@ -29,8 +29,26 @@
             <span>Courses</span>
         </a>
     </li>
-
     <li>
+        <a class="d-flex align-items-center p-2" href="{{route('school_year')}}">
+            <i class='bx bxs-graduation icon'></i>
+            <span class="text nav-text">School Years</span>
+        </a>
+    </li>
+    <li>
+        <a class="d-flex align-items-center p-2" href="{{route('semester')}}">
+            <i class='bx bxs-graduation icon'></i>
+            <span class="text nav-text">Semesters</span>
+        </a>
+    </li>
+    <li>
+        <a class="d-flex align-items-center p-2" href="{{route('users')}}">
+            <i class='bx bxs-user-detail icon'></i>
+            <span class="text nav-text">Users</span>
+        </a>
+    </li>
+
+    <li class="mt-4">
         <a class="d-flex align-items-center p-2" href="{{ route('logout') }}">
             <i class='bx bx-log-out icon'></i>
             <span>Logout</span>

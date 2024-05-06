@@ -11,6 +11,9 @@
         z-index: 1;
         top: 0;
         left: 0;
+        overflow-y: auto; 
+        scrollbar-width: thin;
+        scrollbar-color: #FFFFFF #1464AB; 
     }
     #sidebar li a{
         text-decoration: none;
@@ -80,6 +83,12 @@
     .top-nav-container .hamburger-menu-container, .top-nav-container .logo-container{
         display: none;
     }
+    .top-nav-container .user-info{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
     .top-nav-container .user-info a{
         color: #000;
         font-size: 18px;
@@ -102,9 +111,10 @@
 /* END */
 
 /* RESPONSIVE MENU */
-    .responsive-menu{
+    .responsive-menu, .responsive-menu ul{
         display: none;
     }
+    
 /* END */
 
 

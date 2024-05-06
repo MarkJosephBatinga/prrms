@@ -2,14 +2,7 @@
     .dashboard-cards{
         margin-top: 30px;
         display: flex;
-        .small-cards .program-image{
-            border-radius: 15px;
-            width: 20%;
-            height: 100%;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }        flex-wrap: wrap;
+        flex-wrap: wrap;
         justify-content: space-between;
     }
     .dashboard-cards .card-container{
@@ -57,6 +50,27 @@
     }
 /* END */
 
+/* Dean, Chairman, Registrar Cards */
+
+    .staff-card{
+        margin-top: 30px;
+        margin-bottom: 40px;
+        padding: 20px;
+        border-radius: 10px;
+        border: 3px solid #104F88;
+        box-shadow: 4px 5px 5px 0px rgba(0, 0, 0, 0.25);
+    }
+    .staff-card p{
+        font-weight: 500;
+        font-size: 16px;
+    }
+    .staff-card .text-header{
+        display: flex;
+        justify-content: space-between;
+    }
+
+/* END */
+
 
 /* Grade Card */
     .grade-card{
@@ -75,6 +89,7 @@
 
 
 /* Small Card (Program & Course) */
+
     .small-cards{
         display: flex;
         flex-wrap: wrap;
@@ -154,6 +169,13 @@
         font-size: 40px;
     }
 
+    .staff-card{
+        padding: 15px;
+        border: 2px solid #104F88;
+    }
+    .staff-card p{
+        font-size: 13px;
+    }
 
     .small-cards .card-container{
         flex: 0 0 calc(50% - 15px);
@@ -203,6 +225,14 @@
     .dashboard-cards .card-text-count{
         bottom: -10px;
         font-size: 30px;
+    }
+
+    .staff-card{
+        padding: 15px;
+        border: 2px solid #104F88;
+    }
+    .staff-card p{
+        font-size: 10px;
     }
 
     .small-cards{

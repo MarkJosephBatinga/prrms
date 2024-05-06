@@ -30,8 +30,12 @@
                         <p class="details-value">{{$student->student_type}}</p>
                     </div>
                     <div class="detail-group">
-                        <p class="detail-label">Student Status</p>
-                        <p class="details-value">{{$student->student_status}}</p>
+                        <p class="detail-label">School Year</p>
+                        <p class="details-value">{{$student->school_year_info->school_year}}</p>
+                    </div>
+                    <div class="detail-group">
+                        <p class="detail-label">Semester</p>
+                        <p class="details-value">{{$student->semester_info->semester}}</p>
                     </div>
                     <div class="detail-group">
                         <p class="detail-label">Full Name</p>
@@ -48,6 +52,10 @@
                     <div class="detail-group">
                         <p class="detail-label">Mobile Number</p>
                         <p class="details-value">{{$student->mobile_number}}</p>
+                    </div>
+                    <div class="detail-group">
+                        <p class="detail-label">Email Address</p>
+                        <p class="details-value">{{$student->email_address}}</p>
                     </div>
                 </div>
                 <div class="detail-two info d-none">
@@ -79,6 +87,11 @@
                                 <input type="hidden" name="filename" value="{{$student->file_record}}">
                                 <button class="download-button"  type="submit" class="download-button">Download</button>
                             </form>
+                            <form action="{{ route('view_file') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="filename" value="{{$student->file_record}}">
+                                <button class="download-button"  type="submit" class="download-button">View</button>
+                            </form>
                         </div>
                         <div class="detail-group">
                             <p class="detail-label">Birth Certificate</p>
@@ -86,6 +99,11 @@
                                 @csrf
                                 <input type="hidden" name="filename" value="{{$student->birth_cert}}">
                                 <button class="download-button"  type="submit" class="download-button">Download</button>
+                            </form>
+                            <form action="{{ route('view_file') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="filename" value="{{$student->birth_cert}}">
+                                <button class="download-button"  type="submit" class="download-button">View</button>
                             </form>
                         </div>
                         <div class="detail-group">
@@ -95,6 +113,11 @@
                                 <input type="hidden" name="filename" value="{{$student->letter_intent}}">
                                 <button class="download-button"  type="submit" class="download-button">Download</button>
                             </form>
+                            <form action="{{ route('view_file') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="filename" value="{{$student->letter_intent}}">
+                                <button class="download-button"  type="submit" class="download-button">View</button>
+                            </form>
                         </div>
                         <div class="detail-group">
                             <p class="detail-label">Recommendation Letter</p>
@@ -102,6 +125,11 @@
                                 @csrf
                                 <input type="hidden" name="filename" value="{{$student->rec_letter}}">
                                 <button class="download-button"  type="submit" class="download-button">Download</button>
+                            </form>
+                            <form action="{{ route('view_file') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="filename" value="{{$student->rec_letter}}">
+                                <button class="download-button"  type="submit" class="download-button">View</button>
                             </form>
                         </div>
                     </div>

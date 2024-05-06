@@ -11,6 +11,10 @@ use App\Models\Student;
 use App\Models\StudentCourse;
 use App\Models\User;
 use App\Models\ApprovalLog;
+use App\Models\SchoolYear;
+use App\Models\Semester;
+use App\Mail\Gmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -22,12 +26,19 @@ class AuthController extends Controller
     }
 
     public function register() {
-        $data['programs'] = Program::all();
+        $data['programs'] = Program::where('listing_status', 1)->get();
+        $data['school_years'] = SchoolYear::all();
+        $data['semesters'] = Semester::all();
+
         return view('register', $data);
     }
 
     public function new_student() {
-        return view('new_student');
+        $data['programs'] = Program::where('listing_status', 1)->get();
+        $data['school_years'] = SchoolYear::all();
+        $data['semesters'] = Semester::all();
+
+        return view('new_student', $data);
     }
 
     public function login_post(Request $req) {
@@ -51,13 +62,15 @@ class AuthController extends Controller
 
         $student = Student::create([
             'student_type' => $req->input('student_type'),
-            'student_status' => $req->input('student_status'),
             'years_stop' => $req->input('years_stop'),
             'name' => $req->input('name'),
             'nationality' => $req->input('nationality'),
             'address' => $req->input('address'),
             'mobile_number' => $req->input('mobile_number'),
+            'email_address' => $req->input('email_address'),
             'program' => ($req->input('program') != null) ? $req->input('program') : 'No Program',
+            'school_year' => $req->input('school_year'),
+            'semester' => $req->input('semester'),
             'file_record' => $filePath,
             'birth_cert' => $birthCert,
             'letter_intent' => $letterIntent,
@@ -88,6 +101,15 @@ class AuthController extends Controller
             'status' => 1,
         ]);
 
+        // Send login credentials via gmail
+        $subject = 'Student Login Credentials';
+        $emailData = [
+            'student_id' => $data['student_id'],
+            'password' => $data['password'],
+            'name' => $req->input('name')
+        ];
+        Mail::to($req->input('email_address'))->send(new Gmail($emailData, $subject));
+
         return redirect()->route('show_credentials', [
             'student_id' => $data['student_id'],
             'password' => $data['password'],
@@ -100,7 +122,6 @@ class AuthController extends Controller
         if ($student) {
             $updateData = [
                 'student_type' => $req->input('student_type'),
-                'student_status' => $req->input('student_status'),
                 'years_stop' => $req->input('years_stop'),
                 'name' => $req->input('name'),
                 'nationality' => $req->input('nationality'),
@@ -164,14 +185,16 @@ class AuthController extends Controller
     }
 
     public function get_courses($program_id) {
-        $courses = ProgramCourse::with(['course'])->where('program_id', $program_id)->get();
+        $courses = ProgramCourse::with('course')->whereHas('course', function ($query) {
+                $query->where('listing_status', 1);
+            })->where('program_id', $program_id)->get();
 
         return response()->json($courses);
     }
 
     public function profile_view() {
         $user_id = Auth::user()->student_id;
-        $data['student'] = Student::with(['program_info'])->where('id', $user_id)->first();
+        $data['student'] = Student::with(['program_info', 'school_year_info', 'semester_info'])->where('id', $user_id)->first();
         return view('profile.student_profile', $data);
     }
 
@@ -183,10 +206,54 @@ class AuthController extends Controller
         return view('profile.edit_profile', $data);
     }
 
-    private function generateStudentId() {
-        $currentYear = Carbon::now()->format('Y');
-        $lastStudent = User::whereYear('created_at', '=', Carbon::now()->year)->orderByDesc('id')->first();
+    public function profile_update(Request $req) {
 
+        $student = Student::find($req->input('id'));
+
+        if ($student) {
+            $updateData = [
+                'name' => $req->input('name'),
+                'nationality' => $req->input('nationality'),
+                'address' => $req->input('address'),
+                'mobile_number' => $req->input('mobile_number'),
+            ];
+
+            $student->update($updateData);
+        }
+
+        if($req->input('new_pass') !== null) {
+
+            $data['password'] = $req->input('new_pass');
+
+            $user = User::find(Auth::user()->id); // Replace $userId with the actual user ID you want to update
+
+            if ($user) {
+                $user->update([
+                    'password' => Hash::make($data['password']),
+                ]);
+            }
+        }
+
+        return redirect()->route('profile_view');
+    }
+
+    public function get_notification() {
+
+        if(Auth::user()->user_type === 'student') {
+            $studentId = Auth::user()->student_id;
+            $approvalLog = ApprovalLog::where('student_id', $studentId)->latest()->first();
+            if($approvalLog) {
+                return $approvalLog->notes;
+            }
+        }
+        return 'No Notification';
+    }
+
+    private function generateStudentId() {
+
+        $currentYear = Carbon::now()->format('Y');
+        $lastStudent = User::whereYear('created_at', '=', Carbon::now()->year)->where('user_type', 'student')->orderByDesc('id')->first();
+        
         if ($lastStudent) {
             $lastId = (int)explode('-', $lastStudent->email)[1];
             $newId = str_pad($lastId + 1, 3, '0', STR_PAD_LEFT);

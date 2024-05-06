@@ -40,8 +40,10 @@
                             <td>{{isset($student->program_info) ? $student->program_info->program_name : 'No Program'}}</td>
                             <td class="table-actions">
                                 <a href="{{route('view_record', $student->id)}}"> <i class='bx bx-file-find action-icons mr-2'></i> </a>
-                                <a href="{{route('edit_record', $student->id)}}"> <i class='bx bx-pencil action-icons mr-2'></i> </a>
-                                <i class='bx bx-trash action-icons openStudentDelete' data-modal="{{ $student->id }}"></i>
+                                @if(Auth::user()->user_type == 'admin' || Auth::user()->user_type == 'registrar')
+                                    <a href="{{route('edit_record', $student->id)}}"> <i class='bx bx-pencil action-icons mr-2'></i> </a>
+                                    <i class='bx bx-trash action-icons openStudentDelete' data-modal="{{ $student->id }}"></i>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
