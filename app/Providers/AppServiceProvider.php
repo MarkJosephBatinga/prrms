@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
         if ($approvalLog) {
             $notificationMessages = [
-                'Endorsed Comment' => $approvalLog->notes,
+                'Endorse Comment' => $approvalLog->notes,
                 'Evaluate Comment' => $approvalLog->approve_notes,
                 'Register Comment' => $approvalLog->register_notes,
                 'Enroll Comment' =>  $approvalLog->enroll_notes,
