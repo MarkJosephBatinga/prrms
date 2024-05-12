@@ -15,28 +15,53 @@
     <div class="progress-status-card">
         <p>Pre-registration Status</p>
         <section class="step-wizard">
-            <ul class="step-wizard-list">
-                <li class="step-wizard-item">
-                    <span class="progress-count">1</span>
-                    <span class="progress-label">Pre-Registered</span>
-                </li>
-                <li class="step-wizard-item {{($student->approval_log->status == 1) ? 'current-item' : ''}}">
-                    <span class="progress-count">2</span>
-                    <span class="progress-label">{{($student->approval_log->status == 1) ? 'In-Progress' : 'Endorsed'}}</span>
-                </li>
-                <li class="step-wizard-item {{($student->approval_log->status == 2) ? 'current-item' : ''}}">
-                    <span class="progress-count">3</span>
-                    <span class="progress-label">{{($student->approval_log->status == 2) ? 'In-Progress' : 'Approved'}}</span>
-                </li>
-                <li class="step-wizard-item {{($student->approval_log->status == 3) ? 'current-item' : ''}}">
-                    <span class="progress-count">4</span>
-                    <span class="progress-label">{{($student->approval_log->status == 3) ? 'In-Progress' : 'Registered'}}</span>
-                </li>
-                <li class="step-wizard-item {{($student->approval_log->status == 4) ? 'current-item' : ''}}">
-                    <span class="progress-count">5</span>
-                    <span class="progress-label">{{($student->approval_log->status == 4) ? 'In-Progress' : 'Enrolled'}}</span>
-                </li>
-            </ul>
+            @if ($student->approval_log->status !== 0)
+                <ul class="step-wizard-list">
+                    <li class="step-wizard-item">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">Pre-Registered</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->status == 1) ? 'current-item' : ''}}">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">{{($student->approval_log->status == 1) ? 'In-Progress' : 'Endorsed'}}</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->status == 2) ? 'current-item' : ''}}">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">{{($student->approval_log->status == 2) ? 'In-Progress' : 'Approved'}}</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->status == 3) ? 'current-item' : ''}}">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">{{($student->approval_log->status == 3) ? 'In-Progress' : 'Registered'}}</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->status == 4) ? 'current-item' : ''}}">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">{{($student->approval_log->status == 4) ? 'In-Progress' : 'Enrolled'}}</span>
+                    </li>
+                </ul>
+            @else
+                <ul class="step-wizard-list">
+                    <li class="step-wizard-item">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">Pre-Registered</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->last_status == 1) ? 'reject-item' : ''}}">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">{{($student->approval_log->last_status == 1) ? 'Rejected' : 'Endorsed'}}</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->last_status == 2) ? 'reject-item' : ''}}">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">{{($student->approval_log->last_status == 2) ? 'Rejected' : 'Approved'}}</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->last_status == 3) ? 'reject-item' : ''}}">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">{{($student->approval_log->last_status == 3) ? 'Rejected' : 'Registered'}}</span>
+                    </li>
+                    <li class="step-wizard-item {{($student->approval_log->last_status == 4) ? 'reject-item' : ''}}">
+                        <span class="progress-count">X</span>
+                        <span class="progress-label">{{($student->approval_log->last_status == 4) ? 'Rejected' : 'Enrolled'}}</span>
+                    </li>
+                </ul>
+            @endif
         </section>
     </div>
 

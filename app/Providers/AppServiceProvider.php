@@ -34,14 +34,20 @@ class AppServiceProvider extends ServiceProvider
     private function getNotificationMessage()
     {
         $studentId = Auth::user()->student_id;
-        $approvalLogs = ApprovalLog::where('student_id', $studentId)->get();
+        $approvalLog = ApprovalLog::where('student_id', $studentId)->first(); // Retrieve only one approval log
         $notificationMessages = [];
-    
-        foreach ($approvalLogs as $approvalLog) {
-            $notificationMessages[] = $approvalLog->notes;
+
+        if ($approvalLog) {
+            $notificationMessages = [
+                'Endorsed Comment' => $approvalLog->notes,
+                'Evaluate Comment' => $approvalLog->approve_notes,
+                'Register Comment' => $approvalLog->register_notes,
+                'Enroll Comment' =>  $approvalLog->enroll_notes,
+            ];
         }
-    
+
         return $notificationMessages;
     }
+
     
 }

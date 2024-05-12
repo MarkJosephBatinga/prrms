@@ -12,7 +12,9 @@ class ApprovalLog extends Model
 
     protected $table = 'approval_log'; // Specify the table name if different from the model name
 
-    protected $fillable = ['student_id', 'status', 'notes']; // Specify the columns that can be mass-assigned
+    protected $fillable = ['student_id', 'status', 'notes', 
+                            'last_status', 'approve_notes',
+                            'register_notes', 'enroll_notes']; // Specify the columns that can be mass-assigned
 
     // Define relationships if needed
     public function student()

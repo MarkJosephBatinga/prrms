@@ -605,6 +605,25 @@ body {
         color: #FFF;
     }
 
+    .reject-item .progress-count:before,
+    .reject-item ~ .step-wizard-item .progress-count:before {
+        display: none;
+    }
+    .reject-item ~ .step-wizard-item .progress-count:after {
+        background: #B9B9B9;
+        border: 2px solid #6D6D6D;
+    }
+    .reject-item ~ .step-wizard-item .progress-label {
+        opacity: 0.5;
+    }
+    .reject-item .progress-count:after {
+        background: #FF0000;
+        border: 2px solid #FF0000; /* Red border for reject item */
+    }
+    .reject-item .progress-count {
+        color: #FFF; /* Text color for reject item */
+    }    
+
     .progress-status-card .text-header{
         display: flex;
         justify-content: space-between;

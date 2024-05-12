@@ -20,78 +20,81 @@
             <div class="approval-logs">
                 <table>
                     <thead>
-                        <th>Sequence</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Notes</th>
+                        <tr>
+                            <th>Sequence</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Recommending Approval</td>
                             <td>Program Chairman</td>
                             @if ($student->approval_log->status === 1)
-                                <td>
-                                    <button id="show-endorse">Endorse</button>
-                                </td>
-                            @elseif($student->approval_log->status === 0)
-                                <td>Rejected</td>
+                            <td>
+                                <button id="show-endorse">Endorse</button>
+                            </td>
+                            @elseif($student->approval_log->status === 0 && $student->approval_log->last_status === 1)
+                            <td>Rejected</td>
                             @else
-                                <td>Endorsed</td>
+                            <td>Endorsed</td>
                             @endif
-                            <td>{{($student->approval_log->status === 2) ? $student->approval_log->notes : ''}}</td>
+                            <td>{{$student->approval_log->notes}}</td>
                         </tr>
                         <tr>
                             <td>Approved By</td>
                             <td>Dean</td>
                             @if ($student->approval_log->status === 2)
-                                <td>
-                                    <button id="show-evaluate">Evaluate</button>
-                                </td>
+                            <td>
+                                <button id="show-evaluate">Evaluate</button>
+                            </td>
                             @elseif($student->approval_log->status === 1)
-                                <td>Not yet endorsed</td>
-                            @elseif($student->approval_log->status === 0)
-                                <td>Rejected</td>
+                            <td>Not yet endorsed</td>
+                            @elseif($student->approval_log->status === 0 && $student->approval_log->last_status === 2)
+                            <td>Rejected</td>
                             @else
-                                <td>Evaluated</td>
+                            <td>Evaluated</td>
                             @endif
-                            <td>{{($student->approval_log->status === 3) ? $student->approval_log->notes : ''}}</td>
+                            <td>{{$student->approval_log->approve_notes}}</td>
                         </tr>
                         <tr>
                             <td>Registered By</td>
                             <td>Registrar</td>
                             @if ($student->approval_log->status === 3)
-                                <td>
-                                    <button id="show-register">Register</button>
-                                </td>
+                            <td>
+                                <button id="show-register">Register</button>
+                            </td>
                             @elseif($student->approval_log->status <= 2 && $student->approval_log->status != 0)
-                                <td>Not yet evaluated</td>
-                            @elseif($student->approval_log->status === 0)
-                                <td>Rejected</td>
+                            <td>Not yet evaluated</td>
+                            @elseif($student->approval_log->status === 0 && $student->approval_log->last_status === 3)
+                            <td>Rejected</td>
                             @else
-                                <td>Registered</td>
+                            <td>Registered</td>
                             @endif
-                            <td>{{($student->approval_log->status === 4) ? $student->approval_log->notes : ''}}</td>
+                            <td>{{$student->approval_log->register_notes}}</td>
                         </tr>
                         <tr>
                             <td>Enrolled By</td>
                             <td>Registrar</td>
                             @if ($student->approval_log->status === 4)
-                                <td>
-                                    <button id="show-enroll">Enroll</button>
-                                </td>
+                            <td>
+                                <button id="show-enroll">Enroll</button>
+                            </td>
                             @elseif($student->approval_log->status <= 3 && $student->approval_log->status != 0)
-                                <td>Not yet registered</td>
-                            @elseif($student->approval_log->status === 0)
-                                <td>Rejected</td>
+                            <td>Not yet registered</td>
+                            @elseif($student->approval_log->status === 0 && $student->approval_log->last_status === 4)
+                            <td>Rejected</td>
                             @else
-                                <td>Enrolled</td>
+                            <td>Enrolled</td>
                             @endif
-                            <td>{{($student->approval_log->status === 5) ? $student->approval_log->notes : ''}}</td>
+                            <td>{{$student->approval_log->enroll_notes}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
         <!-- Students Details -->
         <div class="details-body">
             <div class="tab-headers">
@@ -227,10 +230,15 @@
             <div class="eval-modal-body">
                 <p>Enroll Applicant</p>
                 <input type="hidden" name="id" value="{{$student->id}}">
-                <textarea name="notes"></textarea>
+                <textarea name="notes" class="d-none"></textarea>
+                <textarea name="approve_notes" class="d-none"></textarea>
+                <textarea name="register_notes" class="d-none"></textarea>
+                <textarea name="enroll_notes">{{$student->approval_log->enroll_notes}}</textarea>
                 <div class="button-container">
+                    <button type="submit" >Submit Comment</button>
                     <button type="submit" name="status" id="reject-btn" value="0">Reject</button>
                     <button type="submit" name="status" id="approve-btn" value="5">Approve</button>
+                    <button type="submit" id="comment-btn">Comment</button>
                 </div>
             </div>
         </div>
@@ -246,10 +254,14 @@
             <div class="eval-modal-body">
                 <p>Register Applicant</p>
                 <input type="hidden" name="id" value="{{$student->id}}">
-                <textarea name="notes"></textarea>
+                <textarea name="notes" class="d-none"></textarea>
+                <textarea name="approve_notes" class="d-none"></textarea>
+                <textarea name="register_notes">{{$student->approval_log->register_notes}}</textarea>
+                <textarea name="enroll_notes" class="d-none"></textarea>
                 <div class="button-container">
                     <button type="submit" name="status" id="reject-btn" value="0">Reject</button>
                     <button type="submit" name="status" id="approve-btn" value="4">Approve</button>
+                    <button type="submit" id="comment-btn">Comment</button>
                 </div>
             </div>
         </div>
@@ -265,10 +277,14 @@
             <div class="eval-modal-body">
                 <p>Evaluate Applicant</p>
                 <input type="hidden" name="id" value="{{$student->id}}">
-                <textarea name="notes"></textarea>
+                <textarea name="notes" class="d-none"></textarea>
+                <textarea name="approve_notes">{{$student->approval_log->approve_notes}}</textarea>
+                <textarea name="register_notes" class="d-none"></textarea>
+                <textarea name="enroll_notes" class="d-none"></textarea>
                 <div class="button-container">
                     <button type="submit" name="status" id="reject-btn" value="0">Reject</button>
                     <button type="submit" name="status" id="approve-btn" value="3">Approve</button>
+                    <button type="submit" id="comment-btn">Comment</button>
                 </div>
             </div>
         </div>
@@ -284,10 +300,14 @@
             <div class="eval-modal-body">
                 <p>Endorse Applicant</p>
                 <input type="hidden" name="id" value="{{$student->id}}">
-                <textarea name="notes"></textarea>
+                <textarea name="notes">{{$student->approval_log->notes}}</textarea>
+                <textarea name="approve_notes" class="d-none"></textarea>
+                <textarea name="register_notes" class="d-none"></textarea>
+                <textarea name="enroll_notes" class="d-none"></textarea>
                 <div class="button-container">
                     <button type="submit" name="status" id="reject-btn" value="0">Reject</button>
                     <button type="submit" name="status" id="approve-btn" value="2">Approve</button>
+                    <button type="submit" id="comment-btn">Comment</button>
                 </div>
             </div>
         </div>

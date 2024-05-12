@@ -52,7 +52,7 @@
                     <p class="form-header">Personal Information</p>
                     <div class="form-input">
                         <div class="input-group">
-                            <label class="label-input">Name (Last Name, First Name, Middle Initial)</label>
+                            <label class="label-input">Name (Last Name, First Name, Middle Name)</label>
                             <input name="name" id="name" class="input-text personal_info" />
                         </div>
                         <div class="input-group">

@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 use App\Models\EnStudent;
 use App\Models\StudentsGrade;
 use App\Models\StudentCourse;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RegistrarController extends Controller
 {
     public function grades_index() {
-        $data['students'] = EnStudent::all();
+
+        if(Auth::user()->user_type == 'program chairman'){
+            $program = Program::find(Auth::user()->staff_program);
+            $data['students'] = EnStudent::where('program', $program->program_name)->get();
+        } else{
+            $data['students'] = EnStudent::all();
+        }
 
         return view('registrar.grades_index', $data);
     }

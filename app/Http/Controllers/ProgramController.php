@@ -10,9 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class ProgramController extends Controller
 {
     public function index() {
-        $data['programs'] = Program::all();
 
-        return view('programs.index', $data);
+        $programModel = new Program();
+
+        if(Auth::user()->user_type == 'dean'){
+            $data['programs'] = $programModel->program_student_count(Auth::user()->staff_college);
+            return view('programs.dean_program', $data);
+        } else{
+            $data['programs'] = Program::all();
+            return view('programs.index', $data);
+        }
     }
 
     public function add_program() {

@@ -9,49 +9,25 @@
     <!-- Greet Message -->
     <h4 class="content-sub-header">Welcome Back, Dean!</h4>
     <!-- Dashboard Table -->
-    <div class="staff-card">
-        <div class="text-header">
-            <p>Program List</p>
-            <p>School Year: {{ date('Y') . '-' . date('Y', strtotime('+1 year')) }}</p>
-        </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <th class="text-left">Program</th>
-                    <th>Total Pre - registered</th>
-                </thead>
-                <tbody>
-                    @foreach ($programs as $program)
-                        <tr>
-                            <td class="text-left">{{$program->program_name}}</td>
-                            <td>{{$program->pre_registered}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="staff-card">
-        <div class="text-header">
-            <p>Course List</p>
-            <p>School Year: {{ date('Y') . '-' . date('Y', strtotime('+1 year')) }}</p>
-        </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <th class="text-left">Course</th>
-                    <th>Total Pre - registered</th>
-                </thead>
-                <tbody>
-                    @foreach ($courses as $course)
-                        <tr>
-                            <td class="text-left">{{$course->course}}</td>
-                            <td>{{$course->counts->pre_registered}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+    <div class="dashboard-cards">
+        <a href="{{ route('records') }}" class="card-container">
+            <i class='bx bx-file card-icon'></i>
+            <p class="card-text-heading">Students</p>
+            <p class="card-text-count">{{ $student_count }}</p>
+            <i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i>
+        </a>
+        <a href="{{ route('programs') }}" class="card-container">
+            <i class='bx bx-folder-open card-icon'></i>
+            <p class="card-text-heading">Programs</p>
+            <p class="card-text-count">{{count($programs)}}</p>
+            <i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i>
+        </a>
+        <a href="{{ route('courses') }}" class="card-container">
+            <i class='bx bx-list-ul card-icon'></i>
+            <p class="card-text-heading">Courses</p>
+            <p class="card-text-count">{{ count(get_object_vars($courses)) }}</p>
+            <i class='bx bx-arrow-back bx-rotate-180 card-nav-icon'></i>
+        </a>
     </div>
 </div>
 @endsection

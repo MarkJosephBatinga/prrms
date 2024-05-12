@@ -105,6 +105,9 @@
     .eval-modal-body .button-container #approve-btn{
         background: #104F88;
     }
+    .eval-modal-body .button-container #comment-btn{
+        background: #104F88;
+    }
 /* END */
 
 
@@ -193,6 +196,9 @@
     .eval-modal-body .button-container #approve-btn{
        margin-top: 15px;
     }
+    .eval-modal-body .button-container #comment-btn{
+        margin-top: 15px;
+     }
 
     
 }

@@ -38,9 +38,10 @@ class DashboardController extends Controller
             return view('dashboard.program_chairman', $data);
 
         } else if($userType === 'dean'){
-            $data['programs'] = $programModel->program_student_count($userCollege);
             $data['courses'] = $courseModel->course_student_count($userCollege);
-            
+            $data['programs'] = $programModel->program_student_count($userCollege);
+            $data['student_count'] = collect($data['programs'])->sum('students');                    
+
             return view('dashboard.dean', $data);
         }  else if($userType === 'registrar'){
             $data['student_count'] = User::where('student_id', '!=', 0)->count();

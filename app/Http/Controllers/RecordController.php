@@ -135,9 +135,19 @@ class RecordController extends Controller
     }
 
     public function edit_approval(Request $req) {
-        $approval_log = ApprovalLog::where('student_id', $req->id)->first();;
-        $approval_log->update(['notes' => $req->input('notes'), 'status' => $req->input('status')]);
-
-        return redirect()->route('view_record', $req->id)->with('success', 'Student Apprval Log Updated Successfully');
+        $approval_log = ApprovalLog::where('student_id', $req->id)->first();
+    
+        $approval_log->update([
+            'notes' => $req->filled('notes') ? $req->input('notes') : $approval_log->notes,
+            'status' => $req->filled('status') ? $req->input('status') : $approval_log->status,
+            'last_status' => $req->filled('status') ? ($req->input('status') != 0 ? $req->input('status') : $approval_log->last_status) : $approval_log->last_status,
+            'approve_notes' => $req->filled('approve_notes') ? $req->input('approve_notes') : $approval_log->approve_notes,
+            'register_notes' => $req->filled('register_notes') ? $req->input('register_notes') : $approval_log->register_notes,
+            'enroll_notes' => $req->filled('enroll_notes') ? $req->input('enroll_notes') : $approval_log->enroll_notes
+        ]);
+        
+        
+        return redirect()->route('view_record', $req->id)->with('success', 'Student Approval Log Updated Successfully');
     }
+    
 }

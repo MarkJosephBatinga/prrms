@@ -11,8 +11,11 @@
             <i class='bx bx-bell icon' id="notif"></i>
             <div class="notification-box" id="notificationBox">
                 @if(isset($notificationMessage) && count($notificationMessage) > 0)
-                    @foreach($notificationMessage as $notification)
-                        {{ !empty($notification) ? $notification : 'No Notification' }} <br>
+                    @foreach($notificationMessage as $title => $message)
+                        @if(!empty($message))
+                            <strong>{{ $title }}:</strong><br>
+                            {{ $message }} <br><br>
+                        @endif
                     @endforeach
                 @else
                     No Notification

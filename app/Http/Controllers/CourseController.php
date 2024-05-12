@@ -11,9 +11,16 @@ use Illuminate\Support\Facades\Auth;
 class CourseController extends Controller
 {
     public function index() {
-        $data['courses'] = Course::all();
 
-        return view('courses.index', $data);
+        $courseModel = new Course();
+
+        if(Auth::user()->user_type == 'dean'){
+            $data['courses'] = $courseModel->course_student_count(Auth::user()->staff_college);
+            return view('courses.dean_course', $data);
+        } else{
+            $data['courses'] = Course::all();
+            return view('courses.index', $data);
+        }
     }
 
     public function add_course() {
