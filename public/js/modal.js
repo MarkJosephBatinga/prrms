@@ -2,6 +2,11 @@ $(document).ready(function () {
 
     var userType =  $('#user-type').val();
 
+    $('.importBtn').on('click', function () {
+        // Show the modal
+        $('.import-modal').removeClass('d-none');
+    });
+
     $('.openDeleteModal').on('click', function () {
         // Show the modal
         $('.delete-modal').removeClass('d-none');
@@ -129,6 +134,16 @@ $(document).ready(function () {
     });
 
     $('.hide-modal').on('click', function () {
+        // Hide the modal
+        $('.modal-container').addClass('d-none');
+    });
+
+    $('.continue-button').on('click', function () {
+        // Hide the modal
+        $('.modal-container').addClass('d-none');
+    });
+
+    $('.close').on('click', function () {
         // Hide the modal
         $('.modal-container').addClass('d-none');
     });

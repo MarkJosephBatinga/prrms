@@ -22,6 +22,7 @@
                     <option value="First Semester">First Semester</option>
                     <option value="Second Semester">Second Semester</option>
                 </select>
+                <button class="add-button" id="exportBtn" data-value="{{$student->name . '_grades'}}">Export to CSV</button>
             </div>
         </div>
         <!-- Grade Card -->
@@ -29,7 +30,7 @@
             <p class="grade-card-heading">2021-2022 &emsp; &emsp; <span id="term_text">First Semester</span></p>
             <!-- List of Student Grades -->
             <div class="table-container">
-                <table>
+                <table id="myTable">
                     <thead>
                         <th>Code No.</th>
                         <th>Course Code</th>
@@ -61,4 +62,5 @@
 @push('js_scripts')
     <script src="{{ asset('js/grades.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/filterTable.js') }}"></script>
 @endpush

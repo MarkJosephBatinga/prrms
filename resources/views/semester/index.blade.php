@@ -2,6 +2,11 @@
 
 @push('css_scripts')
     <link rel='stylesheet' href="{{ asset('css/modal.css') }}">
+    <link rel='stylesheet' href="{{ asset('css/input_fields.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
 @endpush
 
 @section('body')
@@ -16,7 +21,10 @@
                 <input type="text" class="search-box" placeholder="Search">
                 <i class='bx bx-search-alt search-icon'></i>
             </div>
-            <a class="add-button" href="{{ route('add_semester') }}">Add Semester</a>
+            <div class="button-group">
+                <a class="add-button" href="{{ route('add_semester') }}">Add Semester</a>
+                <a class="add-button importBtn">Import</a>
+            </div>
         </div>
         <!-- Semester Table -->
         <div class="table-container">
@@ -59,6 +67,20 @@
             </div>
         </div>
     @endif
+    @if(session('error'))
+        <div class="modal-container">
+            <div class="modal-content">
+                <div class="body">
+                    <img src="../images/warning-logo.svg" />
+                    <p class="heading-text">Error!</p>
+                    <p class="info-text">{{ session('error') }}</p>
+                    <div class="button-container">
+                        <button class="continue-button">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="modal-container delete-modal d-none">
         <div class="modal-content">
             <div class="body">
@@ -72,9 +94,36 @@
             </div>
         </div>
     </div>
+    <div class="modal-container import-modal d-none">
+        <div class="modal-content">
+            <form action="{{ route('import_semester') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="body">
+                    <div class="input-group">
+                        <label class="label-input">Import School Year (CSV Only)</label> <br>
+                        <div class="file-uploads">
+                            <div>
+                                <div class="custom-file-input">
+                                    <label class="file-label">
+                                        <span class="icon"><i class="fa fa-upload" aria-hidden="true"></i></span> Upload a File
+                                    </label>
+                                    <input type="file" id="csv_file" name="csv_file" accept=".csv" class="input-file"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <a class="back-button close">Cancel</a>
+                        <button type="submit" class="continue-button">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endpush
 
 @push('js_scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/filterTable.js') }}"></script>

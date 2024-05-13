@@ -12,16 +12,17 @@
                 <input type="text" class="search-box" placeholder="Search">
                 <i class='bx bx-search-alt search-icon'></i>
             </div>
+            <button class="add-button" id="exportBtn" data-value="grades">Export to CSV</button>
         </div>
         <!-- Records Table -->
         <div class="table-container">
-            <table class="table-results">
+            <table class="table-results" id="myTable">
                 <thead>
                     <th>Student ID</th>
                     <th>Name</th>
                     <th>Nationality</th>
                     <th>Program</th>
-                    <th>Action</th>
+                    <th class="exclude">Action</th>
                 </thead>
                 <tbody>
                     @foreach ($students as $student)
@@ -35,7 +36,7 @@
                             </td>
                         </tr>
                     @endforeach
-                    <tr id="no-result-row">
+                    <tr id="no-result-row" class="exclude">
                         <td colspan="6">No results Found!</td>
                     </tr>
                 </tbody>

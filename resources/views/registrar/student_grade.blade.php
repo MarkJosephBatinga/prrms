@@ -14,17 +14,17 @@
                 <select class="select-filter">
                     <option>{{ date('Y') . '-' . date('Y', strtotime('+1 year')) }}</option>
                 </select>
-
                 <select class="select-filter ml-3">
                     <option>First Semester</option>
                 </select>
+                <button class="add-button" id="exportBtn" data-value="my_grades">Export to CSV</button>
             </div>
         </div>
         <!-- Grade Card -->
         <div class="grade-card">
             <p class="grade-card-heading">{{ date('Y') . '-' . date('Y', strtotime('+1 year')) }} &emsp; &emsp; First Semester</p>
             <!-- List of Student Grades -->
-            <div class="table-container">
+            <div class="table-container" id="myTable">
                 <table>
                     <thead>
                         <th>Code Category</th>
@@ -56,4 +56,5 @@
 
 @push('js_scripts')
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/filterTable.js') }}"></script>
 @endpush

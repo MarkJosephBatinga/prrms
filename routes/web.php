@@ -110,7 +110,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/school_year/edit/{id}', [SchoolYearController::class, 'edit_school_year'])->name('edit_school_year');
     Route::post('/school_year/update', [SchoolYearController::class, 'update_school_year'])->name('update_school_year');
     Route::get('/school_year/delete/{id}', [SchoolYearController::class, 'delete_school_year'])->name('delete_school_year');
-
+    Route::post('/school_year/import', [SchoolYearController::class, 'import'])->name('import_school_year');
 
     // Semester
 
@@ -120,6 +120,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/semester/edit/{id}', [SemesterController::class, 'edit_semester'])->name('edit_semester');
     Route::post('/semester/update', [SemesterController::class, 'update_semester'])->name('update_semester');
     Route::get('/semester/delete/{id}', [SemesterController::class, 'delete_semester'])->name('delete_semester');
+    Route::post('/semester/import', [SemesterController::class, 'import'])->name('import_semester');
+
 
     // Pre register (Program and Course Listing)
     Route::get('/pre_register_setup', [ProgramController::class, 'pre_register_setup'])->name('pre_register_setup');

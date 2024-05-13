@@ -63,4 +63,32 @@ class SchoolYearController extends Controller
         SchoolYear::where('id', $id)->delete();
         return redirect()->route('school_year')->with('success', 'School Year deleted successfully');;
     }
+
+    public function import(Request $request)
+    {
+        if ($request->hasFile('csv_file')) {
+            $path = $request->file('csv_file')->getRealPath();
+            $handle = fopen($path, "r");
+            if ($handle !== false) {
+                fgetcsv($handle); // Skip the header row
+                while (($row = fgetcsv($handle, 0, ",")) !== false) {
+                    if (count($row) >= 3) { // Check if the row has at least 3 columns
+                        $schoolYear = new SchoolYear();
+                        $schoolYear->school_year = $row[0];
+                        $schoolYear->start_date = $row[1];
+                        $schoolYear->end_date = $row[2];
+                        $schoolYear->save();
+                    } else {
+                        return redirect()->route('school_year')->with('error', 'Invalid CSV file: Row does not contain all required columns');
+                    }
+                }
+                fclose($handle);
+                return redirect()->route('school_year')->with('success', 'CSV data imported successfully');
+            } else {
+                return redirect()->route('school_year')->with('error', 'Failed to open CSV file');
+            }
+        }
+        return redirect()->route('school_year')->with('error', 'No CSV file found');
+    }
+    
 }

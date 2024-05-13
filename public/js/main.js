@@ -20,6 +20,9 @@ var mainJs = {
         recLetterInput : '#rec_letter',
         recLetterLabel : '.rec_letter-label',
 
+        csvInput : '#csv_file',
+        csvLabel : '.file-label',
+
         hamburgerButton: '#hamburger-button',
         responsiveMenu: '.responsive-menu',
 
@@ -239,6 +242,11 @@ var mainJs = {
             $(self.elements.recLetterInput).change(function(){
                 const recFileName = $(this).val().split('\\').pop();
                 $(self.elements.recLetterLabel).text(recFileName);
+            })
+
+            $(self.elements.csvInput).change(function(){
+                const csvFileName = $(this).val().split('\\').pop();
+                $(self.elements.csvLabel).text(csvFileName);
             })
         },
 

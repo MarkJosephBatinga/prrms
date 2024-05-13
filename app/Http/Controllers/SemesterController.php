@@ -59,4 +59,29 @@ class SemesterController extends Controller
         Semester::where('id', $id)->delete();
         return redirect()->route('semester')->with('success', 'Semester deleted successfully');;
     }
+
+    public function import(Request $request)
+    {
+        if ($request->hasFile('csv_file')) {
+            $path = $request->file('csv_file')->getRealPath();
+            $handle = fopen($path, "r");
+            if ($handle !== false) {
+                fgetcsv($handle); // Skip the header row
+                while (($row = fgetcsv($handle, 0, ",")) !== false) {
+                    if (count($row) >= 0) { // Check if the row has at least 3 columns
+                        $semester = new Semester();
+                        $semester->semester = $row[0];
+                        $semester->save();
+                    } else {
+                        return redirect()->route('semester')->with('error', 'Invalid CSV file: Row does not contain all required columns');
+                    }
+                }
+                fclose($handle);
+                return redirect()->route('semester')->with('success', 'CSV data imported successfully');
+            } else {
+                return redirect()->route('semester')->with('error', 'Failed to open CSV file');
+            }
+        }
+        return redirect()->route('semester')->with('error', 'No CSV file found');
+    }
 }
